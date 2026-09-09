@@ -1,0 +1,1205 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="室内用の家庭用サウナを、住まいの条件・予算・手入れから検討するガイド。熱波 スタンダートを中心に、30～50万円の候補や浴槽用品との違いを整理します。"
+    />
+    <title>室内に家庭用サウナを置くには？賃貸・戸建ての設置条件と選び方｜おうちサウナのある暮らし</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Yomogi&family=Zen+Maru+Gothic:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* 手書き風カラーパレット：サウナテーマ */
+        --ink: #2b221a;              /* 墨色・ダークウッドブラウン */
+        
+        /* 🪵 重厚な木枠（ウッドフレーム）パレット */
+        --wood-frame: #633e20;       /* コルクボードに合う深みのある木枠色 */
+        --wood-frame-border: 4.5px solid var(--wood-frame); /* しっかり太い木枠線 */
+        --wood-frame-shadow: 6px 7px 0 rgba(43, 34, 26, 0.95); /* 手書き風のしっかりした黒影 */
+        
+        --wood: #a67c52;             /* サウナの木材カラー（アクセント木目） */
+        --wood-dark: #6e4726;        /* 濃い木材・ヒノキ・ウォールナット */
+        --wood-light: #ebdcc8;       /* 柔らかな木板カラー */
+        
+        /* 役割分担ルール：
+           ★ボタン・主要アクション：サウナマット黄色（--yellow）で統一
+           ★下線・アクセント装飾：水風呂水色（--water）で統一
+           ★アイコン・自然アクセント：葉っぱ緑（--leaf） */
+        --yellow: #f5c738;           /* サウナマットのイエロー（ボタン・重要タグ） */
+        --yellow-hover: #e6b726;     /* ボタンホバー時 */
+        --yellow-soft: #faeab1;      /* 優しいサウナマット黄色 */
+        
+        --water: #3ea5bc;            /* 水風呂のクリアな水色（見出し下線・アクセントライン） */
+        --water-light: #daf0f4;      /* 水風呂の淡い水色 */
+        
+        --leaf: #538558;             /* ヴィヒタ・葉っぱのグリーン（チェックマーク・バッジ） */
+        --leaf-light: #e0eee0;       /* 若葉のペールグリーン */
+        
+        --line: 2px solid var(--ink);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      
+      /* 🌲 1枚目の木目画像を少し薄く透過させたサイト全体の背景 */
+      body {
+        margin: 0;
+        color: var(--ink);
+        background-color: #f7efe1; /* ベースの下地色 */
+        background-image: 
+          linear-gradient(rgba(252, 248, 240, 0.82), rgba(248, 238, 222, 0.82)),
+          url('images/bg_wood.jpg');
+        background-repeat: repeat;
+        background-size: 800px auto;
+        background-attachment: fixed;
+        font-family: "Zen Maru Gothic", sans-serif;
+        font-size: 16px;
+        line-height: 1.85;
+      }
+      a { color: inherit; text-decoration: none; }
+
+      .top-note {
+        padding: 6px 20px;
+        text-align: right;
+        font-size: 11px;
+        letter-spacing: .05em;
+        color: #726457;
+        background: rgba(243, 235, 217, 0.92);
+        border-bottom: 1px dashed #cfc2ab;
+      }
+
+      /* ヘッダー */
+      .site-header {
+        width: min(1160px, calc(100% - 32px));
+        min-height: 80px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: var(--line);
+        position: relative;
+        background: rgba(252, 248, 240, 0.6);
+        backdrop-filter: blur(2px);
+      }
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Yomogi", cursive;
+        font-size: 18px;
+        line-height: 1.15;
+        font-weight: 700;
+      }
+      .logo-mark {
+        width: 40px;
+        height: 36px;
+        display: grid;
+        place-items: center;
+        color: var(--ink);
+        background: var(--yellow);
+        border: 2px solid var(--ink);
+        border-radius: 48% 52% 44% 56% / 54% 48% 52% 46%;
+        font: 700 13px "DM Mono", monospace;
+        transform: rotate(-4deg);
+        box-shadow: 2px 2px 0 var(--wood-dark);
+        flex-shrink: 0;
+      }
+      .logo span small {
+        font-size: 11px;
+        color: var(--leaf);
+        display: block;
+        font-family: "Zen Maru Gothic", sans-serif;
+        font-weight: normal;
+      }
+
+      /* ハンバーガーメニューボタン */
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: var(--line);
+        border-radius: 6px;
+        padding: 6px 10px;
+        cursor: pointer;
+        font-family: "Yomogi", cursive;
+        font-size: 13px;
+        color: var(--ink);
+        background: #fdfaf3;
+        box-shadow: 2px 2px 0 var(--ink);
+      }
+
+      .main-nav {
+        display: flex;
+        gap: 22px;
+        font-family: "Yomogi", cursive;
+        font-size: 16px;
+      }
+      .main-nav a {
+        position: relative;
+        padding-bottom: 4px;
+        transition: color .2s;
+      }
+      .main-nav a:hover {
+        color: var(--wood-dark);
+        border-bottom: 3px solid var(--water); /* 下線は水色 */
+      }
+
+      /* ヒーローセクション */
+      .hero {
+        width: min(1160px, calc(100% - 32px));
+        margin: 0 auto;
+        min-height: 540px;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 32px;
+        align-items: center;
+        padding: 36px 0 50px;
+      }
+      .eyebrow {
+        margin: 0 0 12px;
+        font: 13px "DM Mono", monospace;
+        letter-spacing: .08em;
+        color: var(--wood-dark);
+      }
+      .eyebrow span {
+        width: 24px;
+        display: inline-block;
+        border-top: 3px solid var(--water); /* 下線・ボーダーは水色 */
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+      h1 {
+        margin-top: 0;
+        margin-bottom: 18px;
+        font-family: "Yomogi", cursive;
+        font-size: clamp(34px, 5.2vw, 64px);
+        line-height: 1.3;
+        letter-spacing: -.03em;
+      }
+      h1 em {
+        color: var(--wood-dark);
+        font-style: normal;
+        border-bottom: 4px solid var(--water); /* 下線は水色 */
+      }
+      h1 .water-txt {
+        color: var(--water);
+        font-style: normal;
+      }
+      .hero-text {
+        margin-bottom: 26px;
+        font-size: 16px;
+        line-height: 1.85;
+        color: #40342a;
+      }
+
+      /* ★ボタンはサウナマット黄色で統一★ */
+      .button-group {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 22px;
+        border: var(--line);
+        border-radius: 6px 10px 7px 11px;
+        font-family: "Yomogi", cursive;
+        font-size: 17px;
+        line-height: 1.3;
+        background: var(--yellow); /* すべてのボタンを黄色で統一 */
+        color: var(--ink);
+        box-shadow: 3px 3px 0 var(--ink);
+        transition: transform .18s, box-shadow .18s, background .18s;
+        cursor: pointer;
+        text-align: center;
+      }
+      .button:hover {
+        transform: translate(1px, 1px);
+        box-shadow: 2px 2px 0 var(--ink);
+        background: var(--yellow-hover);
+      }
+
+      /* ヒーローのトップ画像フレーム */
+      .hero-illustration {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .hero-frame-box {
+        position: relative;
+        width: 100%;
+        max-width: 480px;
+        background: #fffdf8;
+        border: var(--wood-frame-border);
+        border-radius: 14px 16px 13px 15px;
+        padding: 12px;
+        box-shadow: 
+          inset 0 0 0 2px rgba(255, 245, 230, 0.7),
+          var(--wood-frame-shadow);
+        transform: rotate(1deg);
+        transition: transform 0.3s ease;
+      }
+      .hero-frame-box:hover {
+        transform: rotate(0deg) scale(1.01);
+      }
+      .hero-img-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 2px solid var(--ink);
+        background: #f4ecdf;
+      }
+      .hero-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: opacity 0.35s ease-in-out;
+      }
+
+      /* 付箋メモ */
+      .memo {
+        position: absolute;
+        padding: 10px 14px;
+        border: 2px solid var(--ink);
+        font: 14px/1.3 "Yomogi", cursive;
+        box-shadow: 3px 3px 0 rgba(44,36,30,.8);
+        border-radius: 4px 7px 5px 6px;
+        z-index: 2;
+      }
+      .memo-yellow {
+        top: 15px;
+        right: 15px;
+        background: var(--yellow-soft);
+        transform: rotate(6deg);
+      }
+      .memo-water {
+        bottom: 20px;
+        left: 10px;
+        background: var(--water-light);
+        transform: rotate(-5deg);
+        color: #176476;
+      }
+      .memo-leaf {
+        top: 20px;
+        left: 15px;
+        background: var(--leaf-light);
+        transform: rotate(-7deg);
+        color: #235429;
+      }
+
+      /* 共通セクション */
+      .section-wrap {
+        width: min(1160px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 55px 0;
+      }
+      .section-heading {
+        margin-bottom: 28px;
+        text-align: center;
+      }
+      .section-kicker {
+        font: 12px "DM Mono", monospace;
+        letter-spacing: .12em;
+        color: var(--leaf);
+        margin-bottom: 6px;
+        font-weight: 700;
+      }
+      .section-heading h2 {
+        margin: 0 0 8px;
+        font: clamp(26px, 3.8vw, 40px) "Yomogi", cursive;
+        letter-spacing: -.03em;
+      }
+      /* ★見出しの下線は水色で統一★ */
+      .section-heading h2 span {
+        color: var(--wood-dark);
+        border-bottom: 3.5px solid var(--water);
+        padding-bottom: 2px;
+      }
+      .section-heading p {
+        color: #5d4f43;
+        margin: 0;
+        font-size: 15px;
+      }
+
+      /* ========================================================
+         📌 コルクボードカード（木枠＋黒影付き、上部は全面コルク）
+         ======================================================== */
+      .cork-board {
+        position: relative;
+        padding: 32px 24px 24px;
+        /* 四隅全周を木枠で囲み、上部も黄色ではなくコルク全面を表示 */
+        border: var(--wood-frame-border);
+        border-radius: 12px 14px 11px 13px;
+        box-shadow: 
+          inset 0 0 0 2px rgba(255, 235, 205, 0.45), /* 木枠内側の立体ハイライト */
+          inset 0 0 16px rgba(45, 25, 10, 0.18),      /* コルク端の自然な陰影 */
+          var(--wood-frame-shadow);                 /* 外側の手書き風黒影 */
+        background-color: #d8a478; /* コルク画像ロード前の背景色 */
+        background-image: 
+          linear-gradient(rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.04)),
+          url('images/corkboard.jpg');
+        background-repeat: repeat;
+        background-size: 320px auto;
+        transition: transform .2s ease;
+      }
+      .cork-board:hover {
+        transform: translateY(-3px);
+      }
+
+      /* コルクボード内の手書きメモ用紙（白・生成りペーパー）風コンテナ */
+      .cork-paper {
+        background: rgba(255, 253, 248, 0.95);
+        border: 2px solid var(--ink);
+        border-radius: 6px;
+        padding: 20px 20px;
+        box-shadow: 3px 3px 0 rgba(43, 34, 26, 0.25);
+        position: relative;
+      }
+
+      /* ピン留めアイコン（プッシュピン）風のあしらい */
+      .cork-board .pin-top {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 2px solid var(--ink);
+        box-shadow: 1px 2px 3px rgba(0,0,0,0.35);
+        z-index: 5;
+      }
+      .pin-yellow { background: var(--yellow); }
+      .pin-red { background: #e05a47; }
+      .pin-blue { background: var(--water); }
+
+      /* 住まい別の診断カード (賃貸 vs 戸建て) */
+      .choice-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-bottom: 30px;
+      }
+      .badge {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 20px;
+        border: 1.5px solid var(--ink);
+        font: 11px "DM Mono", monospace;
+        font-weight: 700;
+        margin-bottom: 12px;
+        background: #fdfaf3;
+      }
+      .badge span {
+        border-bottom: 2px solid var(--water); /* バッジ内の下線も水色 */
+      }
+
+      .choice-card h3 {
+        font-family: "Yomogi", cursive;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      .check-list {
+        list-style: none;
+        padding: 0;
+        margin: 14px 0 20px;
+      }
+      .check-list li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 8px;
+        font-size: 14.5px;
+        line-height: 1.7;
+      }
+      .check-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--leaf);
+        font-weight: bold;
+        font-size: 17px;
+      }
+
+      /* 主力商品ピックアップ（コルクボード風ボックス） */
+      .featured-box {
+        border: 5px solid var(--wood-frame);
+        border-radius: 14px;
+        box-shadow: 
+          inset 0 0 0 2px rgba(255, 235, 205, 0.4),
+          7px 8px 0 var(--ink);
+        padding: 34px 28px;
+        margin: 40px 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 26px;
+        align-items: center;
+        position: relative;
+        background-color: #d8a478;
+        background-image: url('images/corkboard.jpg');
+        background-size: 340px auto;
+      }
+      .featured-ribbon {
+        position: absolute;
+        top: -14px;
+        left: 24px;
+        background: var(--yellow); /* リボンのベースは黄色 */
+        border: 2px solid var(--ink);
+        padding: 4px 16px;
+        border-radius: 4px;
+        font: 700 13px "Yomogi", cursive;
+        box-shadow: 2px 2px 0 var(--ink);
+        transform: rotate(-2deg);
+        z-index: 10;
+      }
+      .featured-inner-paper {
+        background: rgba(255, 253, 248, 0.95);
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        padding: 24px;
+        box-shadow: 3px 3px 0 rgba(43, 34, 26, 0.25);
+      }
+      .product-preview {
+        background: #fff;
+        border: 3.5px solid var(--wood-frame);
+        border-radius: 9px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 
+          inset 0 0 0 1.5px rgba(255, 245, 230, 0.6),
+          4px 4px 0 var(--ink);
+      }
+      .product-mockup {
+        width: 100%;
+        height: 190px;
+        background: #fdfaf3;
+        border: 2px dashed #a8947e;
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: var(--wood-dark);
+        font-family: "Yomogi", cursive;
+      }
+      .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+      }
+      .spec-mini-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 14px;
+        font-size: 14px;
+      }
+      .spec-mini-table th, .spec-mini-table td {
+        padding: 7px 10px;
+        border-bottom: 1.5px solid #d4c5b2;
+        text-align: left;
+      }
+      .spec-mini-table th {
+        color: var(--wood-dark);
+        font-weight: 700;
+        width: 36%;
+        white-space: nowrap;
+      }
+
+      /* 3つの確認ステップ（コルクボード調） */
+      .steps-wrap {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 24px;
+      }
+      .step-item {
+        padding: 24px 18px 20px;
+      }
+      .step-num {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--leaf);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font: 700 15px "DM Mono", monospace;
+        margin-bottom: 10px;
+        border: 1.5px solid var(--ink);
+      }
+      .step-item h4 {
+        margin: 0 0 8px;
+        font-size: 18px;
+        font-family: "Yomogi", cursive;
+        border-bottom: 2px solid var(--water); /* 見出し下線は水色 */
+        display: inline-block;
+        padding-bottom: 2px;
+      }
+      .step-item p {
+        font-size: 13.5px;
+        color: #4f4236;
+        margin: 8px 0 0;
+        line-height: 1.7;
+      }
+
+      /* その他の選択肢カード */
+      .choice-sub-card {
+        padding: 24px 18px 20px;
+      }
+      .choice-sub-card h3 {
+        border-bottom: 2px solid var(--water); /* 下線は水色 */
+        display: inline-block;
+        padding-bottom: 2px;
+      }
+
+      /* 調査・比較方針カード */
+      .policy-box {
+        margin-top: 45px;
+        background: rgba(255, 252, 245, 0.96);
+        border: var(--wood-frame-border);
+        border-radius: 12px;
+        padding: 28px 24px;
+        box-shadow: 
+          inset 0 0 0 1.5px rgba(255, 245, 230, 0.6),
+          var(--wood-frame-shadow);
+      }
+      .policy-box h3 {
+        margin-top: 0;
+        margin-bottom: 12px;
+        font-family: "Yomogi", cursive;
+        font-size: 22px;
+        color: var(--wood-dark);
+        border-bottom: 2.5px solid var(--water);
+        display: inline-block;
+        padding-bottom: 2px;
+      }
+      .policy-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+        margin-top: 16px;
+      }
+      .policy-item {
+        background: #faf4e8;
+        border: 1.5px solid var(--ink);
+        border-radius: 8px;
+        padding: 16px;
+      }
+      .policy-item h4 {
+        margin: 0 0 6px;
+        font-size: 16px;
+        font-family: "Yomogi", cursive;
+        color: var(--ink);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .policy-item p {
+        margin: 0;
+        font-size: 13.5px;
+        color: #4f4236;
+        line-height: 1.7;
+      }
+
+      /* FAQカード */
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 20px;
+        margin-top: 24px;
+      }
+      .faq-card {
+        padding: 22px 20px;
+      }
+      .faq-q {
+        font-family: "Yomogi", cursive;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--wood-dark);
+        margin: 0 0 10px;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .faq-q-mark {
+        background: var(--yellow);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 50%;
+        width: 26px;
+        height: 26px;
+        display: grid;
+        place-items: center;
+        font-size: 14px;
+        font-family: "DM Mono", monospace;
+        font-weight: 700;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .faq-a {
+        margin: 0;
+        font-size: 14px;
+        color: #4a3e33;
+        line-height: 1.75;
+      }
+
+      /* フッター */
+      .site-footer {
+        background: rgba(234, 224, 203, 0.9);
+        border-top: var(--line);
+        margin-top: 65px;
+        padding: 35px 0 25px;
+      }
+      .footer-inner {
+        width: min(1160px, calc(100% - 32px));
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .footer-inner p {
+        font-size: 12.5px;
+        color: #635547;
+        margin: 0;
+      }
+
+      /* スマホ最適化（768px以下） */
+      @media (max-width: 768px) {
+        body {
+          font-size: 15px;
+          background-size: 500px auto;
+        }
+        .site-header {
+          min-height: 64px;
+        }
+        .logo {
+          font-size: 16px;
+        }
+        .logo-mark {
+          width: 34px;
+          height: 30px;
+          font-size: 11px;
+        }
+        .menu-toggle {
+          display: inline-block;
+        }
+        .main-nav {
+          display: none;
+          position: absolute;
+          top: 64px;
+          left: 0;
+          right: 0;
+          z-index: 100;
+          padding: 16px 20px;
+          background: #fcf8f0;
+          border: var(--line);
+          border-radius: 8px;
+          box-shadow: 4px 5px 0 var(--ink);
+          flex-direction: column;
+          gap: 12px;
+        }
+        .main-nav.is-active {
+          display: flex;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 24px 0 32px;
+          gap: 24px;
+          min-height: auto;
+        }
+        h1 {
+          font-size: 29px;
+          line-height: 1.35;
+          margin-bottom: 14px;
+        }
+        .hero-text {
+          font-size: 14px;
+          margin-bottom: 20px;
+        }
+        .button-group {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .button {
+          width: 100%;
+          padding: 12px 16px;
+          font-size: 16px;
+        }
+
+        .hero-illustration {
+          height: auto;
+          margin-top: 10px;
+        }
+        .hero-frame-box {
+          max-width: 100%;
+          transform: none;
+          padding: 8px;
+        }
+        .memo {
+          font-size: 12px;
+          padding: 6px 10px;
+        }
+        .memo-yellow { right: 5px; top: 8px; }
+        .memo-water { left: 5px; bottom: 8px; }
+        .memo-leaf { left: 8px; top: 8px; }
+
+        .section-wrap {
+          padding: 40px 0;
+        }
+        .section-heading {
+          margin-bottom: 22px;
+        }
+        .section-heading h2 {
+          font-size: 23px;
+        }
+        .section-heading p {
+          font-size: 13.5px;
+        }
+
+        .choice-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .cork-board {
+          padding: 26px 14px 18px;
+          border-width: 3.5px;
+          box-shadow: 
+            inset 0 0 0 1.5px rgba(255, 235, 205, 0.5),
+            5px 6px 0 var(--ink);
+        }
+        .cork-paper {
+          padding: 16px 14px;
+        }
+        .choice-card h3 {
+          font-size: 19px;
+        }
+
+        .featured-box {
+          grid-template-columns: 1fr;
+          padding: 24px 16px;
+          margin: 30px 0;
+          gap: 18px;
+          border-width: 4px;
+          box-shadow: 
+            inset 0 0 0 1.5px rgba(255, 235, 205, 0.4),
+            5px 6px 0 var(--ink);
+        }
+        .featured-inner-paper {
+          padding: 18px 14px;
+        }
+        .featured-ribbon {
+          left: 14px;
+          top: -12px;
+          font-size: 12px;
+          padding: 2px 12px;
+        }
+        .steps-wrap {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        .spec-mini-table {
+          font-size: 13px;
+        }
+        .footer-inner {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-note">※ 当サイトはアフィリエイト広告およびプロモーションを含みます</div>
+
+    <!-- サイトヘッダー -->
+    <header class="site-header">
+      <a class="logo" href="#top">
+        <span class="logo-mark">湯気</span>
+        <span>
+          おうちサウナのある暮らし
+          <small>自宅サウナの選び方・費用・設置ガイド</small>
+        </span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="メニュー開閉">☰ メニュー</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="#housing">住まいと予算</a>
+        <a href="#featured">主力：熱波</a>
+        <a href="#checkpoints">購入前3つの確認</a>
+        <a href="#guide">30〜50万・他の方法</a>
+        <a href="#policy">調査方針・FAQ</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <!-- ヒーローエリア -->
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> 理想のととのいを、わが家で。</p>
+          <h1>
+            家にサウナを置く、<br />
+            <em>木と熱波</em>と<span class="water-txt">水風呂</span>の計画。
+          </h1>
+          <p class="hero-text">
+            「賃貸でも置ける？」「電気工事はいくらかかる？」「100Vと200Vの違いは？」<br />
+            手軽なサウナテントから本格的な室内木製サウナまで、<br />
+            後悔しないための条件とリアルな総額を分かりやすくナビゲートします。
+          </p>
+          <!-- ★ボタンはすべてサウナマット黄色で統一★ -->
+          <div class="button-group">
+            <a class="button" href="#housing">住まい別の条件を見る <i>→</i></a>
+            <a class="button" href="#featured">主力の室内サウナを見る <i>♨</i></a>
+          </div>
+        </div>
+
+        <div class="hero-illustration">
+          <div class="hero-frame-box">
+            <div class="hero-img-wrap">
+              <img
+                id="heroRandomImg"
+                class="hero-img"
+                src="images/TOP/hero-sauna-variant-a.png"
+                alt="自宅サウナで過ごすくつろぎのひととき"
+              />
+            </div>
+            <!-- 手書き風付箋メモ -->
+            <div class="memo memo-leaf">🌿 ヴィヒタの香り</div>
+            <div class="memo memo-yellow">⚡ 100V 20A工事</div>
+            <div class="memo memo-water">💧 水風呂への動線</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 住まい別の診断エリア -->
+      <section id="housing" class="section-wrap" style="border-top: 2px dashed #cfc2ab;">
+        <div class="section-heading">
+          <p class="section-kicker">WHERE TO INSTALL</p>
+          <h2>住まいに合わせて<span>置けるサウナ</span>を知る</h2>
+          <p>賃貸アパート・マンションか、持ち家戸建てかで必要な確認と工事が異なります。</p>
+        </div>
+
+        <div class="choice-grid">
+          <!-- 賃貸カード（木枠コルクボード：上部は全面コルク） -->
+          <div class="cork-board choice-card rental">
+            <div class="pin-top pin-yellow"></div>
+            <div class="cork-paper">
+              <span class="badge"><span>RENTAL APARTMENT</span></span>
+              <h3>賃貸・マンションでの設置</h3>
+              <p style="margin-top:0; font-size:14px; color:#524436;">管理規約・大家さんの承諾、床の耐荷重、退去時の原状回復が重要ポイントになります。</p>
+              <ul class="check-list">
+                <li>管理会社・オーナーへの事前相談と承諾</li>
+                <li>専用電気配線（20A専用コンセント等）の許可</li>
+                <li>床の耐荷重と搬入経路（エレベーター・廊下）の寸法</li>
+                <li>原状回復や引っ越し時の移設・解体コスト</li>
+              </ul>
+              <!-- ボタンは黄色で統一 -->
+              <a class="button" href="#rental-guide" style="font-size: 15px; padding: 10px 18px; width: 100%;">賃貸の確認チェックリスト <i>→</i></a>
+            </div>
+          </div>
+
+          <!-- 戸建てカード（木枠コルクボード：上部は全面コルク） -->
+          <div class="cork-board choice-card detached">
+            <div class="pin-top pin-yellow"></div>
+            <div class="cork-paper">
+              <span class="badge"><span>DETACHED HOUSE</span></span>
+              <h3>戸建てへの後付け設置</h3>
+              <p style="margin-top:0; font-size:14px; color:#524436;">脱衣所や空き部屋、リビングの一角へ。電源工事の自由度が高く、本格サウナを導入しやすい環境です。</p>
+              <ul class="check-list">
+                <li>浴室・シャワー・水風呂へのスムーズな「ととのい動線」</li>
+                <li>200V / 100V 20Aなどブレーカー容量と専用ブレーカー</li>
+                <li>湿気対策・24時間換気設備との兼ね合い</li>
+                <li>将来のメンテナンス性と木材の通気・清掃性</li>
+              </ul>
+              <!-- ボタンは黄色で統一 -->
+              <a class="button" href="#house-guide" style="font-size: 15px; padding: 10px 18px; width: 100%;">戸建て後付けガイド <i>→</i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 主力商品ピックアップ（熱波 スタンダート） -->
+      <section id="featured" class="section-wrap" style="background: rgba(234, 224, 203, 0.7); border-radius: 14px; border: 2px dashed #cfc2ab;">
+        <div class="section-heading">
+          <p class="section-kicker">FEATURED SAUNA</p>
+          <h2>本格室内サウナ<span>「熱波 スタンダート」</span></h2>
+          <p>家庭用100V電源に対応し、自宅の一角を本格サウナルームに変える注目モデル。</p>
+        </div>
+
+        <div class="featured-box">
+          <div class="featured-ribbon">注目・本格室内モデル</div>
+          <div class="featured-inner-paper">
+            <h3 style="font-family: 'Yomogi', cursive; font-size: 25px; margin-top: 0; color: var(--wood-dark);">
+              熱波 スタンダート
+            </h3>
+            <p style="font-size: 14.5px; color: #433932; line-height: 1.8;">
+              幅87×奥行87×高さ166cmの省スペース設計。最高100℃まで調整可能な電気ストーブを搭載した本格木製サウナボックスです。
+            </p>
+            <div class="table-responsive">
+              <table class="spec-mini-table">
+                <tr>
+                  <th>本体価格目安</th>
+                  <td>税込 1,150,000円（※受注生産）</td>
+                </tr>
+                <tr>
+                  <th>電気定格</th>
+                  <td>単相100V・20A・1.7kW（専用工事要）</td>
+                </tr>
+                <tr>
+                  <th>外寸寸法</th>
+                  <td>幅87cm × 奥行87cm × 高さ166cm</td>
+                </tr>
+                <tr>
+                  <th>標準装備</th>
+                  <td>サウナストーブ・石・照明・温度計・砂時計</td>
+                </tr>
+                <tr>
+                  <th>ロウリュ対応</th>
+                  <td>オプション対応（専用ヒーター追加等）</td>
+                </tr>
+              </table>
+            </div>
+            <div style="margin-top: 20px;">
+              <!-- ボタンは黄色で統一 -->
+              <a class="button" href="https://item.rakuten.co.jp/auc-cieljapan/rakurakusauna_neppa_standard/" target="_blank" rel="noopener noreferrer">
+                楽天で詳細・設置条件を確認 <i>↗</i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 木枠で囲まれた商品プレビュー -->
+          <div class="product-preview">
+            <div class="product-mockup">
+              <span style="font-size: 34px;">🪵♨️</span>
+              <strong>天然木仕上げ サウナルーム</strong>
+              <small style="color: #7b6c5c;">省スペース 0.5畳サイズ</small>
+            </div>
+            <p style="font-size: 11.5px; color: #756657; margin-top: 10px; margin-bottom: 0;">
+              ※ 設置には単相100V 20A（IL型コンセント等）の電気工事、および地域別送料・搬入費が別途必要です。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 購入前の3つの確認ポイント -->
+      <section id="checkpoints" class="section-wrap">
+        <div class="section-heading">
+          <p class="section-kicker">3 CHECK POINTS</p>
+          <h2>購入前に必ず確認したい<span>3つのポイント</span></h2>
+          <p>「買ってから置けなかった」を防ぐための事前セルフチェックです。</p>
+        </div>
+
+        <div class="steps-wrap">
+          <!-- ステップ1: 設置スペースと搬入 -->
+          <div class="cork-board step-item">
+            <div class="pin-top pin-yellow"></div>
+            <div class="cork-paper">
+              <div class="step-num">01</div>
+              <h4>寸法と搬入経路</h4>
+              <p>
+                サウナ自体の幅・奥行だけでなく、扉を開けたときの動線、換気・放熱のための壁とのすき間（離隔）を確保できるか確認しましょう。
+              </p>
+            </div>
+          </div>
+
+          <!-- ステップ2: 電源とアンペア容量 -->
+          <div class="cork-board step-item">
+            <div class="pin-top pin-yellow"></div>
+            <div class="cork-paper">
+              <div class="step-num">02</div>
+              <h4>電源容量とコンセント工事</h4>
+              <p>
+                100Vでも「20A専用回路」が必要なケースがほとんどです。ブレーカーの空きやエアコン用とは別の単独配線が可能か電気店に相談します。
+              </p>
+            </div>
+          </div>
+
+          <!-- ステップ3: 本体以外の諸費用 -->
+          <div class="cork-board step-item">
+            <div class="pin-top pin-yellow"></div>
+            <div class="cork-paper">
+              <div class="step-num">03</div>
+              <h4>総額（送料・工事・電気代）</h4>
+              <p>
+                大型家具便の地域別送料、組立設置費、電気工事代、日々の電気代（1回約100〜200円前後）まで含めた総額で予算を立てましょう。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 比較・他の選択肢（サウナ傘やテントサウナ） -->
+      <section id="guide" class="section-wrap" style="border-top: 2px dashed #cfc2ab;">
+        <div class="section-heading">
+          <p class="section-kicker">OTHER CHOICES</p>
+          <h2>予算や広さに合わせた<span>その他の選択肢</span></h2>
+          <p>100万円超の本格サウナ以外にも、自宅でととのうアプローチがあります。</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;">
+          <!-- 選択肢1: 30〜50万円台 -->
+          <div class="cork-board choice-sub-card">
+            <div class="pin-top pin-yellow"></div>
+            <div class="cork-paper">
+              <span style="font-size: 11.5px; font-family: 'DM Mono', monospace; color: var(--wood-dark); font-weight: bold;">30万〜50万円クラス</span>
+              <h3>遠赤外線ボックス・TOY SAUNA</h3>
+              <p style="font-size: 13.5px; color: #524436; margin: 0; line-height: 1.7;">組み立て式や遠赤外線ヒータータイプ。温度帯やロウリュの可否が異なるため、好みの温まり方と照合しましょう。</p>
+            </div>
+          </div>
+
+          <!-- 選択肢2: お風呂サウナ傘 -->
+          <div class="cork-board choice-sub-card">
+            <div class="pin-top pin-yellow"></div>
+            <div class="cork-paper">
+              <span style="font-size: 11.5px; font-family: 'DM Mono', monospace; color: var(--water); font-weight: bold;">数千円〜</span>
+              <h3>お風呂deサウナ傘</h3>
+              <p style="font-size: 13.5px; color: #524436; margin: 0; line-height: 1.7;">自宅のバスタブの上に開くだけでミストサウナ空間ができる手軽なアイテム。賃貸でも工事一切不要で試せます。</p>
+            </div>
+          </div>
+
+          <!-- 選択肢3: 施設近隣に住む選択 -->
+          <div class="cork-board choice-sub-card">
+            <div class="pin-top pin-yellow"></div>
+            <div class="cork-paper">
+              <span style="font-size: 11.5px; font-family: 'DM Mono', monospace; color: var(--leaf); font-weight: bold;">ライフスタイル</span>
+              <h3>サウナ付き銭湯の近くに住む</h3>
+              <p style="font-size: 13.5px; color: #524436; margin: 0; line-height: 1.7;">設置コストやメンテナンスの手間を考慮し、お気に入りの温浴施設の徒歩圏内に暮らすという究極の選択肢も。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- このサイトの調査・比較方針＆よくある質問 -->
+      <section id="policy" class="section-wrap" style="border-top: 2px dashed #cfc2ab;">
+        <div class="section-heading">
+          <p class="section-kicker">EDITORIAL POLICY & FAQ</p>
+          <h2>このサイトの<span>調査・比較方針</span>とよくある質問</h2>
+          <p>読者の皆さまに透明で信頼できる情報をお届けするための掲載基準・運営姿勢です。</p>
+        </div>
+
+        <div class="policy-box">
+          <h3>当サイトの掲載・比較基準について</h3>
+          <p style="font-size: 14px; color: #524436; margin: 0; line-height: 1.8;">
+            当サイトは、家庭用サウナの導入を検討される方へ向け、特定の商品を一律に推奨するのではなく、住まい・予算・安全条件に応じた中立な判断材料を提供することを目的としています。
+          </p>
+          <div class="policy-grid">
+            <div class="policy-item">
+              <h4><span>📌</span> 本体価格と総額の明確な区分</h4>
+              <p>本体代金だけでなく、地域別配送料、一次側電気工事費、組立設置費用、日々のランニングコストまで含めた「導入総額」での判断基準を提示します。</p>
+            </div>
+            <div class="policy-item">
+              <h4><span>⚡</span> 電気・安全要件の厳格な明記</h4>
+              <p>「100Vだから工事不要」と安易に案内せず、必要アンペア数（20A専用配線等）、コンセント形状（IL型）、漏電防止対策について公式仕様・安全基準に基づいて記載します。</p>
+            </div>
+            <div class="policy-item">
+              <h4><span>🔎</span> 架空レビュー・未確認情報の排除</h4>
+              <p>実機検証を行っていない事項は「仕様調査による比較」と明記し、架空の体験談や根拠のない点数付け・ランキング表記は一切行いません。</p>
+            </div>
+            <div class="policy-item">
+              <h4><span>🤝</span> 広告表記と中立な比較</h4>
+              <p>当サイトはアフィリエイト広告を含みますが、提携の有無にかかわらず読者にとって客観的な代替選択肢（遠赤外線型、サウナ傘、近隣温浴施設など）も平等に提示します。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQカードエリア -->
+        <div class="faq-grid">
+          <div class="cork-board faq-card">
+            <div class="pin-top pin-yellow"></div>
+            <div class="cork-paper">
+              <div class="faq-q">
+                <span class="faq-q-mark">Q</span>
+                <span>賃貸と戸建てでは何が最も違いますか？</span>
+              </div>
+              <p class="faq-a">
+                <strong>管理者（大家・管理会社）の承諾と電気工事の可否</strong>が最大の分岐点です。戸建ては専用配線工事やアンペア変更を柔軟に行えますが、賃貸では分電盤からの単独配線や壁・床の原状回復に関して事前の書面確認が必須となります。
+              </p>
+            </div>
+          </div>
+
+          <div class="cork-board faq-card">
+            <div class="pin-top pin-yellow"></div>
+            <div class="cork-paper">
+              <div class="faq-q">
+                <span class="faq-q-mark">Q</span>
+                <span>本体価格だけで予算を決めても大丈夫ですか？</span>
+              </div>
+              <p class="faq-a">
+                <strong>本体代金だけでは設置・稼働できません。</strong>大型荷物の地域別送料（数万円〜）、電気工事費用（数万円〜）、搬入・組立諸経費が別途発生します。必ず「使用できる状態までの総額」で見積もりを取りましょう。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <strong style="font-family: 'Yomogi', cursive; font-size: 17px; color: var(--ink);">おうちサウナのある暮らし</strong>
+          <p>家庭用サウナの費用・設置条件・注意点を中立に整理するガイドサイト</p>
+        </div>
+        <p style="font-size: 11.5px;">© 2026 おうちサウナのある暮らし All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // スマホ用ナビゲーション開閉スクリプト
+      const menuBtn = document.getElementById('menuToggle');
+      const mainNav = document.getElementById('mainNav');
+      if (menuBtn && mainNav) {
+        menuBtn.addEventListener('click', () => {
+          mainNav.classList.toggle('is-active');
+        });
+        // リンククリックでメニューを閉じる
+        mainNav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mainNav.classList.remove('is-active');
+          });
+        });
+      }
+
+      // TOP画像ランダム表示スクリプト（直前に表示したイラスト以外を選択）
+      (function() {
+        const topImages = [
+          'images/TOP/hero-sauna-family-closeup-sauna.png',
+          'images/TOP/hero-sauna-female-friends-angle.png',
+          'images/TOP/hero-sauna-male-friends-angle.png',
+          'images/TOP/hero-sauna-man-angle.png',
+          'images/TOP/hero-sauna-variant-a.png',
+          'images/TOP/hero-sauna-variant-c.png',
+          'images/TOP/hero-sauna-woman-angle.png'
+        ];
+
+        const lastImg = localStorage.getItem('lastTopSaunaImage');
+        // 直前画像を除外した候補配列を作成
+        const availableImages = topImages.filter(img => img !== lastImg);
+        // 候補からランダムに1枚選択（万一全除外なら全体から）
+        const pool = availableImages.length > 0 ? availableImages : topImages;
+        const selectedImg = pool[Math.floor(Math.random() * pool.length)];
+
+        // localStorageに今回表示した画像を保存
+        localStorage.setItem('lastTopSaunaImage', selectedImg);
+
+        // 画像要素に反映
+        const imgEl = document.getElementById('heroRandomImg');
+        if (imgEl) {
+          imgEl.src = selectedImg;
+        }
+      })();
+    </script>
+  </body>
+</html>

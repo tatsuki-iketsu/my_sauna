@@ -1,0 +1,8 @@
+﻿# Backup files
+*.bak
+
+# Temporary attachments and scratch
+.codex-remote-attachments/
+scratch/
+.DS_Store
+Thumbs.db
