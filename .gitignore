@@ -1,4 +1,9 @@
-﻿# Backup files
+﻿# Build artifacts and dependencies
+node_modules/
+dist/
+.astro/
+
+# Backup files
 *.bak
 
 # Temporary attachments and scratch
