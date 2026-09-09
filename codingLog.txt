@@ -131,5 +131,10 @@
 ■ 2026-09-10 楽天アフィリエイトテキストリンク設定およびdevelopブランチプッシュ
 1. 主力サウナ（熱波 スタンダード）紹介枠の「楽天で詳細・設置条件を確認 ↗」ボタンリンクをアフィリエイトURLに差し替え。
 2. ボタン直下に【楽天市場】公式商品ページへのテキストリンク（アンカーテキスト）を追加。
-3. 新規ブランチ「develop」を作成し、変更をGitHub（tatsuki-iketsu/my_sauna）へプッシュ。=========================================
+3. 新規ブランチ「develop」を作成し、変更をGitHub（tatsuki-iketsu/my_sauna）へプッシュ。
+■ 2026-09-10 Cloudflare Pages連携・サブドメイン開通・プレビュー認証(Cloudflare Access)設定完了
+1. Cloudflare Pages プロジェクト「my-sauna」作成、GitHub (tatsuki-iketsu/my_sauna) との双方向自動デプロイ連携を確立。
+2. お名前.comのCNAME設定により本番サブドメイン (my-sauna.prokuma.net) の紐付け・SSL開通完了。
+3. TOPページへの主力サウナ（熱波 スタンダード）楽天アフィリエイトバナーおよびテキストリンクの配置。
+4. developブランチを対象としたプレビュー環境 (https://develop.my-sauna.pages.dev) に Cloudflare Access を設定。shinji_ikeda@ollakunnossa.com 宛てのワンタイムPIN認証によるスマホ閲覧セキュリティを確立。=========================================
 記録完了
