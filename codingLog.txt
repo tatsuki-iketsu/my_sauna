@@ -142,5 +142,34 @@
 2. 画像アセットを public/images/ 配下へ移行し、静的ファイル配信を整備。
 3. index.html を src/pages/index.astro に移行し、CSS背景画像パスを絶対パス (/images/...) に最適化。
 4. npm run build による静的ビルドテスト（dist/index.html生成）が正常パスすることを確認。
-5. developブランチへプッシュ完了。=========================================
+5. developブランチへプッシュ完了。
+■ 2026-09-10 Astro本番自動ビルド・デプロイ完全成功
+1. developブランチで動作確認したAstro環境一式をmainブランチへマージ。
+2. Cloudflare Pagesのビルド設定(Astro, npm run build, dist)に基づき、コミット 2156bcf が自動ビルド・デプロイに成功。
+3. サブドメイン (https://my-sauna.prokuma.net) にてAstroでビルドされた本番サイトの正常稼働を確認。
+■ 2026-09-10 Google Analytics 4 (GA4) および SEO設定（Search Console/robots.txt/sitemap.xml）完了
+1. Google Search Console 所有権確認用メタタグおよびHTMLファイルを配置・認証完了。
+2. Google Analytics 4 (測定ID: G-PM1NEGC92N) のgtag.jsスクリプトをindex.astroのheadに導入。
+3. 検索エンジン向けに public/robots.txt および public/sitemap.xml を新規配備。
+4. mainおよびdevelopブランチへプッシュし、Cloudflare Pagesによる自動デプロイを更新。
+-----------------------------------------
+■ アップデート: P01熱波スタンダート暫定ドラフト執筆とAstro実装 (2026年9月10日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localDocment\自宅サウナアフィリエイト\記事\P01_熱波スタンダート商品検討.md
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+- c:\localCode\ReactApp\my_sauna\src\pages\sauna\neppa-standard.astro
+- c:\localCode\ReactApp\my_sauna\src\pages\index.astro
+
+■ 詳細内容
+- 構成書（P01）および確認済みエビデンス（S001）に基づき、熱波スタンダートの商品検討暫定ドラフト原稿を作成。
+- Astroプロジェクトに個別記事ページ（/sauna/neppa-standard/）コンポーネントを新規作成し、トップページからの内部相互リンクを設置。
+- Astroのビルド検証（npm run build）を実行し、静的生成が正常終了することを確認。
+- 未確認エビデンス（重量・PSE等）を明記し、推測や誇大表現を排除した上でタスクリストを更新。
+
+■ 実行・検証コマンド
+`
+npm run build
+`=========================================
 記録完了
