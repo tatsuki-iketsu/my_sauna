@@ -1,4 +1,4 @@
-﻿# Build artifacts and dependencies
+# Build artifacts and dependencies
 node_modules/
 dist/
 .astro/
@@ -11,3 +11,10 @@ dist/
 scratch/
 .DS_Store
 Thumbs.db
+
+# Affiliate secret configuration & environment files
+*.secret.json
+.env
+.env.*
+!.env.example
+

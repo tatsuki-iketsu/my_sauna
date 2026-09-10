@@ -1,3 +1,16 @@
+---
+import { getProductAffiliate } from '../../utils/affiliate';
+
+const affiliate = getProductAffiliate('neppa_standard');
+const rakuten = affiliate.rakuten || {
+  bannerUrl: '#',
+  imageUrl: '',
+  imageAlt: '',
+  textUrl: '#',
+  textLabel: ''
+};
+---
+
 <!doctype html>
 <html lang="ja">
   <head>
@@ -435,16 +448,18 @@
         </header>
 
         <!-- アフィリエイト商品バナー -->
-        <div style="text-align: center; margin: 24px 0 32px;">
-          <div style="display: inline-block; border: var(--wood-frame-border); border-radius: 12px; background: #fffdf9; padding: 16px; box-shadow: var(--wood-frame-shadow);">
-            <div style="font-family: 'Yomogi', cursive; font-size: 15px; color: var(--wood-dark); margin-bottom: 10px; font-weight: 700;">
-              ＼ 楽天公式販売店舗：メディネスヘルスラボ ／
+        {rakuten.bannerUrl && rakuten.imageUrl && (
+          <div style="text-align: center; margin: 24px 0 32px;">
+            <div style="display: inline-block; border: var(--wood-frame-border); border-radius: 12px; background: #fffdf9; padding: 16px; box-shadow: var(--wood-frame-shadow);">
+              <div style="font-family: 'Yomogi', cursive; font-size: 15px; color: var(--wood-dark); margin-bottom: 10px; font-weight: 700;">
+                ＼ 楽天公式販売店舗：メディネスヘルスラボ ／
+              </div>
+              <a href={rakuten.bannerUrl} target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; display: inline-block;">
+                <img src={rakuten.imageUrl} border="0" style="margin:2px; max-width: 100%; height: auto; border-radius: 6px;" alt={rakuten.imageAlt || "楽々サウナ 熱波 スタンダード"} title={rakuten.imageAlt || "楽々サウナ 熱波 スタンダード"} />
+              </a>
             </div>
-            <a href="https://hb.afl.rakuten.co.jp/ichiba/57513042.94fc00d3.57513043.98a16833/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-cieljapan%2Frakurakusauna_neppa_standard%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjQwMHg0MDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; display: inline-block;">
-              <img src="https://hbb.afl.rakuten.co.jp/hgb/57513042.94fc00d3.57513043.98a16833/?me_id=1254420&item_id=10006006&pc=https%3A%2F%2Fimage.rakuten.co.jp%2Fauc-cieljapan%2Fcabinet%2Fsauna%2F09589542%2Fimgrc0097710718.jpg%3F_ex%3D400x400&s=400x400&t=pict" border="0" style="margin:2px; max-width: 100%; height: auto; border-radius: 6px;" alt="楽々サウナ 熱波 スタンダード" title="楽々サウナ 熱波 スタンダード">
-            </a>
           </div>
-        </div>
+        )}
 
         <section>
           <h2>1. 自宅で至福のととのいを！熱波 スタンダートがおすすめな方</h2>
@@ -584,7 +599,7 @@
               現在の納期・最新の地域別送料・打ち合わせ条件は楽天公式ページをご確認ください。
             </p>
             <div style="font-size: 13px; line-height: 1.6; padding: 14px 18px; background: #fffdfa; border: 2px solid var(--ink); border-radius: 8px; box-shadow: 2px 2px 0 var(--ink); display: inline-block; text-align: left; max-width: 100%;">
-              👉 <a href="https://hb.afl.rakuten.co.jp/ichiba/57513042.94fc00d3.57513043.98a16833/_RTLink144931?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-cieljapan%2Frakurakusauna_neppa_standard%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjAsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjowLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="nofollow sponsored noopener" style="color: #216a7a; text-decoration: underline; font-weight: 700; word-wrap:break-word;">＜受注生産品＞家庭用・プライベートサウナ「熱波 スタンダート」-フィンランド式高温サウナ ヒノキ仕様の日本製サウナ 最短45日納品可能-　サウナ 家庭用 家庭用サウナ 自宅サウナ 自宅用サウナ ホームサウナ フィンランドサウナ サウナストーブ 電気 100V 1人 1人用 一人用</a>
+              👉 <a href={rakuten.textUrl || rakuten.bannerUrl} target="_blank" rel="nofollow sponsored noopener" style="color: #216a7a; text-decoration: underline; font-weight: 700; word-wrap:break-word;">{rakuten.textLabel || "熱波 スタンダート 楽天公式販売ページへ"}</a>
             </div>
           </div>
         </section>
@@ -690,7 +705,7 @@
           </div>
           <p style="font-size: 13.5px; color: #554433; margin-bottom: 12px;">受注生産品のため、注文前に設置環境の事前打ち合わせが案内されています。</p>
           <div style="font-size: 13px; line-height: 1.6; padding: 14px 18px; background: #fffdfa; border: 2px solid var(--ink); border-radius: 8px; box-shadow: 2px 2px 0 var(--ink); display: inline-block; text-align: left; max-width: 100%;">
-            👉 <a href="https://hb.afl.rakuten.co.jp/ichiba/57513042.94fc00d3.57513043.98a16833/_RTLink144931?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-cieljapan%2Frakurakusauna_neppa_standard%2F&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjAsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjowLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9" target="_blank" rel="nofollow sponsored noopener" style="color: #216a7a; text-decoration: underline; font-weight: 700; word-wrap:break-word;">＜受注生産品＞家庭用・プライベートサウナ「熱波 スタンダート」-フィンランド式高温サウナ ヒノキ仕様の日本製サウナ 最短45日納品可能-　サウナ 家庭用 家庭用サウナ 自宅サウナ 自宅用サウナ ホームサウナ フィンランドサウナ サウナストーブ 電気 100V 1人 1人用 一人用</a>
+            👉 <a href={rakuten.textUrl || rakuten.bannerUrl} target="_blank" rel="nofollow sponsored noopener" style="color: #216a7a; text-decoration: underline; font-weight: 700; word-wrap:break-word;">{rakuten.textLabel || "熱波 スタンダート 楽天公式販売ページへ"}</a>
           </div>
         </div>
       </article>

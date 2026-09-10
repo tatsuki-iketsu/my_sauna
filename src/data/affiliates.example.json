@@ -1,0 +1,12 @@
+{
+  "$comment": "アフィリエイトタグ設定の見本ファイルです。実際のリンクは affiliates.secret.json に記載してください（git管理外）。",
+  "neppa_standard": {
+    "rakuten": {
+      "bannerUrl": "https://hb.afl.rakuten.co.jp/ichiba/SAMPLE_BANNER_URL",
+      "imageUrl": "https://hbb.afl.rakuten.co.jp/hgb/SAMPLE_IMAGE_URL",
+      "imageAlt": "楽々サウナ 熱波 スタンダード",
+      "textUrl": "https://hb.afl.rakuten.co.jp/ichiba/SAMPLE_TEXT_URL",
+      "textLabel": "＜受注生産品＞家庭用・プライベートサウナ「熱波 スタンダート」-フィンランド式高温サウナ ヒノキ仕様の日本製サウナ 最短45日納品可能-　サウナ 家庭用 家庭用サウナ 自宅サウナ 自宅用サウナ ホームサウナ フィンランドサウナ サウナストーブ 電気 100V 1人 1人用 一人用"
+    }
+  }
+}
