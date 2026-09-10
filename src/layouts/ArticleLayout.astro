@@ -1,0 +1,382 @@
+---
+import NeppaCta from '../components/NeppaCta.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  kicker?: string;
+  date?: string;
+  slug?: string;
+  relatedArticles?: Array<{ slug: string; title: string; badge?: string }>;
+}
+
+const {
+  title,
+  description,
+  kicker = '家庭用サウナ・導入徹底ガイド',
+  date = '2026.03.11',
+  slug = '',
+  relatedArticles = []
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}｜おうちサウナのある暮らし</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Yomogi&family=Zen+Maru+Gothic:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PM1NEGC92N"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PM1NEGC92N');
+    </script>
+    <style is:global>
+      :root {
+        --ink: #2b221a;
+        --wood-frame: #633e20;
+        --wood-frame-border: 4.5px solid var(--wood-frame);
+        --wood-frame-shadow: 6px 7px 0 rgba(43, 34, 26, 0.95);
+        --wood: #a67c52;
+        --wood-dark: #6e4726;
+        --wood-light: #ebdcc8;
+        --yellow: #f5c738;
+        --yellow-hover: #e6b726;
+        --yellow-soft: #faeab1;
+        --water: #3ea5bc;
+        --water-light: #daf0f4;
+        --leaf: #538558;
+        --leaf-light: #e0eee0;
+        --line: 2px solid var(--ink);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      
+      body {
+        margin: 0;
+        color: var(--ink);
+        background-color: #f7efe1;
+        background-image: 
+          linear-gradient(rgba(252, 248, 240, 0.82), rgba(248, 238, 222, 0.82)),
+          url('/images/bg_wood.jpg');
+        background-repeat: repeat;
+        background-size: 800px auto;
+        background-attachment: fixed;
+        font-family: "Zen Maru Gothic", sans-serif;
+        font-size: 16px;
+        line-height: 1.85;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .top-note {
+        background: #eadecc;
+        color: #554433;
+        font-size: 11.5px;
+        text-align: center;
+        padding: 5px 12px;
+        border-bottom: 1.5px dashed #bba893;
+        font-family: "Zen Maru Gothic", sans-serif;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(252, 248, 240, 0.96);
+        backdrop-filter: blur(6px);
+        border-bottom: var(--line);
+        box-shadow: 0 4px 0 rgba(43, 34, 26, 0.08);
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 100%;
+      }
+
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Yomogi", cursive;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .logo-mark {
+        width: 38px;
+        height: 34px;
+        border-radius: 6px 10px 8px 12px;
+        background: var(--yellow);
+        color: var(--ink);
+        border: var(--line);
+        display: grid;
+        place-items: center;
+        font-size: 13px;
+        box-shadow: 2px 2px 0 var(--ink);
+      }
+      .logo small {
+        display: block;
+        font-size: 11px;
+        color: #635547;
+        font-family: "Zen Maru Gothic", sans-serif;
+      }
+
+      .main-nav {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 700;
+      }
+      .main-nav a {
+        padding: 4px 8px;
+        border-bottom: 2px solid transparent;
+        transition: border-color .2s;
+      }
+      .main-nav a:hover {
+        border-bottom-color: var(--water);
+      }
+
+      .menu-toggle {
+        display: none;
+        background: #fff;
+        border: var(--line);
+        border-radius: 6px;
+        padding: 6px 12px;
+        font-family: "Yomogi", cursive;
+        font-size: 15px;
+        cursor: pointer;
+        box-shadow: 2px 2px 0 var(--ink);
+      }
+
+      @media (max-width: 768px) {
+        .menu-toggle { display: block; }
+        .main-nav {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: #fffdfa;
+          flex-direction: column;
+          padding: 16px;
+          border-bottom: var(--line);
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .main-nav.is-active { display: flex; }
+      }
+
+      /* 記事レイアウト */
+      .container {
+        width: min(900px, calc(100% - 32px));
+        margin: 32px auto 60px;
+      }
+
+      .breadcrumb {
+        font-size: 13px;
+        color: #6e5e4e;
+        margin-bottom: 20px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .breadcrumb a {
+        border-bottom: 1.5px solid var(--water);
+      }
+
+      .article-header {
+        margin-bottom: 36px;
+      }
+      .article-kicker {
+        font-family: "DM Mono", monospace;
+        font-size: 13px;
+        color: var(--leaf);
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      h1 {
+        font-family: "Yomogi", cursive;
+        font-size: clamp(24px, 4vw, 36px);
+        line-height: 1.4;
+        margin: 0 0 16px;
+        color: var(--wood-dark);
+      }
+      h1 span {
+        border-bottom: 3.5px solid var(--water);
+      }
+      .article-meta {
+        font-size: 13px;
+        color: #736353;
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        border-bottom: 1.5px dashed #cfc2ab;
+        padding-bottom: 12px;
+      }
+
+      /* 記事本文スタイル */
+      .article-body h2 {
+        font-family: "Yomogi", cursive;
+        font-size: 24px;
+        color: var(--wood-dark);
+        border-bottom: 2.5px solid var(--water);
+        display: inline-block;
+        padding-bottom: 4px;
+        margin: 40px 0 18px;
+      }
+      .article-body h3 {
+        font-family: "Yomogi", cursive;
+        font-size: 20px;
+        color: var(--ink);
+        border-left: 4px solid var(--leaf);
+        padding-left: 10px;
+        margin: 28px 0 12px;
+      }
+      .article-body p {
+        margin: 0 0 18px;
+        text-align: justify;
+      }
+      .article-body strong {
+        background: linear-gradient(transparent 65%, #faeab1 65%);
+        padding: 0 2px;
+      }
+      .article-body ul, .article-body ol {
+        margin: 0 0 20px 24px;
+        padding: 0;
+      }
+      .article-body li {
+        margin-bottom: 8px;
+      }
+      .article-body blockquote {
+        background: #fffdfa;
+        border-left: 4px solid var(--wood);
+        border: 2px solid var(--ink);
+        border-left-width: 6px;
+        border-radius: 6px;
+        padding: 14px 18px;
+        margin: 24px 0;
+        box-shadow: 3px 3px 0 rgba(43, 34, 26, 0.15);
+      }
+
+      /* フッター */
+      .site-footer {
+        background: #eadecc;
+        border-top: var(--line);
+        padding: 32px 20px;
+        margin-top: 60px;
+      }
+      .footer-inner {
+        width: min(900px, 100%);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+        text-align: center;
+      }
+      @media (min-width: 600px) {
+        .footer-inner {
+          flex-direction: row;
+          justify-content: space-between;
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-note">
+      ※本記事にはアフィリエイト広告およびプロモーションが含まれています。中立な仕様・安全基準に基づいて客観的に情報を整理しています。
+    </div>
+
+    <!-- 共通ヘッダー -->
+    <header class="site-header">
+      <a href="/" class="logo">
+        <span class="logo-mark">♨</span>
+        <div>
+          おうちサウナのある暮らし
+          <small>自宅サウナの費用・設置条件ガイド</small>
+        </div>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="メニュー開閉">メニュー</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="/">トップ</a>
+        <a href="/articles/">記事一覧</a>
+        <a href="/sauna/neppa-standard/">熱波 スタンダート</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- パンくずリスト -->
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">トップ</a>
+        <span>&gt;</span>
+        <a href="/articles/">サウナ解説記事一覧</a>
+        <span>&gt;</span>
+        <span>{title}</span>
+      </nav>
+
+      <main>
+        <article class="article-content">
+          <header class="article-header">
+            <div class="article-kicker">{kicker}</div>
+            <h1><span>{title}</span></h1>
+            <div class="article-meta">
+              <span>公開日: {date}</span>
+              <span>カテゴリ: 自宅サウナ徹底比較</span>
+              <span>監修: おうちサウナ編集部</span>
+            </div>
+          </header>
+
+          <!-- 記事本文 -->
+          <div class="article-body">
+            <slot />
+          </div>
+
+          <!-- 共通コンポーネント：熱波CTA -->
+          <NeppaCta />
+
+          <!-- 共通コンポーネント：関連記事リンク -->
+          <RelatedArticles currentSlug={slug} items={relatedArticles} />
+        </article>
+      </main>
+    </div>
+
+    <!-- 共通フッター -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <strong style="font-family: 'Yomogi', cursive; font-size: 17px; color: var(--ink);">おうちサウナのある暮らし</strong>
+          <p style="font-size: 12.5px; color: #635547; margin: 4px 0 0;">家庭用サウナの費用・設置条件・注意点を中立に整理するガイドサイト</p>
+        </div>
+        <p style="font-size: 11.5px; color: #635547; margin: 0;">© 2026 おうちサウナのある暮らし All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      const menuBtn = document.getElementById('menuToggle');
+      const mainNav = document.getElementById('mainNav');
+      if (menuBtn && mainNav) {
+        menuBtn.addEventListener('click', () => {
+          mainNav.classList.toggle('is-active');
+        });
+      }
+    </script>
+  </body>
+</html>

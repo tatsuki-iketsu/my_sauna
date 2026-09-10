@@ -1,0 +1,77 @@
+---
+interface ArticleItem {
+  slug: string;
+  title: string;
+  badge?: string;
+}
+
+interface Props {
+  currentSlug?: string;
+  items?: ArticleItem[];
+}
+
+const { currentSlug = '', items = [] } = Astro.props;
+---
+
+<div class='related-box'>
+  <h3 class='related-title'>関連するおすすめ記事</h3>
+  <div class='related-grid'>
+    {items.filter(i => i.slug !== currentSlug).slice(0, 4).map(item => (
+      <a href={'/articles/' + item.slug + '/'} class='related-card'>
+        {item.badge && <span class='card-badge'>{item.badge}</span>}
+        <p class='card-title'>{item.title}</p>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .related-box {
+    margin-top: 44px;
+    padding-top: 24px;
+    border-top: 2px dashed #bba893;
+  }
+  .related-title {
+    font-family: 'Yomogi', cursive;
+    font-size: 20px;
+    color: #6e4726;
+    margin-bottom: 16px;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .related-card {
+    background: #fffdfa;
+    border: 2px solid #2b221a;
+    border-radius: 8px;
+    padding: 14px;
+    box-shadow: 2px 3px 0 rgba(43, 34, 26, 0.15);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: transform .15s, background .15s;
+  }
+  .related-card:hover {
+    transform: translate(1px, 1px);
+    background: #faeab1;
+  }
+  .card-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: #538558;
+    background: #e0eee0;
+    padding: 2px 8px;
+    border-radius: 4px;
+    align-self: flex-start;
+  }
+  .card-title {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.5;
+    font-weight: 700;
+    color: #2b221a;
+  }
+</style>

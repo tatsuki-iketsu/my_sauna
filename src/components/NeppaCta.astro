@@ -1,0 +1,168 @@
+---
+import { getProductAffiliate } from '../utils/affiliate';
+
+interface Props {
+  badge?: string;
+  leadText?: string;
+}
+
+const {
+  badge = '当サイト推奨の本格木製サウナ',
+  leadText = '100V電源・20A専用回路対応！自宅で本格フィンランド式アロマロウリュと100℃高温ドライサウナを楽しめる「熱波 スタンダート」の価格・寸法・設置条件をチェック。'
+} = Astro.props;
+
+const affiliate = getProductAffiliate('neppa_standard');
+const rakuten = affiliate?.rakuten || {
+  textUrl: '/sauna/neppa-standard/',
+  textLabel: '楽天で熱波 スタンダートの価格・設置条件を確認'
+};
+---
+
+<div class='cork-box'>
+  <div class='cork-inner'>
+    <div class='cta-badge'>{badge}</div>
+    <h3 class='cta-title'>家庭用サウナ「熱波 スタンダート」</h3>
+    <p class='cta-lead'>{leadText}</p>
+
+    <div class='cta-points'>
+      <div class='cta-point-item'>
+        <span class='point-icon'>⚡</span>
+        <div><strong>100V（20A専用回路）対応</strong><br><small>一般住宅に導入しやすい国内安全設計</small></div>
+      </div>
+      <div class='cta-point-item'>
+        <span class='point-icon'>🔥</span>
+        <div><strong>最高100℃超＋セルフロウリュ</strong><br><small>施設同等のアツアツ熱気と蒸気を再現</small></div>
+      </div>
+      <div class='cta-point-item'>
+        <span class='point-icon'>📐</span>
+        <div><strong>畳1枚分のコンパクト木製キャビン</strong><br><small>自室や脱衣所に収まる省スペース設計</small></div>
+      </div>
+    </div>
+
+    <div class='cta-btn-wrapper'>
+      <a href='/sauna/neppa-standard/' class='btn-detail'>
+        📖 熱波 スタンダートの詳しい検証記事を見る
+      </a>
+      {rakuten.textUrl && rakuten.textUrl !== '#' && (
+        <a href={rakuten.textUrl} target='_blank' rel='noopener noreferrer nofollow' class='btn-rakuten'>
+          🛒 楽天市場の公式販売ページで確認する
+        </a>
+      )}
+    </div>
+  </div>
+</div>
+
+<style>
+  .cork-box {
+    position: relative;
+    background-color: #cb9b6d;
+    background-image: 
+      linear-gradient(rgba(203, 155, 109, 0.45), rgba(184, 134, 87, 0.45)),
+      url('/images/corkboard.jpg');
+    background-repeat: repeat;
+    background-size: 450px auto;
+    border: 4.5px solid #633e20;
+    border-radius: 12px;
+    padding: 24px 20px;
+    margin: 40px 0;
+    box-shadow: 6px 7px 0 rgba(43, 34, 26, 0.95);
+  }
+  .cork-inner {
+    position: relative;
+    background: rgba(255, 252, 245, 0.96);
+    border: 2px solid #2b221a;
+    border-radius: 8px;
+    padding: 24px 20px;
+    box-shadow: 3px 4px 0 rgba(43, 34, 26, 0.4);
+    text-align: center;
+  }
+  .cta-badge {
+    display: inline-block;
+    background: #538558;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .cta-title {
+    font-family: 'Yomogi', cursive;
+    font-size: 24px;
+    color: #6e4726;
+    margin: 0 0 12px;
+  }
+  .cta-lead {
+    font-size: 14.5px;
+    color: #4a3b2c;
+    line-height: 1.7;
+    margin: 0 0 20px;
+    text-align: justify;
+  }
+  .cta-points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+    text-align: left;
+  }
+  .cta-point-item {
+    background: #f7efe1;
+    border: 1.5px solid #a67c52;
+    border-radius: 6px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .point-icon {
+    font-size: 20px;
+  }
+  .cta-btn-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .btn-detail {
+    display: inline-block;
+    width: 100%;
+    max-width: 440px;
+    padding: 12px 20px;
+    border: 2px solid #2b221a;
+    border-radius: 8px;
+    background: #f5c738;
+    color: #2b221a;
+    font-weight: 700;
+    box-shadow: 3px 3px 0 #2b221a;
+    transition: transform .15s, background .15s;
+    text-decoration: none;
+    font-size: 15px;
+  }
+  .btn-detail:hover {
+    background: #e6b726;
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 #2b221a;
+  }
+  .btn-rakuten {
+    display: inline-block;
+    width: 100%;
+    max-width: 440px;
+    padding: 12px 20px;
+    border: 2px solid #2b221a;
+    border-radius: 8px;
+    background: #bf0000;
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 3px 3px 0 #2b221a;
+    transition: transform .15s, background .15s;
+    text-decoration: none;
+    font-size: 15px;
+  }
+  .btn-rakuten:hover {
+    background: #990000;
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 #2b221a;
+  }
+</style>
