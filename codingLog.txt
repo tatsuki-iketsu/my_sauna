@@ -475,5 +475,6 @@ git push origin review
 `powershell
 python -u scratch/fix_issue_bodies.py
 # 全Issue（9-62）のエンコード検証合格確認
-`=========================================
+`
+checkブランチの変更内容（codingLog更新）をreviewブランチへマージし、astro build検証後にorigin/reviewへpush完了。併せて、各種チェック（記事チェック、画像チェック、最終チェック）の確認プレビュー用ブランチをreviewブランチ（https://review.my-sauna.pages.dev/）に一本化する規約を全スキル・エージェント指示書へ反映。=========================================
 記録完了
