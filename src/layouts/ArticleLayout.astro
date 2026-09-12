@@ -8,6 +8,7 @@ interface Props {
   kicker?: string;
   date?: string;
   slug?: string;
+  eyecatch?: string;
   relatedArticles?: Array<{ slug: string; title: string; badge?: string }>;
 }
 
@@ -17,8 +18,10 @@ const {
   kicker = '家庭用サウナ・導入徹底ガイド',
   date = '2026.03.11',
   slug = '',
+  eyecatch,
   relatedArticles = []
 } = Astro.props;
+
 ---
 
 <!doctype html>
@@ -231,7 +234,21 @@ const {
         padding-bottom: 12px;
       }
 
+      .article-eyecatch {
+        margin: 24px 0 32px;
+        text-align: center;
+      }
+      .article-eyecatch img {
+        width: 100%;
+        max-width: 720px;
+        height: auto;
+        border-radius: 10px;
+        border: 2px solid var(--wood-frame);
+        box-shadow: 4px 5px 0 rgba(43, 34, 26, 0.8);
+      }
+
       /* 記事本文スタイル */
+
       .article-body h2 {
         font-family: "Yomogi", cursive;
         font-size: 24px;
@@ -342,7 +359,13 @@ const {
               <span>カテゴリ: 自宅サウナ徹底比較</span>
               <span>監修: おうちサウナ編集部</span>
             </div>
+            {eyecatch && (
+              <div class="article-eyecatch">
+                <img src={eyecatch} alt={title} loading="lazy" />
+              </div>
+            )}
           </header>
+
 
           <!-- 記事本文 -->
           <div class="article-body">

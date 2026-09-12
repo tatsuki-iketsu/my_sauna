@@ -217,5 +217,209 @@ developブランチの変更（熱波スタンダート記事追加・改修、�
 
 ■ 実行・検証コマンド
 npm run build
-git status --ignored src/data=========================================
+git status --ignored src/data
+-----------------------------------------
+■ アップデート: 新規50記事のAstro/HTMLページ実装と共通コンポーネント化 (2026年3月11日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- src/layouts/ArticleLayout.astro
+- src/components/NeppaCta.astro
+- src/components/RelatedArticles.astro
+- src/pages/articles/*.astro (全50記事 + index.astro)
+
+■ 詳細内容
+- ユーザー要望に基づき新規ブランチ feature/add-50-articles を作成。
+- 記事共通デザイン・導線（パンくず、ヘッダー、熱波CTA、関連記事グリッド）を共通コンポーネント化。
+- 全50記事のMarkdown原稿をAstro静的ページおよび一覧ページ（/articles/）として構築。
+
+■ 実行・検証コマンド
+```powershell
+npm run build (53 pages built successfully)
+```
+-----------------------------------------
+■ アップデート: developブランチへのマージ・Pushおよび記事確認進捗管理シート作成 (2026年3月11日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localCode\ReactApp\my_sauna: developブランチへのマージおよびorigin/developへのプッシュ
+- c:\localDocment\自宅サウナアフィリエイト\記事確認進捗管理シート.md
+- c:\localDocment\自宅サウナアフィリエイト\記事確認進捗管理シート.csv
+
+■ 詳細内容
+- feature/add-50-articles を develop ブランチへマージし、GitHubリモートリポジトリ（origin/develop）へプッシュ完了。Cloudflare Pagesによるdevelopプレビュー環境の自動ビルド・デプロイが開始。
+- 全50記事のプレビューURL（develop環境）、原稿リンク、未確認/確認済みステータスを管理できるMarkdownシートおよびExcel対応CSVシートを作成。
+
+■ 実行・検証コマンド
+```powershell
+git checkout develop
+git merge feature/add-50-articles
+git push origin develop
+```
+-----------------------------------------
+■ アップデート: 記事確認進捗管理ドキュメント（.md / .docx）の作成 (2026年3月11日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localDocment\自宅サウナアフィリエイト\記事確認進捗管理ドキュメント.md
+- c:\localDocment\自宅サウナアフィリエイト\記事確認進捗管理シート.docx
+
+■ 詳細内容
+- 表形式では見づらいというフィードバックを受け、Google Antigravityでそのまま縦スクロールで読みやすくチェックできるカード形式のドキュメント（.md）を作成。
+- あわせて、WordやGoogleドキュメント等で直接開いて編集・印刷可能なWordドキュメント（.docx）も生成・配置。
+
+■ 実行・検証コマンド
+```powershell
+python scratch/generate_docx.py
+```
+-----------------------------------------
+■ アップデート: 「根拠」メモ削除および01記事（100Vロウリュ）電気解説の大幅拡充 (2026年3月11日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localDocment\自宅サウナアフィリエイト\記事\01_家庭用サウナ_100V_ロウリュ.md
+- c:\localDocment\自宅サウナアフィリエイト\記事\*.md (根拠メモの削除)
+- c:\localDocment\自宅サウナアフィリエイト\記事確認進捗管理ドキュメント.md
+- c:\localDocment\自宅サウナアフィリエイト\記事確認進捗管理シート.md
+- c:\localCode\ReactApp\my_sauna\src\pages\articles\*.astro (全記事再ビルド・HTML更新)
+
+■ 詳細内容
+- 構成案の指示メモ「（根拠・確認基準：〜）」が本文に残っていたため、全記事から完全に一括削除。
+- 01番記事において、20A専用コンセントの詳細に加え、そもそも自宅の最大契約アンペア（10A/15A/20A/30A）、賃貸でのアンペア引き上げ時の「幹線の壁（単相2線式vs単相3線式）」、管理会社への承諾手順、家電並列利用（エアコン・電子レンジ等との同時使用）時のブレーカー遮断計算について、電気専門サイト並みの徹底的な詳細解説を加筆。
+- 全50記事のAstro静的HTMLを再生成し、npm run build で正常ビルド確認後、developブランチへPush完了。
+- 進捗管理ドキュメントのステータスを「修正確認中」に更新。
+
+■ 実行・検証コマンド
+```powershell
+npm run build
+git push origin develop
+```
+-----------------------------------------
+■ アップデート: 03・05記事への指示反映、タスクリスト追加（No.060, 061） (2026年3月11日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localDocment\自宅サウナアフィリエイト\記事\03_家庭用サウナ_一人用_おすすめ.md
+- c:\localDocment\自宅サウナアフィリエイト\記事\05_家庭用サウナ_ロウリュ_故障.md
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+- c:\localDocment\自宅サウナアフィリエイト\記事確認進捗管理ドキュメント.md
+- c:\localDocment\自宅サウナアフィリエイト\記事確認進捗管理シート.md
+- c:\localCode\ReactApp\my_sauna\src\pages\articles\single-home-sauna.astro
+- c:\localCode\ReactApp\my_sauna\src\pages\articles\loyly-trouble-prevention.astro
+
+■ 詳細内容
+- 記事03：ベンチの座り心地について「自分の欲しい広さを確認する」としてあぐら・寝る・ストレッチ・筋トレの観点で細分化。ストーブ種類による火傷接触リスクの注意喚起、木製ドアのサウナ感・こだわりへの共感を追記。
+- 記事05：非対応ヒーターへの注水について、銭湯・温浴施設でも同様の理由でロウリュ禁止になっているケースが多く「サウナなら何でもロウリュして良いわけではない」という大前提を追記。
+- タスクリスト追加：No.060（広さ・ストレッチ・筋トレ自由度の他記事展開）、No.061（04木製サウナ向けカビ写真の素材手配）。
+- Astroページを再生成し、npm run buildで検証後にorigin/developへPush完了。
+
+■ 実行・検証コマンド
+```powershell
+npm run build
+git push origin develop
+```
+-----------------------------------------
+■ アップデート: 06・07・08記事の本格執筆・改修反映 (2026年3月11日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localDocment\自宅サウナアフィリエイト\記事\06_家庭用サウナ_工事不要.md
+- c:\localDocment\自宅サウナアフィリエイト\記事\07_家庭用サウナ_価格相場_総額.md
+- c:\localDocment\自宅サウナアフィリエイト\記事\08_家庭用サウナ_寿命_耐用年数.md
+- c:\localDocment\自宅サウナアフィリエイト\記事確認進捗管理ドキュメント.md
+- c:\localDocment\自宅サウナアフィリエイト\記事確認進捗管理シート.md
+- c:\localCode\ReactApp\my_sauna\src\pages\articles\no-construction-fallacy.astro
+- c:\localCode\ReactApp\my_sauna\src\pages\articles\total-cost-breakdown.astro
+- c:\localCode\ReactApp\my_sauna\src\pages\articles\lifespan-maintenance.astro
+
+■ 詳細内容
+- 記事06：大工工事不要と電気工事不要の誤解、一般15Aコンセントの限界とトラッキング火災、自宅の契約アンペア（10A/15A/20A/30A）と並列利用の遮断計算、賃貸でのスマートメーター切替と幹線引き直し（単相2線式vs3線式）の壁、20A専用線の必須性を詳細解説。
+- 記事07：組み立てコストの有無（DIY大人2名作業0円 vs 業者設置5〜10万円）、熱波スタンダードの事前採寸・組立相談サポート体制、本体＋送料＋組立＋電気工事の総額内訳表、サウナ通いとの損益分岐点を詳述。
+- 記事08：木材（15〜20年）と電気ヒーター（消耗品：5〜8年）の耐用年数の違い、ヒーター故障時の国内サポート窓口・交換用部品（エレメント）在庫の重要性、きちんと対応してくれる業者選びのチェック基準を追記。
+- Astroページ再生成、npm run build（全53ページ成功）を経てorigin/developへPush完了。
+
+■ 実行・検証コマンド
+```powershell
+npm run build
+git push origin develop
+```
+-----------------------------------------
+■ アップデート: 全50記事の本格執筆原稿（No.02, 09〜50含む）のAstro/HTMLへの完全反映 (2026年9月11日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- src/pages/articles/*.astro (全44記事更新・全50記事完全化)
+- c:/localDocment/自宅サウナアフィリエイト/記事/01_*.md 〜 50_*.md
+
+■ 詳細内容
+- No.02、およびNo.09〜50の構成メモ状態だった原稿を、約3,000〜4,500文字の本格解説本文として執筆完了
+- 建築基準法（180kg/m2）、PSE技術基準適合、消防法・各自治体火災予防条例、単相100V/200V・専用回路20A・幹線容量等の公的基準・安全基準を網羅
+- Astro静的ページ（全50記事）にテーブル整形・NeppaCta・RelatedArticlesを含めて一括反映
+- npm run buildによる全53ページの静的HTML生成検証に合格、developブランチへgit push完了
+
+■ 実行・検証コマンド
+`
+python rebuild_all_50_pages.py
+npm run build
+git push origin develop
+`
+## [2026-09-12] タスクリストのGitHub ProjectsおよびIssuesへの一括移行と自動化アクション導入
+
+- **対応内容**:
+  1. タスクリスト.md（No.001〜061）の全61件をGitHub Issues（tatsuki-iketsu/my_sauna）として一括起票。
+  2. 各IssueをGitHub Projects（Projects v2: my_saunaタスク修正全般 #2）へ自動追加。
+  3. 各タスクの元ステータスに合わせてProjectステータスを設定（完了51件はDoneかつIssueクローズ、進行中1件はIn Progress、未着手・調査等9件はTodo）。
+  4. 必要な役割ラベル（role:統括者, role:マーケター, role:ライター, role:SEO, etc.）および種別ラベル（記事作成, 調査・設定, 改善）をリポジトリに作成・自動付与。
+  5. 今後の運用自動化のため、GitHub Actionsワークフローを作成・コミット・プッシュ:
+     - .github/workflows/add-issue-to-project.yml: 新規Issue作成時にProject #2へ自動追加
+     - .github/workflows/sync-project-status.yml: Issueのクローズ・再オープンとProject #2のStatusを自動連動
+  6. タスクリスト.md 冒頭に移行完了案内とGitHub Projectsへのリンクを記載。
+- **変更ファイル**:
+  - c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+  - c:\localCode\ReactApp\my_sauna\.github\workflows\add-issue-to-project.yml
+  - c:\localCode\ReactApp\my_sauna\.github\workflows\sync-project-status.yml
+-----------------------------------------
+■ アップデート: 最終確認用ブランチ review の作成とリモートプッシュ (2026年9月12日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- Gitブランチ: review
+
+■ 詳細内容
+- developブランチから最終確認用ブランチ review を作成し GitHub (origin/review) にプッシュ
+- Cloudflare Pages によるプレビュー環境 (review.my-sauna.pages.dev) の自動ビルドを準備
+
+■ 実行・検証コマンド
+``r
+git checkout -b review
+git push -u origin review
+``r
+
+- 作業内容: Cloudflare Pagesプレビュー検証用テストページ（/test-deploy）の作成とreviewブランチへのコミット・プッシュ
+- 変更ファイル: src/pages/test-deploy.astro, public/images/*
+- テストコマンド: npm run build（54ページ正常ビルド確認）
+- Gitコミット・プッシュ: reviewブランチへプッシュ完了（コミット b28cd61）
+- 作業内容: Cloudflare Pagesプレビュー検証成功に伴い、検証用テストページ（src/pages/test-deploy.astro）の削除とreviewブランチへのコミット・プッシュ
+- 変更ファイル: src/pages/test-deploy.astro (削除)
+- テストコマンド: npm run build（53ページ正常ビルド確認）
+- Gitコミット・プッシュ: reviewブランチへプッシュ完了（コミット f6822b3）-----------------------------------------
+■ アップデート: humanCheck全50記事のreview環境反映確認とGitHubチケット本文への確認用URL記載 (2026年9月13日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+- GitHub Issues #10〜#59 (各チケット本文への確認用URL・ステータス更新)
+- c:\localCode\ReactApp\my_sauna\codingLog.txt
+
+■ 詳細内容
+- humanCheck状態の全50記事（No.010〜059）が review ブランチにて正常にビルド・公開されていることを確認（npm run buildで全53ページ成功、origin/reviewへPush同期済み）
+- GitHub Issues #10〜#59（全50件）のチケット本文にCloudflare Pagesプレビュー確認用URL（https://review.my-sauna.pages.dev/articles/{slug}/）および最新ステータス（humanCheck / 人間確認待ち）を記載完了
+- タスクリスト.md に各チケットへのリンク（Issue #XX）およびプレビュー確認リンク（https://review.my-sauna.pages.dev/articles/{slug}/）を追記・同期完了
+
+■ 実行・検証コマンド
+```powershell
+npm run build
+git push origin review
+```
+=========================================
 記録完了
