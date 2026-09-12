@@ -421,5 +421,59 @@ git push -u origin review
 npm run build
 git push origin review
 ```
-=========================================
+
+-----------------------------------------
+■ アップデート: チケットジャンル改編に伴う全記事ステータス振り分けおよびGitHub Projects/Issues同期 (2026年9月13日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- GitHub Projects (Project #2: my_saunaタスク修正全般) 全アイテムのStatus
+- GitHub Issues (#9〜#59) 各チケット本文
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+
+■ 詳細内容
+- ユーザー指示の新ジャンル定義（検討案チェック、記事概要チェック、記事チェック、画像チェック、最終チェック、公開済み）に基づき、全記事チケットのステータスを再分類・振り分け完了。
+  1. P01熱波スタンダート（Issue #9）: すでにmainブランチへマージ・push済みのため『Done（公開済み）』へ更新。
+  2. 記事作成01〜10（Issue #10〜#19）: 本文・HTML化完了に加え、アイキャッチ画像が作成済み（checkブランチ反映）で画像確認待ちのため『40.画像チェック』へ振り分け。
+  3. 記事作成11〜50（Issue #20〜#59）: 本文・HTML化完了、アイキャッチ画像未作成のため『30.記事チェック（HTML・記事内容確認待ち）』へ振り分け。
+  4. アイキャッチ確認タスク（Issue #62）: 『40.画像チェック』へ設定。
+- GitHub Projects v2 GraphQL API を用いてProjectボード上のStatusフィールドを全件一括更新。
+- GitHub Issues REST API を用いて全対象Issue本文の「ステータス」表記および確認用プレビューURL（check / review）を同期。
+- ローカルの『タスクリスト.md』の各タスクステータスおよび備考を最新状態に同期。
+
+■ 実行・検証コマンド
+`powershell
+# GraphQL / REST API によるプロジェクトアイテムおよびIssue本文更新
+# タスクリスト.md の更新
+`
+-----------------------------------------
+■ アップデート: チケット文字化け完全修復およびチケットジャンル移動エージェント仕様作成 (2026年9月13日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- GitHub Issues #9〜#59 本文 (UTF-8エンコードによる文字化け完全修復)
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\rules\ticket_lifecycle_rule.md (新規作成)
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 (新規作成)
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\.agents\skills\task-management\SKILL.md (改訂)
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\.agents\AGENTS.md (改訂)
+- c:\localDocment\自宅サウナアフィリエイト\codex\skills\sauna-affiliate-article-production\SKILL.md (改訂)
+- c:\localDocment\自宅サウナアフィリエイト\AGENTS.md (改訂)
+- c:\localDocment\自宅サウナアフィリエイト\codex\agents\*.md (各エージェント指示書の改訂)
+
+■ 詳細内容
+1. チケット本文の文字化け修復:
+   - PowerShell経由で発生した日本語エンコード不整合（? 化）をPythonによるUTF-8バイト送信スクリプトにて完全修復。全対象Issue（#9〜#59）で文字化けゼロを確認。
+   - タスクリスト.mdのIssueリンク誤記（#57が#58になっていた点）を修正。
+2. チケットジャンル移動エージェント仕様の作成（Codex & GoogleAntiGravity）:
+   - 6段階ステータス（10.検討案チェック -> 20.記事概要チェック -> 30.記事チェック -> 40.画像チェック -> 50.最終チェック -> 公開済み）のライフサイクル、役割ごとの移動条件、成果物ゲートを両リポジトリへ完全整備。
+   - GitHub Projects、Issues、タスクリスト.mdを文字化けなしで一括同期する専用共有スクリプト moveTicketStatus.ps1 を配備。
+   - 統括者、マーケター、プランナー、ライター、SEOレビュワーの各エージェント指示書にチケット移動の権限・移動トリガーを追記。
+   - 「50.最終チェック」から「公開済み」への移行は運営者（人間）の承認が絶対必須である原則を徹底。
+
+■ 実行・検証コマンド
+`powershell
+python -u scratch/fix_issue_bodies.py
+# 全Issue（9-62）のエンコード検証合格確認
+`=========================================
 記録完了
