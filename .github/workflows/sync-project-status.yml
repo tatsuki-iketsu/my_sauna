@@ -1,0 +1,71 @@
+name: Sync Issue Status to Project
+
+on:
+  issues:
+    types: [closed, reopened]
+
+jobs:
+  sync-status:
+    name: Sync Status with Project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Project Item Status
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PROJECT_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
+          script: |
+            const projectId = "PVT_kwHOBe7dUc4BjRAy";
+            const statusFieldId = "PVTSSF_lAHOBe7dUc4BjRAyzhiGALQ";
+            const statusTodoId = "f75ad846";
+            const statusDoneId = "98236657";
+
+            const issueNodeId = context.payload.issue.node_id;
+            const action = context.payload.action;
+
+            // 1. Get Project Item ID for this issue
+            const getItemsQuery = `query($projectId: ID!) {
+              node(id: $projectId) {
+                ... on ProjectV2 {
+                  items(first: 100) {
+                    nodes {
+                      id
+                      content {
+                        ... on Issue {
+                          id
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }`;
+
+            const res = await github.graphql(getItemsQuery, { projectId });
+            const item = res.node.items.nodes.find(i => i.content && i.content.id === issueNodeId);
+
+            if (!item) {
+              console.log("Issue is not in Project #2, skipping.");
+              return;
+            }
+
+            const targetStatus = action === 'closed' ? statusDoneId : statusTodoId;
+
+            // 2. Update status
+            const updateMutation = `mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $singleSelectOptionId: String!) {
+              updateProjectV2ItemFieldValue(input: {
+                projectId: $projectId,
+                itemId: $itemId,
+                fieldId: $fieldId,
+                value: { singleSelectOptionId: $singleSelectOptionId }
+              }) {
+                projectV2Item { id }
+              }
+            }`;
+
+            await github.graphql(updateMutation, {
+              projectId,
+              itemId: item.id,
+              fieldId: statusFieldId,
+              singleSelectOptionId: targetStatus
+            });
+            console.log(`Updated Project Item ${item.id} status to ${action === 'closed' ? 'Done' : 'Todo'}`);
