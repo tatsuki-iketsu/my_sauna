@@ -1,6 +1,4 @@
-﻿import fs from 'node:fs';
-import path from 'node:path';
-import exampleAffiliates from '../data/affiliates.example.json';
+import affiliatesData from '../data/affiliates.json';
 
 export interface AffiliateItem {
   bannerUrl: string;
@@ -20,22 +18,9 @@ export interface ProductAffiliates {
 
 export type AffiliatesData = Record<string, ProductAffiliates>;
 
-let loadedAffiliates: AffiliatesData = exampleAffiliates as AffiliatesData;
-
-const secretPath = path.resolve(process.cwd(), 'src/data/affiliates.secret.json');
-
-try {
-  if (fs.existsSync(secretPath)) {
-    const raw = fs.readFileSync(secretPath, 'utf-8');
-    const parsed = JSON.parse(raw);
-    loadedAffiliates = { ...exampleAffiliates, ...parsed };
-  }
-} catch (e) {
-  console.warn('[affiliate] Could not load affiliates.secret.json, using fallback example.', e);
-}
-
-export const affiliates: AffiliatesData = loadedAffiliates;
+export const affiliates: AffiliatesData = affiliatesData as AffiliatesData;
 
 export function getProductAffiliate(productKey: string): ProductAffiliates {
   return affiliates[productKey] || {};
 }
+
