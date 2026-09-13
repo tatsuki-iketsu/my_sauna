@@ -1,5 +1,4 @@
 ﻿{
-  "$comment": "アフィリエイトタグ設定ファイルです。指定のアフィリエイトタグ（TOPページ下部準拠）を記載します。",
   "neppa_standard": {
     "rakuten": {
       "bannerUrl": "https://hb.afl.rakuten.co.jp/ichiba/57513042.94fc00d3.57513043.98a16833/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-cieljapan%2Frakurakusauna_neppa_standard%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjQwMHg0MDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9",
