@@ -687,6 +687,20 @@
         color: #635547;
         margin: 0;
       }
+      .footer-links {
+        margin-top: 8px;
+        display: flex;
+        gap: 16px;
+        font-size: 13px;
+      }
+      .footer-links a {
+        color: var(--wood-dark);
+        text-decoration: underline;
+        font-weight: 700;
+      }
+      .footer-links a:hover {
+        color: var(--water);
+      }
 
       /* スマホ最適化（768px以下） */
       @media (max-width: 768px) {
@@ -1181,6 +1195,11 @@
         <div>
           <strong style="font-family: 'Yomogi', cursive; font-size: 17px; color: var(--ink);">おうちサウナのある暮らし</strong>
           <p>家庭用サウナの費用・設置条件・注意点を中立に整理するガイドサイト</p>
+          <div class="footer-links">
+            <a href="/">トップページ</a>
+            <a href="/articles/">記事一覧</a>
+            <a href="/contact/">お問い合わせ</a>
+          </div>
         </div>
         <p style="font-size: 11.5px;">© 2026 おうちサウナのある暮らし All Rights Reserved.</p>
       </div>

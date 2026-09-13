@@ -1,27 +1,9 @@
 ---
-import NeppaCta from '../components/NeppaCta.astro';
-import RelatedArticles from '../components/RelatedArticles.astro';
-
-interface Props {
-  title: string;
-  description: string;
-  kicker?: string;
-  date?: string;
-  slug?: string;
-  eyecatch?: string;
-  relatedArticles?: Array<{ slug: string; title: string; badge?: string }>;
-}
-
-const {
-  title,
-  description,
-  kicker = '家庭用サウナ・導入徹底ガイド',
-  date = '2026.03.11',
-  slug = '',
-  eyecatch,
-  relatedArticles = []
-} = Astro.props;
-
+// src/pages/contact.astro
+const title = "お問い合わせ｜おうちサウナのある暮らし";
+const description = "「おうちサウナのある暮らし」へのお問い合わせページです。家庭用サウナに関するご質問・ご相談、記事へのご感想や掲載情報に関するお問い合わせなど、こちらのフォームよりお気軽にお寄せください。";
+const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfS9kZNlwyMt8UKL-EumFHPwy4F9kPhFURt09RkTmLxwQBUBg/viewform";
+const formEmbedUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfS9kZNlwyMt8UKL-EumFHPwy4F9kPhFURt09RkTmLxwQBUBg/viewform?embedded=true";
 ---
 
 <!doctype html>
@@ -30,7 +12,7 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <title>{title}｜おうちサウナのある暮らし</title>
+    <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -97,6 +79,7 @@ const {
         font-family: "Zen Maru Gothic", sans-serif;
       }
 
+      /* 共通ヘッダー */
       .site-header {
         position: sticky;
         top: 0;
@@ -185,12 +168,13 @@ const {
         .main-nav.is-active { display: flex; }
       }
 
-      /* 記事レイアウト */
+      /* コンテナ */
       .container {
-        width: min(900px, calc(100% - 32px));
+        width: min(840px, calc(100% - 32px));
         margin: 32px auto 60px;
       }
 
+      /* パンくずリスト */
       .breadcrumb {
         font-size: 13px;
         color: #6e5e4e;
@@ -198,101 +182,127 @@ const {
         display: flex;
         gap: 8px;
         align-items: center;
-        flex-wrap: wrap;
       }
       .breadcrumb a {
-        border-bottom: 1.5px solid var(--water);
+        text-decoration: underline;
       }
 
-      .article-header {
+      /* ページ見出し */
+      .page-header {
+        text-align: center;
         margin-bottom: 36px;
       }
-      .article-kicker {
-        font-family: "DM Mono", monospace;
-        font-size: 13px;
-        color: var(--leaf);
-        font-weight: 700;
-        margin-bottom: 8px;
-      }
-      h1 {
-        font-family: "Yomogi", cursive;
-        font-size: clamp(24px, 4vw, 36px);
-        line-height: 1.4;
-        margin: 0 0 16px;
-        color: var(--wood-dark);
-      }
-      h1 span {
-        border-bottom: 3.5px solid var(--water);
-      }
-      .article-meta {
-        font-size: 13px;
-        color: #736353;
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-        border-bottom: 1.5px dashed #cfc2ab;
-        padding-bottom: 12px;
-      }
-
-      .article-eyecatch {
-        margin: 24px 0 32px;
-        text-align: center;
-      }
-      .article-eyecatch img {
-        width: 100%;
-        max-width: 720px;
-        height: auto;
-        border-radius: 10px;
-        border: 2px solid var(--wood-frame);
-        box-shadow: 4px 5px 0 rgba(43, 34, 26, 0.8);
-      }
-
-      /* 記事本文スタイル */
-
-      .article-body h2 {
-        font-family: "Yomogi", cursive;
-        font-size: 24px;
-        color: var(--wood-dark);
-        border-bottom: 2.5px solid var(--water);
+      .page-kicker {
         display: inline-block;
-        padding-bottom: 4px;
-        margin: 40px 0 18px;
+        font-size: 12.5px;
+        font-weight: 700;
+        color: var(--wood-dark);
+        background: var(--wood-light);
+        padding: 4px 14px;
+        border-radius: 20px;
+        border: 1.5px solid var(--wood-dark);
+        margin-bottom: 12px;
       }
-      .article-body h3 {
+      .page-title {
         font-family: "Yomogi", cursive;
-        font-size: 20px;
+        font-size: clamp(26px, 4vw, 34px);
+        margin: 0 0 12px;
         color: var(--ink);
-        border-left: 4px solid var(--leaf);
-        padding-left: 10px;
-        margin: 28px 0 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
       }
-      .article-body p {
-        margin: 0 0 18px;
-        text-align: justify;
-      }
-      .article-body strong {
-        background: linear-gradient(transparent 65%, #faeab1 65%);
-        padding: 0 2px;
-      }
-      .article-body ul, .article-body ol {
-        margin: 0 0 20px 24px;
-        padding: 0;
-      }
-      .article-body li {
-        margin-bottom: 8px;
-      }
-      .article-body blockquote {
-        background: #fffdfa;
-        border-left: 4px solid var(--wood);
-        border: 2px solid var(--ink);
-        border-left-width: 6px;
-        border-radius: 6px;
-        padding: 14px 18px;
-        margin: 24px 0;
-        box-shadow: 3px 3px 0 rgba(43, 34, 26, 0.15);
+      .page-lead {
+        font-size: 15px;
+        color: #554433;
+        line-height: 1.8;
+        max-width: 680px;
+        margin: 0 auto;
       }
 
-      /* フッター */
+      /* 注意事項・案内カード（コルクボード風） */
+      .notice-board {
+        background: #fffdfa;
+        border: var(--wood-frame-border);
+        box-shadow: var(--wood-frame-shadow);
+        border-radius: 12px;
+        padding: 24px 28px;
+        margin-bottom: 32px;
+        position: relative;
+      }
+      .notice-board-title {
+        font-family: "Yomogi", cursive;
+        font-size: 19px;
+        font-weight: 700;
+        color: var(--wood-dark);
+        margin: 0 0 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-bottom: 2px dashed var(--wood-light);
+        padding-bottom: 8px;
+      }
+      .notice-list {
+        margin: 0;
+        padding-left: 20px;
+        font-size: 14.5px;
+        color: #4a3b2c;
+      }
+      .notice-list li {
+        margin-bottom: 8px;
+      }
+
+      /* フォームカード */
+      .form-container {
+        background: #fffdfa;
+        border: var(--line);
+        box-shadow: 4px 5px 0 rgba(43, 34, 26, 0.2);
+        border-radius: 12px;
+        padding: 12px 10px;
+        margin-bottom: 32px;
+        overflow: hidden;
+      }
+      .form-iframe {
+        width: 100%;
+        height: 860px;
+        border: none;
+        display: block;
+      }
+
+      /* 直接開くボタンエリア */
+      .fallback-area {
+        background: #fff9ee;
+        border: 2px dashed var(--wood);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        margin-top: 24px;
+      }
+      .fallback-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--yellow);
+        color: var(--ink);
+        border: var(--line);
+        box-shadow: 3px 3px 0 var(--ink);
+        padding: 12px 28px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 15px;
+        font-family: "Zen Maru Gothic", sans-serif;
+        margin-top: 10px;
+        transition: all .15s;
+        cursor: pointer;
+      }
+      .fallback-btn:hover {
+        background: var(--yellow-hover);
+        transform: translate(1px, 1px);
+        box-shadow: 2px 2px 0 var(--ink);
+      }
+
+      /* 共通フッター */
       .site-footer {
         background: #eadecc;
         border-top: var(--line);
@@ -333,10 +343,10 @@ const {
   </head>
   <body>
     <div class="top-note">
-      ※本記事にはアフィリエイト広告およびプロモーションが含まれています。中立な仕様・安全基準に基づいて客観的に情報を整理しています。
+      ※本記事および当サイトにはアフィリエイト広告およびプロモーションが含まれています。中立な仕様・安全基準に基づいて客観的に情報を整理しています。
     </div>
 
-    <!-- 共通ヘッダー -->
+    <!-- 共通ヘッダー（ヘッダーリンクはお問い合わせを含めず既存のまま維持） -->
     <header class="site-header">
       <a href="/" class="logo">
         <span class="logo-mark">♨</span>
@@ -358,40 +368,68 @@ const {
       <nav class="breadcrumb" aria-label="パンくずリスト">
         <a href="/">トップ</a>
         <span>&gt;</span>
-        <a href="/articles/">サウナ解説記事一覧</a>
-        <span>&gt;</span>
-        <span>{title}</span>
+        <span>お問い合わせ</span>
       </nav>
 
       <main>
-        <article class="article-content">
-          <header class="article-header">
-            <div class="article-kicker">{kicker}</div>
-            <h1><span>{title}</span></h1>
-            <div class="article-meta">
-              <span>公開日: {date}</span>
-              <span>カテゴリ: 自宅サウナ徹底比較</span>
-              <span>監修: おうちサウナ編集部</span>
-            </div>
-            {eyecatch && (
-              <div class="article-eyecatch">
-                <img src={eyecatch} alt={title} loading="lazy" />
-              </div>
-            )}
-          </header>
+        <header class="page-header">
+          <div class="page-kicker">CONTACT FORM</div>
+          <h1 class="page-title">
+            <span>♨</span>
+            <span>お問い合わせ</span>
+          </h1>
+          <p class="page-lead">
+            当サイト「おうちサウナのある暮らし」をご覧いただきありがとうございます。<br />
+            家庭用サウナの導入に関するご質問、記事内容へのご感想・ご指摘、情報提供やお仕事のご相談などがございましたら、下記の専用フォームよりお気軽にお問い合わせください。
+          </p>
+        </header>
 
+        <!-- ご案内・注意事項 -->
+        <section class="notice-board">
+          <h2 class="notice-board-title">
+            <span>📋</span>
+            <span>お問い合わせいただく前のご案内</span>
+          </h2>
+          <ul class="notice-list">
+            <li>
+              <strong>入力項目について</strong>：お名前（ニックネーム・ハンドルネーム可）、ご連絡先（メールアドレスやSNSアカウント等）、お問い合わせ内容をご記入いただけます。
+            </li>
+            <li>
+              <strong>回答の目安</strong>：いただいた内容は確認の上、原則3〜5営業日以内にご連絡差し上げます（内容や状況によってはお返事までにお時間をいただく場合や、ご返信いたしかねる場合がございます）。
+            </li>
+            <li>
+              <strong>個人情報の取り扱い</strong>：ご入力いただいた情報は、お問い合わせ内容への回答および確認の目的にのみ使用し、第三者に無断で提供・開示することは一切ございません。
+            </li>
+          </ul>
+        </section>
 
-          <!-- 記事本文 -->
-          <div class="article-body">
-            <slot />
-          </div>
+        <!-- Googleフォーム埋め込みエリア -->
+        <section class="form-container">
+          <iframe
+            class="form-iframe"
+            src={formEmbedUrl}
+            title="おうちサウナのある暮らし お問い合わせフォーム"
+            loading="lazy"
+          >
+            読み込み中…
+          </iframe>
+        </section>
 
-          <!-- 共通コンポーネント：熱波CTA -->
-          <NeppaCta />
-
-          <!-- 共通コンポーネント：関連記事リンク -->
-          <RelatedArticles currentSlug={slug} items={relatedArticles} />
-        </article>
+        <!-- フォームが開かない場合のフォールバック案内 -->
+        <div class="fallback-area">
+          <p style="margin: 0 0 6px; font-size: 14px; color: #554433;">
+            ※お使いのブラウザやセキュリティ設定により上記のフォームが表示されない場合は、以下のボタンよりGoogleフォームを直接開いてご送信ください。
+          </p>
+          <a
+            href={formUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="fallback-btn"
+          >
+            <span>👉</span>
+            <span>Googleフォームを新しいタブで開く</span>
+          </a>
+        </div>
       </main>
     </div>
 
