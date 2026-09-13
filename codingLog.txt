@@ -555,5 +555,33 @@ npm run build
 git push origin review
 ```
 
+
+-----------------------------------------
+■ アップデート: 指定アフィリエイトタグ（TOPページ下部準拠）のGit管理統一およびリンク破損修正 (2026年9月13日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localCode\ReactApp\my_sauna\src\data\affiliates.json [新規・Git管理対象]
+- c:\localCode\ReactApp\my_sauna\src\data\affiliates.example.json [更新]
+- c:\localCode\ReactApp\my_sauna\src\utils\affiliate.ts [更新]
+- c:\localCode\ReactApp\my_sauna\src\components\NeppaCta.astro [更新]
+- c:\localCode\ReactApp\my_sauna\src\pages\sauna\neppa-standard.astro [更新]
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\.agents\skills\affiliate-tag-manager\SKILL.md [更新]
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\rules\affiliate_tag_compliance_rule.md [更新]
+
+■ 詳細内容
+- Cloudflare Pages（リモートCI/CD環境）において、affiliates.secret.json がGit管理外だったためダミーURL（SAMPLE_TEXT_URL）がビルドされ、楽天側で無効URLと判定されて楽天市場トップ（画像1枚目）にリダイレクトされていた不具合を特定・根本解消。
+- TOPページ下部で正常動作していた指定アフィリエイトタグ（https://hb.afl.rakuten.co.jp/ichiba/57513042.94fc00d3.57513043.98a16833/...）を、Git管理下の src/data/affiliates.json および affiliates.example.json に正式登録。
+- affiliate.ts から affiliates.json を直接バンドルインポートする構成へ改修し、全環境で100%確実に本物リンクが出力されるように修正。
+- 各コンポーネントのフォールバック値もTOPページ下部と同一の指定タグに統一。
+- affiliate-tag-manager スキルおよび affiliate_tag_compliance_rule.md の管理手順を「Git管理対象の affiliates.json 運用」に更新。
+- 全53ページの静的ビルド検証を実施し、reviewブランチへpush完了。
+
+■ 実行・検証コマンド
+```powershell
+npm run build
+git push origin review
+```
+
 =========================================
 記録完了
