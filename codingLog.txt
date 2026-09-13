@@ -583,5 +583,33 @@ npm run build
 git push origin review
 ```
 
+
+-----------------------------------------
+■ アップデート: チェックリンク.txt原本の完全同期およびマスター参照運用のスキル・ルール化 (2026年9月13日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\syncAffiliateTags.ps1 [新規]
+- c:\localCode\ReactApp\my_sauna\src\data\affiliates.json [更新・完全一致確認]
+- c:\localCode\ReactApp\my_sauna\src\data\affiliates.example.json [更新・完全一致確認]
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\.agents\skills\affiliate-tag-manager\SKILL.md [更新]
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\rules\affiliate_tag_compliance_rule.md [更新]
+- c:\localDocment\自宅サウナアフィリエイト\AGENTS.md [更新]
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\.agents\AGENTS.md [更新]
+
+■ 詳細内容
+- ユーザー提供ファイル「C:\localDocment\自宅サウナアフィリエイト\アフィリエイトタグ\チェックリンク.txt」および「メイン.txt」を正式なアフィリエイトタグ原本（マスターファイル）として位置づけ。
+- マスターファイルと src/data/affiliates.json のURL・ラベル・属性を厳格照合し、1文字の差異もなく完全一致していることを確認。
+- 自動同期・照合用スクリプト（syncAffiliateTags.ps1）を共有スクリプト配下に新規作成。
+- affiliate-tag-manager スキル、affiliate_tag_compliance_rule.md、および各AGENTS.mdに「チェックリンク.txt原本の完全準拠原則」および同期コマンドを明文化。
+- astro build による全53ページの生成検証を実施し、reviewブランチへpush完了。
+
+■ 実行・検証コマンド
+```powershell
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\syncAffiliateTags.ps1
+npm run build
+git push origin review
+```
+
 =========================================
 記録完了
