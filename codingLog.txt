@@ -476,5 +476,84 @@ git push origin review
 python -u scratch/fix_issue_bodies.py
 # 全Issue（9-62）のエンコード検証合格確認
 `
-checkブランチの変更内容（codingLog更新）をreviewブランチへマージし、astro build検証後にorigin/reviewへpush完了。併せて、各種チェック（記事チェック、画像チェック、最終チェック）の確認プレビュー用ブランチをreviewブランチ（https://review.my-sauna.pages.dev/）に一本化する規約を全スキル・エージェント指示書へ反映。=========================================
+checkブランチの変更内容（codingLog更新）をreviewブランチへマージし、astro build検証後にorigin/reviewへpush完了。併せて、各種チェック（記事チェック、画像チェック、最終チェック）の確認プレビュー用ブランチをreviewブランチ（https://review.my-sauna.pages.dev/）に一本化する規約を全スキル・エージェント指示書へ反映。
+-----------------------------------------
+■ アップデート: 画像確認済みタスクの「50.最終チェック」移行および一人用サウナ画像（畳→フローリング）修正 (2026年9月13日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localCode\ReactApp\my_sauna\public\images\articles\single-home-sauna.jpg
+- c:\localCode\ReactApp\my_sauna\public\images\single-home-sauna.jpg
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+- GitHub Projects (Project #2) / GitHub Issues #10, #11, #13
+- GitHub Issue #12
+- GitHub Issue #62
+
+■ 詳細内容
+- 画像確認済みタスク（Issue #10, #11, #13）を moveTicketStatus.ps1 にて「50.最終チェック」へ移行
+- Issue #12（一人用おすすめ）の差し戻し（畳→フローリング）に対応し画像を再生成・差し替え、reviewブランチへpush
+- Issue #12へ修正完了コメントを投稿
+- Issue #62（画像チェック管理タスク）のチェックリストを進捗に合わせて更新
+
+■ 実行・検証コマンド
+`powershell
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 -IssueNo 10 -ToStatus 50.最終チェック
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 -IssueNo 11 -ToStatus 50.最終チェック
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 -IssueNo 13 -ToStatus 50.最終チェック
+npm run build
+git push origin review
+`
+-----------------------------------------
+■ アップデート: 「50.最終チェック」承認検知・自動公開（develop/mainマージ&push）スキル・エージェントルールの策定 (2026年9月13日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1 [新規]
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\.agents\skills\publish-approved-articles\SKILL.md [新規]
+- c:\localDocment\自宅サウナアフィリエイト\codex\skills\publish-approved-articles\SKILL.md [新規]
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\rules\ticket_lifecycle_rule.md [更新]
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\.agents\AGENTS.md [更新]
+- c:\localDocment\自宅サウナアフィリエイト\AGENTS.md [更新]
+- c:\localDocment\自宅サウナアフィリエイト\codex\agents\00_orchestrator.md [更新]
+- c:\localDocment\自宅サウナアフィリエイト\codex\skills\sauna-affiliate-article-production\SKILL.md [更新]
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\.agents\skills\task-management\SKILL.md [更新]
+
+■ 詳細内容
+- GitHub Projects (Project #2) および GitHub Issues の「50.最終チェック」チケットにおいて、運営者（devlab@prograroom.com / @tatsuki-iketsu）から「最終確認OK」等のコメントが投稿された際、該当記事の完了処理を自動実行する仕組みを構築。
+- 自動公開スクリプト（publishApprovedArticles.ps1）を新設。対象Issueのコメントを走査し、承認検知時に review ブランチの成果物を develop および main ブランチへマージ＆push（Cloudflare Pages本番自動デプロイ）。
+- 同スクリプトにて、moveTicketStatus.ps1 を連動させ、GitHub Projects、GitHub Issues本文、タスクリスト.md のステータスを「公開済み」に同期更新し、完了通知コメント投稿とIssueクローズを自動化。
+- GoogleAntiGravity および Codex 双方の環境に対応するスキル（publish-approved-articles）、チケットライフサイクルルール、エージェント行動規範を整備。
+
+■ 実行・検証コマンド
+`
+powershell -ExecutionPolicy Bypass -File  G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1 -DryRun
+`
+
+-----------------------------------------
+■ アップデート: 楽天アフィリエイトリンクの公式商品タグ完全準拠（HTML改変禁止）および共通ルール・スキルの整備 (2026年9月13日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localCode\ReactApp\my_sauna\src\components\NeppaCta.astro
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\rules\affiliate_tag_compliance_rule.md [新規]
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\.agents\AGENTS.md [更新]
+- c:\localDocment\自宅サウナアフィリエイト\AGENTS.md [更新]
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\.agents\skills\affiliate-tag-manager\SKILL.md [更新]
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\.agents\skills\evidence-checker\SKILL.md [更新]
+- c:\localDocment\自宅サウナアフィリエイト\codex\skills\sauna-affiliate-article-production\SKILL.md [更新]
+
+■ 詳細内容
+- review中の全記事に表示される共通CTAコンポーネント（NeppaCta.astro）において、楽天アフィリエイトリンクが自作ボタン（「🛒 楽天市場の公式販売ページで確認する」）となっておりASP規約上のHTML改変禁止に抵触していた問題を修正。
+- 提供されている公式商品タグのテキスト（textLabel）を一字一句そのままアンカーテキストとして表示し、外枠カードに案内見出し「楽天で最新価格・公式条件を確認」を配した公式準拠デザイン（画像2枚目標準フォーマット）へ置換。
+- プロジェクト内・エージェント共通ルールとして「アフィリエイトタグ改変禁止および公式商品タグ完全準拠ルール（affiliate_tag_compliance_rule.md）」を新規策定。
+- 各種エージェント行動規範（AGENTS.md）およびスキル（affiliate-tag-manager, evidence-checker, sauna-affiliate-article-production）に自作ボタン化の禁止と公式タグ準拠のチェック項目を反映。
+- astro build による全53ページの生成検証を実施し、reviewブランチへcommit & push完了。
+
+■ 実行・検証コマンド
+```powershell
+npm run build
+git push origin review
+```
+
+=========================================
 記録完了
