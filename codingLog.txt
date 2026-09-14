@@ -878,5 +878,24 @@ git push origin review
 ```powershell
 powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 -IssueNo 15 -ToStatus "50.最終チェック"
 ```
-=========================================
+
+-----------------------------------------
+■ アップデート: Issue #16（記事作成07_価格相場総額）本番公開完了 (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- タスクリスト.md
+
+■ 詳細内容
+- 運営者による「最終チェックOK」承認を受け、publishApprovedArticles.ps1 を実行
+- review ブランチから develop および main ブランチへマージ＆push完了（Cloudflare Pages本番自動デプロイ開始）
+- GitHub Projects #2 のステータスを「公開済み」に移動
+- GitHub Issue #16 本文ステータスを「公開済み」に更新
+- GitHub Issue #16 へ本番公開完了通知コメントを投稿し、Issue をクローズ
+- タスクリスト.md の Issue #16 該当行を「公開済み」に完全同期更新
+
+■ 実行・検証コマンド
+`powershell
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1 -IssueNo 16
+`=========================================
 記録完了
