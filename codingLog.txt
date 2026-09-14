@@ -759,5 +759,22 @@ Issue #12 (記事作成03_一人用おすすめ) まとめセクションの下�
 - GitHub Issue #64 に「50.最終チェック」移行および最終公開確認（承認キーワード待ち）の案内コメントを投稿
 
 ■ 実行・検証コマンド
-powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 -IssueNo 64 -ToStatus 50.最終チェック=========================================
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 -IssueNo 64 -ToStatus 50.最終チェック
+-----------------------------------------
+■ アップデート: Issue #64 お問い合わせページ本番公開完了 (develop/mainマージ&push) (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- src/pages/contact.astro (本番反映)
+- (Git develop/main ブランチ反映、Cloudflare Pages 本番自動デプロイ)
+
+■ 詳細内容
+- 運営者より「最終確認OKです」の承認コメントを確認
+- 共有スクリプト publishApprovedArticles.ps1 を実行し、review -> develop -> main へのマージおよびリモートpushを完了
+- Cloudflare Pages による本番公開（https://my-sauna.pages.dev/contact/）完了
+- GitHub Projects #2 のステータスを「公開済み」に更新
+- GitHub Issue #64 に本番公開完了通知コメントを投稿し、Issue をクローズ (Closed)
+
+■ 実行・検証コマンド
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1 -IssueNo 64=========================================
 記録完了
