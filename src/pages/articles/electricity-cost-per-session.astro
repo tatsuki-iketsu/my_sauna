@@ -4,12 +4,14 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 const title = '家庭用サウナの電気代は1回いくら？毎日使った場合の月額コストを徹底試算';
 const description = '家庭用サウナの電気代を1回あたり・月額・年間で徹底計算。消費電力1.7kWの予熱時間と入浴時間、電気料金単価（31円/kWh）、施設サウナに通い続けた場合との比較を明快に解説。';
 const slug = 'electricity-cost-per-session';
+const eyecatch = '/images/articles/electricity-cost-per-session.jpg';
 const kicker = '1回・月額・年間のリアルな電気代試算';
 
 const relatedArticles = [{'slug': 'mansion-condo-guide', 'title': '分譲マンションに自宅サウナは設置できる？管理規約・床荷重・防災設備の確認事項', 'badge': 'マンション設置の規約・荷重クリア完全ガイド'}, {'slug': 'washroom-dressing-room-layout', 'title': '洗面脱衣所にサウナを置く！水風呂直行の動線作りと湿気・寸法の注意点', 'badge': '水風呂直行！脱衣所サウナの理想動線'}, {'slug': '20a-circuit-electrical-work', 'title': '家庭用サウナに必要な「20A専用回路工事」とは？費用・施工時間・依頼手順', 'badge': '安全に使うための20A専用回路工事ガイド'}, {'slug': 'floor-load-bearing-capacity', 'title': '家庭用サウナの重さで床は抜けない？床耐荷重の基準と補強工事の要否', 'badge': '床耐荷重の基準と安心の設置チェック'}];
 ---
 
 <ArticleLayout
+  eyecatch={eyecatch}
   title={title}
   description={description}
   slug={slug}
