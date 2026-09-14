@@ -777,5 +777,106 @@ powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive
 
 ■ 実行・検証コマンド
 powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1 -IssueNo 64
-Issue #12 (記事作成03_一人用おすすめ) 運営者様の最終確認OKを受け、publishApprovedArticles.ps1を実行。reviewブランチをdevelopおよびmainへマージ・push（本番公開）。タスクリスト.md、GitHub Projects #2、GitHub Issue #12のステータスを「公開済み」に更新しIssueをクローズ。=========================================
+Issue #12 (記事作成03_一人用おすすめ) 運営者様の最終確認OKを受け、publishApprovedArticles.ps1を実行。reviewブランチをdevelopおよびmainへマージ・push（本番公開）。タスクリスト.md、GitHub Projects #2、GitHub Issue #12のステータスを「公開済み」に更新しIssueをクローズ。
+-----------------------------------------
+■ アップデート: Issue #15 工事不要の落とし穴 アイキャッチ画像再修正（分電盤ブレーカー数の適正化） (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localCode\ReactApp\my_sauna\public\images\articles\no-construction-fallacy.jpg [更新・再生成]
+- c:\localCode\ReactApp\my_sauna\public\images\no-construction-fallacy.jpg [更新・再生成]
+- c:\localCode\ReactApp\my_sauna\public\images\articles\no-construction-fallacy.jpg.v1.bak [新規・バックアップ]
+- c:\localCode\ReactApp\my_sauna\public\images\no-construction-fallacy.jpg.v1.bak [新規・バックアップ]
+
+■ 詳細内容
+- GitHub Issue #15 の追加フィードバック「良くなったのですが、ちょっとブレーカーのレバーが多いように感じます添付画像くらいの数でお願いします」に対応。
+- 添付された参考画像（電力会社の家庭用分電盤解説図）を精査。
+- 分電盤の構成を、日本の一般的な家庭用レイアウト（左に主幹アンペアブレーカー30A、中央に漏電遮断器ELCB、右に安全ブレーカー上段4つ・下段4つの少数配置）に合わせてアイキャッチ画像を再生成。
+- 既存のトンマナ（色鉛筆スケッチ風、生成りペーパー調）および左側パネル（20A専用コンセントと電源プラグ）の構図を維持。
+- Astro静的ビルド（全54ページ）に合格。
+- reviewブランチへコミット＆プッシュ（https://review.my-sauna.pages.dev/articles/no-construction-fallacy/）。
+- Issue #15 へ再修正完了コメントを投稿。
+
+■ 実行・検証コマンド
+```powershell
+npm run build
+git push origin review
+```
+
+-----------------------------------------
+■ アップデート: Issue #15 工事不要の落とし穴 アイキャッチ画像再修正（ラベルのグレー塗りつぶし・文字完全排除） (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localCode\ReactApp\my_sauna\public\images\articles\no-construction-fallacy.jpg [更新・再生成]
+- c:\localCode\ReactApp\my_sauna\public\images\no-construction-fallacy.jpg [更新・再生成]
+- c:\localCode\ReactApp\my_sauna\public\images\articles\no-construction-fallacy.jpg.v2.bak [新規・バックアップ]
+- c:\localCode\ReactApp\my_sauna\public\images\no-construction-fallacy.jpg.v2.bak [新規・バックアップ]
+
+■ 詳細内容
+- GitHub Issue #15 の追加指示「日本語の感じがおかしいので、ブレーカー部分のラベルなど日本語部分は全てグレーで塗りつぶす感じにしてください」に対応。
+- AI生成による不自然な日本語文字列・擬似文字を完全に排除するため、銘板・ラベル・シール部分をすべて無地のニュートラルグレー長方形（ブランク銘板）として描画したイラストを新規生成。
+- 左側パネル（床付近の20Aコンセントと太い電源プラグ）、スプリット構図、および色鉛筆スケッチ風・生成りペーパー調の温かみのあるトンマナを完全に維持。
+- Astro静的ビルド検証（全54ページ）に合格。
+- reviewブランチへコミット＆プッシュ（https://review.my-sauna.pages.dev/articles/no-construction-fallacy/）。
+- Issue #15 へ再修正完了コメントを投稿。
+
+■ 実行・検証コマンド
+```powershell
+npm run build
+git push origin review
+```
+
+-----------------------------------------
+■ アップデート: Issue #15 工事不要の落とし穴 アイキャッチ画像再修正（右側ブレーカー横並び3個・無地グレーラベル） (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localCode\ReactApp\my_sauna\public\images\articles\no-construction-fallacy.jpg [更新・再生成]
+- c:\localCode\ReactApp\my_sauna\public\images\no-construction-fallacy.jpg [更新・再生成]
+- c:\localCode\ReactApp\my_sauna\public\images\articles\no-construction-fallacy.jpg.v3.bak [新規・バックアップ]
+- c:\localCode\ReactApp\my_sauna\public\images\no-construction-fallacy.jpg.v3.bak [新規・バックアップ]
+
+■ 詳細内容
+- GitHub Issue #15 の追加指示「右のレバーが縦になってしまっているので、横にしてください。右側のレバーは3-4つくらいに減らしてください」に対応。
+- 右側の安全ブレーカーを縦1列から横一列の配置へ変更し、個数を3個に削減。
+- 各ブレーカーのラベル・銘板部分は文字なしのクリーンな無地グレー長方形（ブランク銘板）を維持。
+- 左側パネル（床付近の20A壁コンセントと電源プラグ）、スプリット構図、色鉛筆スケッチ風の温かみのあるトンマナを完全に維持。
+- Astro静的ビルド検証（全54ページ）に合格。
+- reviewブランチへコミット＆プッシュ（https://review.my-sauna.pages.dev/articles/no-construction-fallacy/）。
+- Issue #15 へ再修正完了コメントを投稿。
+
+■ 実行・検証コマンド
+```powershell
+npm run build
+git push origin review
+```
+
+【Issue #14対応：記事05（ロウリュ故障対策）本文作成および反映】
+- 経緯: Issue #14 にて「文章がまだ作成されていないように見えます。作成してください。」とのコメントを受領。
+- 原因: 記事05（loyly-trouble-prevention）の見出し以下本文がプレースホルダー（ダミー文）のままになっていた。
+- 対応:
+  1. c:\localDocment\自宅サウナアフィリエイト\記事\05_家庭用サウナ_ロウリュ_故障.md を詳細な専門解説・比較表を含む完成原稿として執筆・更新（バックアップ.bak作成）。
+  2. c:\localCode\ReactApp\my_sauna\src\pages\articles\loyly-trouble-prevention.astro を完成原稿に合わせてHTML/Astroコンポーネントとして更新。
+  3. npm run build を実行し、正常ビルド（54 pages）を確認。
+  4. review ブランチへコミット＆プッシュ（commit: fix(article): 記事05 ロウリュ故障対策の本文を完成版に更新）。
+  5. GitHub Issue #14 に確認依頼コメントを投稿。
+-----------------------------------------
+■ アップデート: Issue #15 工事不要の落とし穴 画像承認受理・50.最終チェックへ移行 (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md [更新]
+
+■ 詳細内容
+- GitHub Issue #15（記事作成06_工事不要の落とし穴）において、運営者様より再修正アイキャッチ画像に対する承認（「確認しました。OKなので、処理をお願いします。」）を受理。
+- 専用スクリプト moveTicketStatus.ps1 を実行し、ステータスを「40.画像チェック」から「50.最終チェック」（最終目視確認待ち）へ前進。
+- GitHub Projects (Project #2)、GitHub Issue #15 本文、タスクリスト.md、および親チケット Issue #62 の進捗チェックリストを完全同期。
+- Issue #15 に最終目視確認依頼のコメントを投稿。
+
+■ 実行・検証コマンド
+```powershell
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 -IssueNo 15 -ToStatus "50.最終チェック"
+```
+=========================================
 記録完了
