@@ -54,8 +54,15 @@ const relatedArticles = [{'slug': 'two-person-sauna-size', 'title': '2人で入�
   
   <div style="width: 100%; max-width: 520px; margin: 0 auto;">
     <svg viewBox="0 0 540 490" style="width: 100%; height: auto; display: block; font-family: 'Zen Maru Gothic', sans-serif;">
-      <!-- 定義（マーカー・パターン） -->
+      <!-- 定義（マーカー・パターン・立体ドロップシャドウ） -->
       <defs>
+        <!-- 浮いたような立体影（ドロップシャドウフィルター） -->
+        <filter id="float-bubble-shadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="2.5" stdDeviation="2" flood-color="#2b221a" flood-opacity="0.2" />
+        </filter>
+        <filter id="badge-shadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#2b221a" flood-opacity="0.16" />
+        </filter>
         <!-- 方眼グリッドパターン -->
         <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
           <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#f0e9df" stroke-width="1" />
@@ -76,15 +83,17 @@ const relatedArticles = [{'slug': 'two-person-sauna-size', 'title': '2人で入�
       <line x1="40" y1="28" x2="390" y2="28" stroke="#8c735d" stroke-width="1.5" />
       <line x1="40" y1="22" x2="40" y2="34" stroke="#8c735d" stroke-width="1.5" />
       <line x1="390" y1="22" x2="390" y2="34" stroke="#8c735d" stroke-width="1.5" />
-      <rect x="175" y="16" width="80" height="22" fill="#fffdfa" rx="4" />
-      <text x="215" y="32" text-anchor="middle" font-size="12" font-weight="700" fill="#6e4726">間口 182cm</text>
+      <g filter="url(#badge-shadow)">
+        <rect x="175" y="16" width="80" height="22" fill="#fffdfa" stroke="#8c735d" stroke-width="1" rx="4" />
+        <text x="215" y="32" text-anchor="middle" font-size="12" font-weight="700" fill="#6e4726">間口 182cm</text>
+      </g>
 
       <!-- 【左側寸法線】奥行 182cm -->
       <line x1="22" y1="45" x2="22" y2="395" stroke="#8c735d" stroke-width="1.5" />
       <line x1="16" y1="45" x2="28" y2="45" stroke="#8c735d" stroke-width="1.5" />
       <line x1="16" y1="395" x2="28" y2="395" stroke="#8c735d" stroke-width="1.5" />
-      <g transform="translate(14, 220) rotate(-90)">
-        <rect x="-40" y="-12" width="80" height="22" fill="#fffdfa" rx="4" />
+      <g transform="translate(14, 220) rotate(-90)" filter="url(#badge-shadow)">
+        <rect x="-40" y="-12" width="80" height="22" fill="#fffdfa" stroke="#8c735d" stroke-width="1" rx="4" />
         <text x="0" y="4" text-anchor="middle" font-size="12" font-weight="700" fill="#6e4726">奥行 182cm</text>
       </g>
 
@@ -102,47 +111,67 @@ const relatedArticles = [{'slug': 'two-person-sauna-size', 'title': '2人で入�
 
       <!-- 【右側：浴室エリア】 -->
       <rect x="394" y="150" width="136" height="245" rx="8" fill="#eef8fa" stroke="#3ea5bc" stroke-width="2" stroke-dasharray="4,3" />
-      <rect x="410" y="160" width="105" height="24" rx="4" fill="#3ea5bc" />
-      <text x="462" y="176" text-anchor="middle" font-size="11.5" font-weight="700" fill="#ffffff">🚿 浴室（お風呂）</text>
+      <g filter="url(#badge-shadow)">
+        <rect x="408" y="160" width="108" height="24" rx="5" fill="#3ea5bc" />
+        <text x="462" y="176" text-anchor="middle" font-size="11.5" font-weight="700" fill="#ffffff">🚿 浴室（お風呂）</text>
+      </g>
+      <text x="462" y="208" text-anchor="middle" font-size="10" fill="#3ea5bc" font-weight="700">洗い場スペース</text>
 
       <!-- 浴槽（水風呂） -->
       <rect x="406" y="235" width="114" height="145" rx="12" fill="#d7f1f7" stroke="#2594a8" stroke-width="2" />
       <rect x="413" y="243" width="100" height="129" rx="8" fill="#c3ebf4" stroke="#5fbccd" stroke-width="1" />
-      <text x="463" y="295" text-anchor="middle" font-size="13" font-weight="700" fill="#1b6e82">🛁 浴槽</text>
-      <text x="463" y="315" text-anchor="middle" font-size="12" font-weight="700" fill="#0d9488">（水風呂）</text>
-      <text x="463" y="338" text-anchor="middle" font-size="10" fill="#155e75">冷水シャワー完備</text>
-      <text x="462" y="208" text-anchor="middle" font-size="10" fill="#3ea5bc" font-weight="700">洗い場スペース</text>
+      
+      <!-- 浴槽吹き出しブロック（上向きポインター） -->
+      <g filter="url(#float-bubble-shadow)">
+        <path d="M 412, 268 H 458 L 463, 262 L 468, 268 H 514 A 6,6 0 0 1 520, 274 V 316 A 6,6 0 0 1 514, 322 H 412 A 6,6 0 0 1 406, 316 V 274 A 6,6 0 0 1 412, 268 Z" fill="#ffffff" stroke="#0891b2" stroke-width="1.6" />
+        <text x="463" y="285" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0e7490">🛁 浴槽（水風呂）</text>
+        <rect x="416" y="292" width="94" height="17" rx="3" fill="#e0f2fe" />
+        <text x="463" y="304.5" text-anchor="middle" font-size="9" font-weight="700" fill="#0369a1">冷水シャワー完備</text>
+        <text x="463" y="316.5" text-anchor="middle" font-size="8" fill="#0e7490">水道水掛け流しOK</text>
+      </g>
 
       <!-- 【浴室ドア（折れ戸）】 -->
       <path d="M 390 240 L 378 265 L 390 290 L 378 315 L 390 340" fill="none" stroke="#2b7a78" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
-      <rect x="375" y="280" width="60" height="18" rx="4" fill="#2b7a78" opacity="0.9" />
-      <text x="405" y="293" text-anchor="middle" font-size="10" font-weight="700" fill="#ffffff">折れ戸</text>
+      <g filter="url(#badge-shadow)">
+        <rect x="375" y="278" width="60" height="20" rx="4" fill="#2b7a78" />
+        <text x="405" y="292" text-anchor="middle" font-size="10" font-weight="700" fill="#ffffff">折れ戸</text>
+      </g>
 
       <!-- 【左上：洗面化粧台】 幅75cm × 奥行55cm -->
       <g transform="translate(44, 49)">
         <rect x="0" y="0" width="145" height="106" rx="4" fill="#fdfaf5" stroke="#7c5e42" stroke-width="2" />
-        <ellipse cx="72" cy="53" rx="48" ry="32" fill="#ffffff" stroke="#c0aa92" stroke-width="1.5" />
-        <circle cx="72" cy="53" r="6" fill="#ded4c8" stroke="#a08a74" stroke-width="1" />
-        <circle cx="72" cy="20" r="4" fill="#7c5e42" />
-        <line x1="72" y1="20" x2="72" y2="30" stroke="#7c5e42" stroke-width="3" stroke-linecap="round" />
-        <rect x="15" y="65" width="115" height="18" rx="3" fill="#f5ede2" />
-        <text x="72" y="78" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2b221a">🪞 洗面化粧台</text>
-        <text x="72" y="96" text-anchor="middle" font-size="9.5" fill="#7c5e42">幅75cm × 奥行55cm</text>
+        <ellipse cx="72" cy="48" rx="48" ry="28" fill="#ffffff" stroke="#c0aa92" stroke-width="1.5" />
+        <circle cx="72" cy="48" r="5" fill="#ded4c8" stroke="#a08a74" stroke-width="1" />
+        <circle cx="72" cy="18" r="4" fill="#7c5e42" />
+        <line x1="72" y1="18" x2="72" y2="28" stroke="#7c5e42" stroke-width="3" stroke-linecap="round" />
+        
+        <!-- 洗面化粧台 吹き出しブロック（上向きポインター） -->
+        <g filter="url(#float-bubble-shadow)">
+          <path d="M 14, 56 H 67 L 72, 50 L 77, 56 H 131 A 6,6 0 0 1 137, 62 V 92 A 6,6 0 0 1 131, 98 H 14 A 6,6 0 0 1 8, 92 V 62 A 6,6 0 0 1 14, 56 Z" fill="#ffffff" stroke="#7c5e42" stroke-width="1.5" />
+          <text x="72.5" y="72" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2b221a">🪞 洗面化粧台</text>
+          <rect x="18" y="78" width="109" height="15" rx="3" fill="#f5ede2" />
+          <text x="72.5" y="89" text-anchor="middle" font-size="9" font-weight="700" fill="#7c5e42">幅75cm × 奥行55cm</text>
+        </g>
       </g>
 
       <!-- 【左下：洗濯機パン ＆ 洗濯機】 幅64cm × 奥行64cm -->
       <g transform="translate(44, 267)">
         <rect x="0" y="0" width="124" height="124" rx="4" fill="#f3f4f6" stroke="#9ca3af" stroke-width="2" />
         <rect x="8" y="8" width="108" height="108" rx="8" fill="#ffffff" stroke="#4b5563" stroke-width="1.5" />
-        <circle cx="62" cy="66" r="34" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
-        <circle cx="62" cy="66" r="24" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1" />
+        <circle cx="62" cy="60" r="32" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+        <circle cx="62" cy="60" r="22" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1" />
         <rect x="16" y="14" width="92" height="12" rx="3" fill="#e2e8f0" />
         <circle cx="26" cy="20" r="2.5" fill="#3ea5bc" />
         <circle cx="36" cy="20" r="2.5" fill="#ef4444" />
         <rect x="70" y="17" width="30" height="6" rx="2" fill="#94a3b8" />
-        <rect x="14" y="75" width="96" height="18" rx="3" fill="#ffffff" opacity="0.9" />
-        <text x="62" y="88" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2b221a">🧺 洗濯機パン</text>
-        <text x="62" y="104" text-anchor="middle" font-size="9.5" fill="#6b7280">幅64cm × 奥行64cm</text>
+        
+        <!-- 洗濯機パン 吹き出しブロック（上向きポインター） -->
+        <g filter="url(#float-bubble-shadow)">
+          <path d="M 12, 66 H 57 L 62, 60 L 67, 66 H 112 A 6,6 0 0 1 118, 72 V 106 A 6,6 0 0 1 112, 112 H 12 A 6,6 0 0 1 6, 106 V 72 A 6,6 0 0 1 12, 66 Z" fill="#ffffff" stroke="#475569" stroke-width="1.5" />
+          <text x="62" y="82" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e293b">🧺 洗濯機パン</text>
+          <rect x="14" y="88" width="96" height="17" rx="3" fill="#f1f5f9" />
+          <text x="62" y="100.5" text-anchor="middle" font-size="9" font-weight="700" fill="#475569">幅64cm × 奥行64cm</text>
+        </g>
       </g>
 
       <!-- 【右上：🔥 サウナキャビン】 幅95cm × 奥行95cm -->
@@ -161,41 +190,52 @@ const relatedArticles = [{'slug': 'two-person-sauna-size', 'title': '2人で入�
         <circle cx="35" cy="150" r="6.5" fill="#8c7e75" />
         <text x="37" y="164" text-anchor="middle" font-size="8.5" font-weight="700" fill="#faeab1">🔥ストーブ</text>
 
-        <!-- サウナキャビンラベル -->
-        <rect x="68" y="70" width="105" height="34" rx="4" fill="#faeab1" stroke="#e08e45" stroke-width="1" />
-        <text x="120" y="85" text-anchor="middle" font-size="12" font-weight="700" fill="#b25329">🔥 サウナキャビン</text>
-        <text x="120" y="99" text-anchor="middle" font-size="9.5" font-weight="700" fill="#8c4e16">幅95cm × 奥行95cm</text>
-        <text x="120" y="122" text-anchor="middle" font-size="9.5" fill="#a06020">熱波 スタンダード</text>
+        <!-- サウナキャビン 吹き出しブロック（上向きポインター） -->
+        <g filter="url(#float-bubble-shadow)">
+          <path d="M 68, 66 H 115 L 120, 60 L 125, 66 H 172 A 6,6 0 0 1 178, 72 V 116 A 6,6 0 0 1 172, 122 H 68 A 6,6 0 0 1 62, 116 V 72 A 6,6 0 0 1 68, 66 Z" fill="#fffdfa" stroke="#b25329" stroke-width="1.8" />
+          <text x="120" y="82" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b25329">🔥 サウナキャビン</text>
+          <rect x="70" y="88" width="100" height="17" rx="3" fill="#faeab1" />
+          <text x="120" y="100.5" text-anchor="middle" font-size="9.5" font-weight="700" fill="#8c4e16">幅95cm × 奥行95cm</text>
+          <text x="120" y="115" text-anchor="middle" font-size="8.5" font-weight="600" fill="#a06020">熱波 スタンダード等</text>
+        </g>
 
         <!-- サウナガラスドア（手前側） -->
         <line x1="75" y1="184" x2="175" y2="184" stroke="#3ea5bc" stroke-width="4" stroke-linecap="round" />
         <line x1="75" y1="184" x2="75" y2="240" stroke="#3ea5bc" stroke-width="3" stroke-linecap="round" />
         <path d="M 175 184 A 100 100 0 0 1 75 240" fill="none" stroke="#e08e45" stroke-width="1.5" stroke-dasharray="3,3" />
         <circle cx="75" cy="225" r="3" fill="#6e4726" />
-        <rect x="90" y="196" width="68" height="16" rx="3" fill="#ffffff" opacity="0.95" stroke="#3ea5bc" stroke-width="1" />
-        <text x="124" y="208" text-anchor="middle" font-size="9" font-weight="700" fill="#1b6e82">ガラス扉（開閉）</text>
+        <g filter="url(#badge-shadow)">
+          <rect x="88" y="196" width="72" height="18" rx="4" fill="#ffffff" stroke="#3ea5bc" stroke-width="1.2" />
+          <text x="124" y="209" text-anchor="middle" font-size="9" font-weight="700" fill="#1b6e82">ガラス扉（開閉）</text>
+        </g>
       </g>
 
       <!-- 【中央：通路・脱衣スペース】 -->
-      <line x1="170" y1="310" x2="202" y2="310" stroke="#a08a74" stroke-width="1.5" marker-start="url(#dim-arrow)" marker-end="url(#dim-arrow)" />
-      <rect x="172" y="268" width="60" height="32" rx="4" fill="#ffffff" stroke="#c9b8a3" stroke-width="1" />
-      <text x="202" y="282" text-anchor="middle" font-size="9" font-weight="700" fill="#6e4726">中央通路</text>
-      <text x="202" y="294" text-anchor="middle" font-size="8.5" fill="#7c5e42">幅約65〜70cm</text>
+      <line x1="166" y1="312" x2="206" y2="312" stroke="#8c735d" stroke-width="1.5" marker-start="url(#dim-arrow)" marker-end="url(#dim-arrow)" />
+      
+      <!-- 中央通路 吹き出しブロック（下向きポインター） -->
+      <g filter="url(#float-bubble-shadow)">
+        <path d="M 172, 262 H 232 A 5,5 0 0 1 237, 267 V 293 A 5,5 0 0 1 232, 298 H 206 L 202, 304 L 198, 298 H 172 A 5,5 0 0 1 167, 293 V 267 A 5,5 0 0 1 172, 262 Z" fill="#ffffff" stroke="#8c735d" stroke-width="1.5" />
+        <text x="202" y="276" text-anchor="middle" font-size="9.5" font-weight="700" fill="#523924">中央通路</text>
+        <text x="202" y="291" text-anchor="middle" font-size="8.5" font-weight="600" fill="#7c5e42">幅約65〜70cm</text>
+      </g>
 
       <!-- 【ととのい動線（サウナから浴室へ）】 -->
       <path d="M 275 245 Q 315 270 380 270" fill="none" stroke="#e86127" stroke-width="4" stroke-dasharray="6,4" marker-end="url(#arrow-flow)" />
       
       <!-- 動線吹き出しバッジ -->
-      <g transform="translate(245, 305)">
-        <rect x="0" y="0" width="138" height="26" rx="13" fill="#e86127" />
+      <g transform="translate(245, 305)" filter="url(#float-bubble-shadow)">
+        <rect x="0" y="0" width="138" height="26" rx="13" fill="#e86127" stroke="#ffffff" stroke-width="1.5" />
         <text x="69" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">👉 水風呂直行（徒歩0秒）</text>
       </g>
 
       <!-- 【下部：居室・廊下への出入口】 -->
       <line x1="170" y1="395" x2="170" y2="445" stroke="#6e4726" stroke-width="3" stroke-linecap="round" />
       <path d="M 245 395 A 75 75 0 0 1 170 445" fill="none" stroke="#a08a74" stroke-width="1.5" stroke-dasharray="3,3" />
-      <rect x="175" y="405" width="70" height="20" rx="4" fill="#fdf6ec" stroke="#6e4726" stroke-width="1" />
-      <text x="210" y="419" text-anchor="middle" font-size="10" font-weight="700" fill="#6e4726">🚪 廊下・居室へ</text>
+      <g filter="url(#badge-shadow)">
+        <rect x="175" y="405" width="70" height="20" rx="4" fill="#fdf6ec" stroke="#6e4726" stroke-width="1.2" />
+        <text x="210" y="419" text-anchor="middle" font-size="10" font-weight="700" fill="#6e4726">🚪 廊下・居室へ</text>
+      </g>
     </svg>
   </div>
 
