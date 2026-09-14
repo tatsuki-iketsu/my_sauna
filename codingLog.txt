@@ -1363,5 +1363,25 @@ npm run build
 git add src/pages/articles/mansion-condo-guide.astro
 git commit -m "fix: マンション設置記事の総重量計算セクションを表形式（項目改行付き）へ改修 (#20)"
 git push origin review
+```
+-----------------------------------------
+■ アップデート: Issue #20 本番公開完了 (develop/mainマージ&push) (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- (Git review -> develop -> main マージ・push完了、Cloudflare Pages 本番自動デプロイ)
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md (公開済み・完了日更新)
+- (GitHub Projects #2 Status: 公開済み / GitHub Issue #20: クローズ)
+
+■ 詳細内容
+- GitHub Issue #20 において、運営者様より「最終確認OK」の承認コメントを受信。
+- publishApprovedArticles.ps1 を実行し、review ブランチの最新コミットを develop および main ブランチへマージ＆push。
+- Cloudflare Pages による本番公開（https://my-sauna.pages.dev/articles/mansion-condo-guide/）が自動開始。
+- moveTicketStatus.ps1 が連動実行され、GitHub Projects #2、GitHub Issue #20、タスクリスト.md のステータスを「公開済み」に完全同期。完了日（2026-09-14）を記録。
+- GitHub Issue #20 へ本番公開完了通知コメントを自動投稿し、Issue をクローズ（Closed）。
+
+■ 実行・検証コマンド
+```
+powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1" -IssueNo 20
 ```=========================================
 記録完了
