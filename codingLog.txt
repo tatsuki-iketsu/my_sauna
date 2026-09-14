@@ -897,5 +897,8 @@ powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive
 ■ 実行・検証コマンド
 `powershell
 powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1 -IssueNo 16
-`=========================================
+`
+- 記事タイトル上アイブロウ（kicker）、関連記事バッジ（badge）、記事一覧（index.astro）に露出していた「キーワードのスペース区切り羅列（例: 家庭用サウナ 木製 室内）」を、自然な日本語キャッチコピー（例: 失敗しない室内サウナ選び）へ全50記事一括刷新。
+- npm run build を実行し全54ページの正常静的生成・リンク整合性を検証。
+- reviewブランチへコミット・プッシュ完了（https://review.my-sauna.pages.dev/）。=========================================
 記録完了
