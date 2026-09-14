@@ -672,5 +672,78 @@ git push origin review
 ```powershell
 npm run build
 git push origin review
-```=========================================
+```
+-----------------------------------------
+■ アップデート: 画像チェック確認（Issue #16完了進行＆Issue #15スプリット構図再作成） (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localCode\ReactApp\my_sauna\public\images\articles\no-construction-fallacy.jpg [更新・再生成]
+- c:\localCode\ReactApp\my_sauna\public\images\no-construction-fallacy.jpg [更新・再生成]
+- c:\localCode\ReactApp\my_sauna\public\images\articles\no-construction-fallacy.jpg.bak [新規・バックアップ]
+- c:\localCode\ReactApp\my_sauna\public\images\no-construction-fallacy.jpg.bak [新規・バックアップ]
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md [更新]
+
+■ 詳細内容
+- GitHub Projects (Project #2)「40.画像チェック」チケットのユーザー確認結果を精査・反映。
+- 【完了進行】Issue #16（記事作成07_価格相場総額）：ユーザー様より「画像Ok」を受理したため、moveTicketStatus.ps1 を実行してステータスを「50.最終チェック」へ前進。GitHub Projects、Issue本文、タスクリスト.md、Issue #62の進捗チェックリストを完全同期し、最終目視確認の案内コメントを投稿。
+- 【差し戻し再作成】Issue #15（記事作成06_工事不要の落とし穴）：ユーザー様からのご指摘「コンセントの横にブレーカーがあるのは位置的におかしいので、線で区切ってふたつの絵を繋げるようにしてください」に対応。
+  - 既存画像の .bak バックアップを作成。
+  - 中央に縦の区切り線を配置し、左に床付近の20A壁コンセント＆太いプラグ、右に壁上部の住宅分電盤（ブレーカーパネル）を配した2分割スプリット構図のアイキャッチイラストを新規生成・配置。
+  - moveTicketStatus.ps1 によりステータスを「40.画像チェック」へ更新。タスクリスト.mdおよびIssue #62のチェックリストを同期。
+  - Astroプロジェクトの静的ビルド検証（全53ページ）に合格。
+  - reviewブランチへコミット＆プッシュ（https://review.my-sauna.pages.dev/articles/no-construction-fallacy/）し、Issue #15へ再作成完了コメントを投稿。
+
+■ 実行・検証コマンド
+```powershell
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 -IssueNo 16 -ToStatus "50.最終チェック"
+npm run build
+git push origin review
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 -IssueNo 15 -ToStatus "40.画像チェック"
+```
+
+-----------------------------------------
+■ アップデート: お問い合わせページ（/contact/）新設およびフッター導線追加 (Issue #64) (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- src/pages/contact.astro
+- src/layouts/ArticleLayout.astro
+- src/pages/index.astro
+- src/pages/sauna/neppa-standard.astro
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+
+■ 詳細内容
+- ユーザー指定のGoogleフォームURL（おうちサウナのある暮らし お問い合わせフォーム）をもとに、サイト統一デザインのお問い合わせページ（/contact/）を新設
+- 入力案内・注意事項カード（コルクボード風）、Google Forms埋め込みiframe、別タブ表示用フォールバックボタンを配置
+- 共通フッター（ArticleLayout, index, neppa-standard）にお問い合わせリンクを追加（ヘッダーリンクはご指示通り除外）
+- Astro静的ビルド（npm run build）による検証完了
+- reviewブランチへコミット＆プッシュ（Cloudflare Pagesプレビュー反映）
+- GitHub Projects #2、Issue #64、タスクリスト.mdのステータスを「30.記事チェック」へ連動移行
+
+■ 実行・検証コマンド
+```
+npm run build
+git push origin review
+moveTicketStatus.ps1 -IssueNo 64 -ToStatus '30.記事チェック'
+```
+
+-----------------------------------------
+■ アップデート: お問い合わせページの回答目安記載を削除 (Issue #64 差し戻し対応) (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- src/pages/contact.astro
+
+■ 詳細内容
+- GitHub Issue #64 の差し戻しコメント「回答の目安は記載しないでください。（現状どのくらいで返せるか分からないためですが、その旨は記載しなくて良いです）」に対応
+- src/pages/contact.astro の注意事項案内カード（.notice-board）から「回答の目安」リスト項目を削除
+- Astro static build（npm run build）による検証正常完了
+- review ブランチへコミット＆プッシュ（プレビュー確認用）
+- GitHub Issue #64 に修正完了のコメントを自動投稿
+
+■ 実行・検証コマンド
+npm run build
+git push origin review
+Issue #12 (記事作成03_一人用おすすめ) まとめセクションの下書きメモ重複（まとめ：自分だけの専用ととのい空間を作る第一歩 / 設置場所の採寸から注文前相談までのフロー。）を削除し、「一人用サウナ導入に向けた3つのステップ」として整理・更新。原稿およびAstroページ両方に反映し、reviewブランチへpush完了。GitHub Issue #12にコメント投稿。=========================================
 記録完了
