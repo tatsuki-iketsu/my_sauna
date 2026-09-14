@@ -1006,5 +1006,6 @@ npm run build
 git add public/images/articles/two-person-sauna-size.jpg public/images/two-person-sauna-size.jpg
 git commit -m "fix(image): 記事10_二人用サイズのストーブ木枠を下部全体を覆う床置きガードに修正"
 git push origin review
-```=========================================
+```
+[018]本番公開完了、[019]50.最終チェックへ移行、[020]マンション床構造図の中央揃え修正とpush=========================================
 記録完了
