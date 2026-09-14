@@ -1200,5 +1200,28 @@ git commit -m "feat(image): [020] マンション設置記事のアイキャッ�
 git push origin review
 powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1" -IssueNo 20 -ToStatus "40.画像チェック"
 ```
+
+-----------------------------------------
+■ アップデート: [021] 脱衣所設置記事のレイアウト図下カードを横長・縦並びリスト形式に改修 (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- src/pages/articles/washroom-dressing-room-layout.astro
+
+■ 詳細内容
+- GitHub Issue #21 における運営者様からの追加コメント「下の1、2、3、は横長にして縦に1、2、3が並ぶようにしてください。（縦のリスト的な）」に対応。
+- 従来の3列グリッド表示から、画面幅を活かした横長カードが縦に1→2→3と整然と並ぶリストレイアウトへ刷新。
+- 各カードの先頭にカラーナンバーバッジ（1: サウナオレンジ、2: 浴室ブルー、3: 洗面・動線グリーン）を配置し、視認性と階層構造を強化。
+- npm run build で全54ページの静的ビルド正常通過を検証。
+- review ブランチへコミット＆プッシュし、Cloudflare Pages プレビュー（https://review.my-sauna.pages.dev/articles/washroom-dressing-room-layout/）を更新。
+- GitHub Issue #21 に対する修正完了報告コメントを投稿。
+
+■ 実行・検証コマンド
+`
+npm run build
+git add src/pages/articles/washroom-dressing-room-layout.astro
+git commit -m "feat: 脱衣所レイアウト図下の解説カードを横長カードの縦並びリスト形式に刷新 (#21)"
+git push origin review
+`
 =========================================
 記録完了
