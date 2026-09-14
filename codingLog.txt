@@ -1383,5 +1383,31 @@ git push origin review
 ■ 実行・検証コマンド
 ```
 powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1" -IssueNo 20
-```=========================================
+```
+### 40画像チェックの2チケット対応（Issue #21 / Issue #23）
+- Issue #21（記事作成12_脱衣所設置）: ユーザーより「画像OKです」承認コメントを受理。moveTicketStatus.ps1を実行し、GitHub Projects #2、GitHub Issue #21 本文、タスクリスト.mdを「50.最終チェック」へ同期移行。確認依頼コメントを投稿。
+- Issue #23（記事作成14_専用回路20A工事）: ユーザーより分電盤下段レバー数（11個）を「3つくらいにしてください」との指摘を受理。generate_imageにて下部安全ブレーカースイッチを3〜4個に削減したイラストを再生成し、public/images/articles/20a-circuit-electrical-work.jpgに配置。npm run buildによる検証（全54ページ正常）を経て、reviewブランチにcommit＆push。Issue #23に修正完了コメントを投稿。
+-----------------------------------------
+■ アップデート: [024][025] 記事チェック指摘対応（スマホ改行調整・外気浴表現修正・まとめ立体ボックス化） (2026年9月15日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- src/pages/articles/floor-load-bearing-capacity.astro
+- src/pages/articles/second-floor-installation.astro
+- c:\localDocment\自宅サウナアフィリエイト\記事\15_家庭用サウナ_床_耐荷重.md
+- c:\localDocment\自宅サウナアフィリエイト\記事\16_自宅サウナ_2階_設置.md
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+
+■ 詳細内容
+- [Issue #24] 床耐荷重記事: スマホ表示時の改行位置調整（アンダーレイ構造枠内のカッコ・スラッシュ・横線前に.sp-brを適用）、まとめセクションの立体角丸四角ボックス（checklist-box）化
+- [Issue #25] 2階設置記事: 外気浴の記述から「全裸」を削除して「バスローブ1枚」に変更、階段タイプおよびアンダーレイ枠内の横線前にスマホ改行（.sp-br）を適用、まとめセクションの立体ボックス化
+- npm run build で全54ページ正常ビルド確認
+- reviewブランチへコミット＆プッシュ（Cloudflare Pagesプレビュー反映）
+- GitHub Issues #24, #25 に修正完了報告コメントを投稿
+
+■ 実行・検証コマンド
+`
+npm run build
+git push origin review
+`=========================================
 記録完了
