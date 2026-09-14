@@ -1291,5 +1291,26 @@ git push origin review
 ■ 実行・検証コマンド
 ```
 powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1" -IssueNo 20 -ToStatus "50.最終チェック" -Remarks "[Issue #20](https://github.com/tatsuki-iketsu/my_sauna/issues/20) [プレビュー](https://review.my-sauna.pages.dev/articles/mansion-condo-guide/) アイキャッチ画像（熱波 スタンダード仕様）確認OK承認を受理。最終公開前の目視確認待ち"
-```=========================================
+```
+-----------------------------------------
+■ アップデート: [022] 記事作成13_電気代1回 画像承認受領と50.最終チェック移行 (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- g:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 (構文エラー修正およびUTF-8 BOM保存)
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+
+■ 詳細内容
+- GitHub Issue #22 における運営者様からの「画像OKです」承認コメントを受領。
+- 40.画像チェック フェーズを正常完了とし、公開前最後のゲートである「50.最終チェック」へ移行。
+- moveTicketStatus.ps1 の配列インデックス展開エラーを修正し、PowerShell 5.1環境で文字化け・構文エラーを起こさないよう UTF-8 BOM付きで保存。
+- moveTicketStatus.ps1 を実行し、GitHub Projects #2、GitHub Issue #22 本文、タスクリスト.md の3点を「50.最終チェック」へ完全同期。
+- GitHub Issue #22 に最終チェック確認依頼コメントを投稿。
+
+■ 実行・検証コマンド
+`
+powershell -ExecutionPolicy Bypass -File "g:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1" -IssueNo 22 -ToStatus "50.最終チェック" ...
+`
+
+Issue #23（[023] 記事作成14_専用回路20A工事）のコメント指摘対応: 1. 20A専用回路配線イメージ枠内およびコンセント形状枠内の文章について、スマホ表示時のみカッコ前で改行するレスポンシブスタイル（.sp-br）を追加適用。 2. 「費用の内訳相場」の箇条書きリストを、スマホでも見やすい横スクロール対応の表形式（table）に刷新。 npm run build による静的ビルド検証パス、reviewブランチへのpush完了、Issue #23への修正報告コメント投稿完了。=========================================
 記録完了
