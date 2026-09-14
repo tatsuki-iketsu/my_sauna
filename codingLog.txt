@@ -1035,3 +1035,21 @@ git push origin review
 npm run build
 git push origin review
 ```
+
+
+- 記事内で生Markdownコードブロック（`）やMermaidが混入し、ブラウザで三点リーダー（︙）や生記号として表示崩れを起こしていた不具合を解消。
+- 参考ページ（high-temperature-100c）に準拠した立体的な囲み枠ボックス（カードUI：クリーム背景#fffdfa、2pxボーダー#2b221a、角丸8px、box-shadow付き）に全20記事を一括置換修正。
+  - 対象記事：electricity-cost-per-session, 20a-circuit-electrical-work, cold-sensitivity-improvement, custom-home-sauna-plan, delivery-route-checklist, diy-sauna-dangers, far-infrared-vs-dry-sauna, fire-prevention-laws, floor-load-bearing-capacity, home-sauna-chiller-water-bath, insomnia-sleep-quality, mold-prevention-cleaning, preheating-time-tips, pse-safety-standard, sauna-aroma-essential-oil, sauna-rental-subscription, second-floor-installation, totonoi-space-and-flow, two-person-sauna-size, ventilation-and-exhaust
+- 新規共有ルール「article_highlight_box_rule.md」を作成し、.agents/AGENTS.md および自宅サウナアフィリエイト/AGENTS.md に追記。
+- npm run build を実行し、全54ページが正常にビルドされることを確認。
+- review ブランチへコミット＆プッシュ完了。
+
+【作業概要】
+Issue #19（[019] 記事作成10_二人用サイズ）の運営者様による「最終チェックOK」コメントを検知し、publishApprovedArticles.ps1 スキルを実行して本番自動公開（develop / main ブランチへのマージ＆push、Cloudflare Pagesデプロイ）を完了。あわせて GitHub Projects (Project #2)、GitHub Issue #19 本文、コメント投稿、Issue クローズ、および タスクリスト.md の「公開済み」同期更新を実施。
+
+【主な対応内容】
+1. GitHub Issue #19 のコメント履歴を確認し、運営者様からの「最終チェックOK」承認を検知。
+2. publishApprovedArticles.ps1 を実行し、review ブランチを develop および main へ fast-forward マージして push 完了（本番URL: https://my-sauna.pages.dev/articles/two-person-sauna-size/）。
+3. GitHub Projects #2 上で Issue #19 のステータスを「公開済み」へ移動。
+4. GitHub Issue #19 本文のステータス更新、完了通知コメントの投稿、および Issue クローズ（closed）完了。
+5. タスクリスト.md のタスク019行のステータスを「公開済み」へ更新。
