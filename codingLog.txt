@@ -908,5 +908,103 @@ powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive
 - GitHub Issues へ完了通知コメント投稿およびIssueクローズ（Closed）完了。
 
 ■ 実行コマンド
-powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1=========================================
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1
+-----------------------------------------
+■ アップデート: 画像チェック結果の反映（No.018最終チェック移行、No.019アイキャッチ枠なし修正・再確認待ち、No.062公開済み移行） (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+- c:\localCode\ReactApp\my_sauna\public\images\articles\two-person-sauna-size.jpg
+- c:\localCode\ReactApp\my_sauna\public\images\two-person-sauna-size.jpg
+- GitHub Projects (Project #2), GitHub Issues (#18, #19, #62)
+
+■ 詳細内容
+1. [018] 記事作成09_デメリット後悔:
+   - 運営者様による「画像チェックOK」指示に基づき、moveTicketStatus.ps1 を実行。
+   - ステータスを「40.画像チェック」から「50.最終チェック」へ移行完了（GitHub Projects #2、Issue #18本文、タスクリスト.mdの3点完全同期）。
+
+2. [019] 記事作成10_二人用サイズ:
+   - 運営者様のコメント「枠の形が変なので、枠をなくすようなイラストにお願いします」の差し戻し指示に対応。
+   - 不自然な外側ボックス枠・立体フレーム線を排除し、サウナ室の室内風景（2人分のサウナマット、木製ベンチ、HARVIA風ストーブ、ヴィヒタ、温かい湯気）が自然に生成り背景へ溶け込む柔らかな色鉛筆スケッチイラストを再生成・差し替え。
+   - npm run build による静的HTMLビルド（全54ページ）の正常完了を確認後、成果物を review ブランチへコミット・push完了。
+   - Issue #19 への修正報告コメント投稿および備考更新（「枠なしイラストへ差し替え完了。画像再確認待ち」）。
+
+3. [062] アイキャッチ画像（No.01〜10）のデザイン・品質確認:
+   - 「対応済みのため移行」指示に基づき、No.09の確認完了反映、moveTicketStatus.ps1 によるステータス「公開済み」への移行、およびIssue #62のクローズ処理を実施。
+
+■ 実行・検証コマンド
+```powershell
+powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1" -IssueNo 18 -ToStatus "50.最終チェック"
+powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1" -IssueNo 62 -ToStatus "公開済み"
+npm run build
+git add public/images/articles/two-person-sauna-size.jpg public/images/two-person-sauna-size.jpg
+git commit -m "fix(image): 記事10_二人用サイズのアイキャッチ画像を枠なしイラストに修正・差し替え"
+git push origin review
+```
+-----------------------------------------
+■ アップデート: Issue #62コメント（Done移行指示）確認および完了報告コメント投稿 (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- GitHub Issues #62 (完了報告コメント追加)
+
+■ 詳細内容
+- 運営者様よりIssue #62に「こちらはすでに対応されているチケットなので、Doneに移行してください。」とのコメントが追加されたことを確認。
+- 事前に実行済みの対応（GitHub Projects #2 の Done カラムへの移動、Issue #62 のクローズ、タスクリスト.md の公開済み/完了日同期）が正常に反映されていることをAPI経由で検証。
+- Issue #62 へ移行完了の確認コメントを投稿完了。
+
+■ 実行・検証コマンド
+```powershell
+python scratch/verify_project_status.py
+python scratch/comment_issue62.py
+```
+-----------------------------------------
+■ アップデート: [018] 記事作成09_デメリット後悔 チェックリスト記号修正（[ ]から大きめの□へ変更） (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localDocment\自宅サウナアフィリエイト\記事\09_家庭用サウナ_デメリット_後悔.md
+- c:\localCode\ReactApp\my_sauna\src\pages\articles\demerits-regrets.astro
+- GitHub Issues #18 (コメント投稿・対応完了報告)
+
+■ 詳細内容
+- 運営者様よりGitHub Issue #18（50.最終チェック）に「チェックリストを[ ]ではなく□にし、印刷・コピーしてチェックしやすいよう四角を大きめにする」とのフィードバックを受領。
+- 原稿Markdown（記事/09_家庭用サウナ_デメリット_後悔.md）のチェックリスト10項目のマークを [ ] から □ に置換。
+- Astro実装（src/pages/articles/demerits-regrets.astro）のチェックリストを、印刷・コピー時にも四角文字「□」が維持され、かつ視覚的・手書きチェック時に書き込みやすい大きめサイズ（24px）のボックス付きカードデザインへ改修。
+- npm run build を実行し、静的HTMLビルドが正常に完了することを確認。
+- review ブランチへコミット＆プッシュ（commit: 915ef97）し、プレビュー環境（https://review.my-sauna.pages.dev/articles/demerits-regrets/）へ即時反映。
+- GitHub Issue #18 に修正内容および確認依頼のコメントを投稿。
+
+■ 実行・検証コマンド
+```powershell
+npm run build
+git add src/pages/articles/demerits-regrets.astro
+git commit -m "fix(article): 記事09_デメリット後悔の購入前チェックリストを[ ]から大きめの□ボックスへ変更"
+git push origin review
+```
+-----------------------------------------
+■ アップデート: Issue #19 アイキャッチ画像ストーブ木枠修正・reviewプッシュ (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localCode\ReactApp\my_sauna\public\images\articles\two-person-sauna-size.jpg
+- c:\localCode\ReactApp\my_sauna\public\images\two-person-sauna-size.jpg
+- GitHub Issues #19 (対応コメント投稿)
+
+■ 詳細内容
+- GitHub Issue #19（記事作成10_二人用サイズ）において、運営者様からの追加コメント「ストープの木枠が変です。ストーブが浮いている。ストーブの下側全体を覆うような木枠にしてください」を受領・確認。
+- ストーブが空中に浮いて見えていた中途半端な木枠を修正し、ストーブの下側全体をすっぽり囲んで床面までしっかり届く「木製保護フェンス（ヒーターガード）」を設置した手描き色鉛筆スケッチ風イラストへ再生成・差し替え。
+- 2人分のサウナマット、ヴィヒタ、桶と柄杓、湯気、枠なしで背景に溶け込む柔らかなタッチは維持。
+- npm run build を実行し、静的HTMLビルド（54 pages）が正常に完了することを確認。
+- 成果物を review ブランチへコミット＆プッシュ（commit: fix(image): 記事10_二人用サイズのストーブ木枠を下部全体を覆う床置きガードに修正）。
+- GitHub Issue #19 へプレビューURL（https://review.my-sauna.pages.dev/articles/two-person-sauna-size/）を添えて対応完了・再確認依頼コメントを投稿。
+
+■ 実行・検証コマンド
+```powershell
+npm run build
+git add public/images/articles/two-person-sauna-size.jpg public/images/two-person-sauna-size.jpg
+git commit -m "fix(image): 記事10_二人用サイズのストーブ木枠を下部全体を覆う床置きガードに修正"
+git push origin review
+```=========================================
 記録完了
