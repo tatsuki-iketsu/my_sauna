@@ -1053,3 +1053,124 @@ Issue #19（[019] 記事作成10_二人用サイズ）の運営者様による�
 3. GitHub Projects #2 上で Issue #19 のステータスを「公開済み」へ移動。
 4. GitHub Issue #19 本文のステータス更新、完了通知コメントの投稿、および Issue クローズ（closed）完了。
 5. タスクリスト.md のタスク019行のステータスを「公開済み」へ更新。
+
+-----------------------------------------
+■ アップデート: [020] 記事作成11_マンション設置 スマホ向けアンダーレイ構造の改行レスポンシブ対応 (2026年09月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- src/pages/articles/mansion-condo-guide.astro
+
+■ 詳細内容
+- GitHub Issue #20 の差し戻しコメント（スマホ表示時にカッコやスラッシュの前で改行してほしい旨）に対応。
+- 「マンション床を守る推奨アンダーレイ構造」カード内の各要素（脚部、第1層、第2層、フローリング、荷重集中注釈）に .sp-block クラスを付与。
+- 画面幅768px以下（モバイル時）に display: block となるレスポンシブスタイルを定義し、スマホ時にカッコ（「（4隅）」「（厚さ5〜10mm）」「（遮音二重床）」等）およびスラッシュ（「/ MDFボード」）の直前で自然に中央揃え改行されるよう修正。
+- review ブランチにコミット＆プッシュし、Issue #20 に修正完了報告コメントを投稿。
+
+■ 実行・検証コマンド
+```
+npm run build
+git diff src/pages/articles/mansion-condo-guide.astro
+git commit -m "fix(mansion-condo-guide): アンダーレイ構造カードをスマホ時にカッコ・スラッシュ前で改行するようレスポンシブ対応"
+git push origin review
+```
+
+-----------------------------------------
+■ アップデート: 脱衣所レイアウト見取り図のSVGフロアプラン図解化 (Issue #21対応) (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- src/pages/articles/washroom-dressing-room-layout.astro
+
+■ 詳細内容
+- GitHub Issue #21のフィードバック（「文字と枠線だと見づらいのでHTML/CSSの描画または画像にしてほしい」）に対応
+- 脱衣所（2畳・182cm×182cm）の配置見取り図を、単なる4枠グリッドから本格的な住宅間取りフロアプラン（SVG/HTML/CSS）へリファクタリング
+- 間口・奥行き182cmの寸法線、厚みのある構造壁、洗面化粧台（ボウル・水栓）、洗濯機パン、サウナキャビン（ヒノキ製ベンチ・ルーバースリット・電気ストーブ・サウナストーン・ガラスドア開閉軌跡）、浴室エリア（水風呂・シャワー・中折れ戸）、水風呂直行動線矢印（徒歩0秒）、中央有効通路（幅約65〜70cm）をピクセルパーフェクトに視覚化
+- 下部に「①水風呂へ徒歩0秒」「②浴室折れ戸で干渉ゼロ」「③給排水＆洗濯動線も確保」の解説カードを配置
+- npm run build による静的サイト生成と正常動作を検証
+- reviewブランチへコミット＆プッシュ（Cloudflare Pagesプレビュー反映）
+- GitHub Issue #21に修正報告コメントを投稿
+
+■ 実行・検証コマンド
+npm run build
+git push origin review
+
+-----------------------------------------
+■ アップデート: Issue #21 脱衣所レイアウト図の各設備ラベルを立体シャドウ付き吹き出しブロックに刷新 (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- src/pages/articles/washroom-dressing-room-layout.astro
+
+■ 詳細内容
+- 洗面化粧台、洗濯機パン、サウナキャビン、中央通路、浴槽水風呂の各設備ラベルを、対象設備を指し示すポインター付き吹き出し（speech bubble）かつドロップシャドウで浮き上がる立体ブロックデザインに刷新
+- SVGの feDropShadow フィルターを定義・適用し、図面上の視認性と立体感を大幅向上
+- 各吹き出し内に設備名称アイコンと寸法バッジ（背景色付き角丸タグ）をすっきり格納
+- npm run build でビルド正常通過を確認し、review ブランチへ commit & push 完了
+- GitHub Issue #21 に修正完了コメントを投稿
+
+■ 実行・検証コマンド
+```
+npm run build
+git commit -m 'feat: 脱衣所レイアウト図の各設備ラベルを立体シャドウ付き吹き出しブロックに刷新 (#21)'
+git push origin review
+```
+
+
+-----------------------------------------
+■ アップデート: [020] マンション設置記事のアイキャッチ画像作成・反映と40.画像チェック移行 (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- public/images/articles/mansion-condo-guide.jpg (新規作成)
+- public/images/mansion-condo-guide.jpg (新規作成)
+- src/pages/articles/mansion-condo-guide.astro
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+
+■ 詳細内容
+- GitHub Issue #20 における運営者様からの「記事内容OK」の承認コメントを受け、記事チェックフェーズを完了。
+- 次のフェーズである「40.画像チェック」へ進めるため、記事テーマ（分譲マンションにおける木製サウナキャビン設置、床保護アンダーレイボード、都市眺望のあるリビング）に即したアイキャッチ画像を生成。
+- 柔らかな色鉛筆・水彩スケッチ風イラスト、ペーパーテクスチャに溶け込むトーン＆マナーに統一し、public/images/articles/mansion-condo-guide.jpg に配置。
+- mansion-condo-guide.astro に eyecatch プロパティを追加・反映し、npm run build でビルド正常通過を検証。
+- review ブランチへコミット＆プッシュ（Cloudflare Pagesプレビュー反映）。
+- moveTicketStatus.ps1 を実行し、GitHub Projects #2、GitHub Issue #20 本文、および タスクリスト.md を「40.画像チェック」へ完全同期移行。
+- GitHub Issue #20 にプレビューURLおよび画像確認依頼コメントを投稿。
+
+■ 実行・検証コマンド
+```
+npm run build
+git add public/images/articles/mansion-condo-guide.jpg public/images/mansion-condo-guide.jpg src/pages/articles/mansion-condo-guide.astro
+git commit -m "feat(image): [020] マンション設置記事のアイキャッチ画像を追加し40.画像チェックへ進行"
+git push origin review
+powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1" -IssueNo 20 -ToStatus "40.画像チェック"
+```
+-----------------------------------------
+■ アップデート: [022] 記事作成13_電気代1回 アイキャッチ画像の生成・配置と40.画像チェックへの移行 (2026年09月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- src/pages/articles/electricity-cost-per-session.astro
+- public/images/articles/electricity-cost-per-session.jpg
+- public/images/electricity-cost-per-session.jpg
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+
+■ 詳細内容
+- GitHub Issue #22 における運営者様からの「記事内容OKです」コメントを受信。
+- 記事「家庭用サウナの電気代は1回いくら？毎日使った場合の月額コストを徹底試算」用のアイキャッチ画像を生成（木製電卓、サウナ砂時計、サウナハット、電気代計算スケッチブック等の温かい色鉛筆イラスト）。
+- public/images/articles/electricity-cost-per-session.jpg および public/images/ 配下に配置し、Astroテンプレートに eyecatch プロパティを設定。
+- npm run build で静的生成（全54ページ）の正常動作を確認。
+- review ブランチへコミット＆プッシュ（Cloudflare Pages プレビュー更新）。
+- moveTicketStatus.ps1 を実行し、GitHub Projects #2、GitHub Issue #22、タスクリスト.md のステータスを「40.画像チェック」へ移行完了。
+- GitHub Issue #22 へ画像確認依頼コメントを投稿。
+
+■ 実行・検証コマンド
+```
+npm run build
+git add src/pages/articles/electricity-cost-per-session.astro public/images/articles/electricity-cost-per-session.jpg public/images/electricity-cost-per-session.jpg
+git commit -m "feat(image): [022] 電気代1回記事のアイキャッチ画像を追加し40.画像チェックへ進行"
+git push origin review
+powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1" -IssueNo 22 -ToStatus "40.画像チェック" ...
+```
+
+=========================================
+記録完了
