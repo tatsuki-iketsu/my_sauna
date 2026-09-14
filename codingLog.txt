@@ -1223,5 +1223,29 @@ git add src/pages/articles/washroom-dressing-room-layout.astro
 git commit -m "feat: 脱衣所レイアウト図下の解説カードを横長カードの縦並びリスト形式に刷新 (#21)"
 git push origin review
 `
-=========================================
+
+-----------------------------------------
+■ アップデート: Issue #20 マンション設置記事アイキャッチ画像を「熱波 スタンダード」仕様イラストへ刷新 (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- public/images/articles/mansion-condo-guide.jpg
+- public/images/mansion-condo-guide.jpg
+
+■ 詳細内容
+- GitHub Issue #20 において、ユーザーより「1枚目の画像は紹介商品と別なので、2-3枚目（熱波 スタンダード）の商品のイラストにしてほしい」とのフィードバックを受信。
+- 紹介商品「家庭用・プライベートサウナ 熱波 スタンダード」（幅87×奥行87×高さ166cm、ヒノキ仕様、上部制御盤、ドア小窓付き）の外観仕様を忠実に反映したイラストを生成。
+- サイト既存記事のトーン＆マナー（柔らかな色鉛筆＋淡い水彩スケッチ風）を維持しつつ、マンション居室内の2層アンダーレイ（合板＋防振ゴムシート）設置の様子を描画。
+- 生成画像を public/images/articles/mansion-condo-guide.jpg および public/images/mansion-condo-guide.jpg へ反映。
+- npm run build を実行し、全54ページのエラーなしビルド成功を確認。
+- review ブランチへコミット＆プッシュ（コミットハッシュ: f9efd91）を実施。
+- GitHub Issue #20 へ完了報告とプレビュー確認依頼のコメントを投稿。
+
+■ 実行・検証コマンド
+```
+npm run build
+git add public/images/articles/mansion-condo-guide.jpg public/images/mansion-condo-guide.jpg
+git commit -m "fix: マンション設置記事のアイキャッチ画像を「熱波 スタンダード」仕様イラストへ刷新 (#20)"
+git push origin review
+```=========================================
 記録完了
