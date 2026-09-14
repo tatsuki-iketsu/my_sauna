@@ -900,5 +900,13 @@ powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive
 `
 - 記事タイトル上アイブロウ（kicker）、関連記事バッジ（badge）、記事一覧（index.astro）に露出していた「キーワードのスペース区切り羅列（例: 家庭用サウナ 木製 室内）」を、自然な日本語キャッチコピー（例: 失敗しない室内サウナ選び）へ全50記事一括刷新。
 - npm run build を実行し全54ページの正常静的生成・リンク整合性を検証。
-- reviewブランチへコミット・プッシュ完了（https://review.my-sauna.pages.dev/）。=========================================
+- reviewブランチへコミット・プッシュ完了（https://review.my-sauna.pages.dev/）。
+■ 作業概要
+- 承認済みチケット [014] 記事作成05_ロウリュ故障対策, [015] 記事作成06_工事不要の落とし穴, [017] 記事作成08_耐用年数寿命 の本番公開処理を実施。
+- review ブランチを develop および main へマージ・push（Cloudflare Pages本番自動デプロイ）。
+- GitHub Projects (Project #2)、GitHub Issues (#14, #15, #17)、タスクリスト.md のステータスを『公開済み』に完全同期。
+- GitHub Issues へ完了通知コメント投稿およびIssueクローズ（Closed）完了。
+
+■ 実行コマンド
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1=========================================
 記録完了
