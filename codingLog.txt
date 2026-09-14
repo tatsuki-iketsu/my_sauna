@@ -1312,5 +1312,56 @@ powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDriv
 powershell -ExecutionPolicy Bypass -File "g:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1" -IssueNo 22 -ToStatus "50.最終チェック" ...
 `
 
-Issue #23（[023] 記事作成14_専用回路20A工事）のコメント指摘対応: 1. 20A専用回路配線イメージ枠内およびコンセント形状枠内の文章について、スマホ表示時のみカッコ前で改行するレスポンシブスタイル（.sp-br）を追加適用。 2. 「費用の内訳相場」の箇条書きリストを、スマホでも見やすい横スクロール対応の表形式（table）に刷新。 npm run build による静的ビルド検証パス、reviewブランチへのpush完了、Issue #23への修正報告コメント投稿完了。=========================================
+Issue #23（[023] 記事作成14_専用回路20A工事）のコメント指摘対応: 1. 20A専用回路配線イメージ枠内およびコンセント形状枠内の文章について、スマホ表示時のみカッコ前で改行するレスポンシブスタイル（.sp-br）を追加適用。 2. 「費用の内訳相場」の箇条書きリストを、スマホでも見やすい横スクロール対応の表形式（table）に刷新。 npm run build による静的ビルド検証パス、reviewブランチへのpush完了、Issue #23への修正報告コメント投稿完了。
+-----------------------------------------
+■ アップデート: [022] 記事作成13_電気代1回 本番公開（develop/mainマージ・push）および完了移行 (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- g:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1 (User-Agent追加によるAPI安定化)
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md (完了日 2026-09-14 追記・公開済みへ移行)
+- developブランチ (reviewブランチのマージ＆push)
+- mainブランチ (developブランチのマージ＆push・本番公開)
+
+■ 詳細内容
+- GitHub Issue #22 における運営者様からの「最終確認OK」コメントを受領。
+- publishApprovedArticles.ps1 を実行し、承認判定を自動検知。
+- Git操作により review ブランチの成果物を develop および main ブランチへマージ＆push完了（Cloudflare Pages 本番自動デプロイ開始）。
+- moveTicketStatus.ps1 により GitHub Projects #2、GitHub Issue #22、タスクリスト.md のステータスを「公開済み（完了）」へ移行。
+- GitHub Issue #22 へ完了通知コメントを投稿し、Issue をクローズ（Closed）。
+- 作業ブランチを安全に review へ復帰。
+
+■ 実行・検証コマンド
+`
+powershell -ExecutionPolicy Bypass -File "g:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1" -IssueNo 22
+git checkout develop && git push origin develop
+git checkout main && git push origin main
+git checkout review
+`
+
+-----------------------------------------
+■ アップデート: Issue #20 総重量計算セクションの表形式化および項目名改行改修 (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- src/pages/articles/mansion-condo-guide.astro
+- c:\localDocment\自宅サウナアフィリエイト\記事\11_自宅サウナ_マンション_設置.md
+
+■ 詳細内容
+- GitHub Issue #20 において、ユーザーより「画像の部分（一人用サウナの実質総重量の計算）はスマホで少し見づらいので表形式にしてください。また、項目名は（の前で改行してください」との追加フィードバックを受信。
+- 従来の箇条書きリストから、項目（内訳）と重量（目安）の2列からなるレスポンシブテーブルへ再構築。
+- 項目名に含まれる「（」の直前に <br /> 改行を挿入し、スマートフォン表示時でも不自然な折り返しが発生しないよう最適化。
+- 合計総重量の行を背景色（#fff8eb）と太字・アクセントカラーで強調。
+- 原稿Markdownファイル（11_自宅サウナ_マンション_設置.md）も同様にMarkdownテーブルへ更新。
+- npm run build による全54ページの静的ビルド検証に合格。
+- review ブランチへコミット＆プッシュ（コミットハッシュ: 04b2671）を実施。
+- GitHub Issue #20 へ修正完了コメントを投稿。
+
+■ 実行・検証コマンド
+```
+npm run build
+git add src/pages/articles/mansion-condo-guide.astro
+git commit -m "fix: マンション設置記事の総重量計算セクションを表形式（項目改行付き）へ改修 (#20)"
+git push origin review
+```=========================================
 記録完了
