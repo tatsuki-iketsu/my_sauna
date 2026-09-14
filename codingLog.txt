@@ -776,5 +776,6 @@ powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive
 - GitHub Issue #64 に本番公開完了通知コメントを投稿し、Issue をクローズ (Closed)
 
 ■ 実行・検証コマンド
-powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1 -IssueNo 64=========================================
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1 -IssueNo 64
+Issue #12 (記事作成03_一人用おすすめ) 運営者様の最終確認OKを受け、publishApprovedArticles.ps1を実行。reviewブランチをdevelopおよびmainへマージ・push（本番公開）。タスクリスト.md、GitHub Projects #2、GitHub Issue #12のステータスを「公開済み」に更新しIssueをクローズ。=========================================
 記録完了
