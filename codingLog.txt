@@ -1247,5 +1247,49 @@ npm run build
 git add public/images/articles/mansion-condo-guide.jpg public/images/mansion-condo-guide.jpg
 git commit -m "fix: マンション設置記事のアイキャッチ画像を「熱波 スタンダード」仕様イラストへ刷新 (#20)"
 git push origin review
+```
+-----------------------------------------
+■ アップデート: [022] 電気代1回記事のアイキャッチ画像を指摘事項（スマホ電卓・安全配置）に修正 (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- public/images/articles/electricity-cost-per-session.jpg
+- public/images/electricity-cost-per-session.jpg
+
+■ 詳細内容
+- GitHub Issue #22 における運営者様からの指摘（「タオルの上にコーヒーは危ないので、タオルの上にないコーヒーだけにしてください」「電卓が少し古いので、スマホの電卓アプリにしてください」）に対応
+- generate_image ツールにより、温かみのある色鉛筆・水彩スケッチ風のテイストを維持しつつ、コーヒーマグを木製デスク上に直接安全・安定して配置（タオルは右下に離して配置）、レトロ電卓を最新スマートフォンの電卓アプリ画面に置き換えた新アイキャッチ画像を生成・更新
+- public/images/articles/ および public/images/ 直下に配置
+- npm run build で54ページの静的ビルド正常通過を検証
+- review ブランチへコミット＆プッシュ完了（Cloudflare Pages プレビュー反映）
+- GitHub Issue #22 に修正完了報告コメントを投稿
+
+■ 実行・検証コマンド
+`
+npm run build
+git add public/images/articles/electricity-cost-per-session.jpg public/images/electricity-cost-per-session.jpg
+git commit -m "fix(image): [022] 電気代1回記事のアイキャッチ画像をスマホ電卓・安全配置に修正 (#22)"
+git push origin review
+`
+
+-----------------------------------------
+■ アップデート: Issue #20 画像確認OK承認に伴う「50.最終チェック」ステータス移行 (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 (UTF-8 BOM統一・照合強化)
+- (GitHub Projects #2 / GitHub Issue #20 ステータス更新)
+
+■ 詳細内容
+- GitHub Issue #20 において、運営者様より「画像OKです」の承認コメントを受信。
+- moveTicketStatus.ps1 を実行し、Issue #20 のステータスを「50.最終チェック」へ移行。
+- GitHub Projects (Project #2)、GitHub Issue #20 本文、およびタスクリスト.md のステータス・備考を完全同期。
+- GitHub Issue #20 へ「50.最終チェック」移行完了および本番公開前の最終目視確認を依頼するコメントを投稿。
+- moveTicketStatus.ps1 について、Windows PowerShell 5.1 で確実に動作するよう UTF-8 BOM エンコードを統一。
+
+■ 実行・検証コマンド
+```
+powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1" -IssueNo 20 -ToStatus "50.最終チェック" -Remarks "[Issue #20](https://github.com/tatsuki-iketsu/my_sauna/issues/20) [プレビュー](https://review.my-sauna.pages.dev/articles/mansion-condo-guide/) アイキャッチ画像（熱波 スタンダード仕様）確認OK承認を受理。最終公開前の目視確認待ち"
 ```=========================================
 記録完了
