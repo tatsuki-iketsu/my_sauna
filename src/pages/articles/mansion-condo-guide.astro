@@ -55,33 +55,33 @@ const relatedArticles = [{'slug': 'demerits-regrets', 'title': '家庭用サウ�
 <h3>なぜ「荷重分散プレート（合板＋制振ゴムマット）」が必須なのか？</h3>
 <p>計算上は180kg/㎡基準に極めて近い、あるいはわずかに上回る程度ですが、マンションの床で本当に注意すべきは「コンクリート躯体の強度」ではなく、<strong>「表面のフローリング材と下地合板の局所的なへこみ・たわみ」</strong>です。</p>
 <p>サウナキャビンは多くの場合、底面の4隅の脚（接地面わずか数平方センチメートル）で全重量を支えています。局所的な「点加重」がかかり続けると、遮音二重床（防音クッションゴム付きの床下地）が沈み込んだり、フローリングに深い凹み跡が残ってしまいます。</p>
-<div style="background: #fffdfa; border: 2px solid #2b221a; border-radius: 8px; padding: 20px 24px; margin: 24px 0; box-shadow: 3px 4px 0 rgba(43, 34, 26, 0.15);">
+<div class="underlay-flow" style="background: #fffdfa; border: 2px solid #2b221a; border-radius: 8px; padding: 20px 24px; margin: 24px 0; box-shadow: 3px 4px 0 rgba(43, 34, 26, 0.15);">
   <div style="font-family: 'Yomogi', cursive; font-size: 18px; font-weight: 700; color: #6e4726; margin-bottom: 14px; border-bottom: 2px dashed #cfc2ab; padding-bottom: 8px; text-align: center;">
     🪵 マンション床を守る推奨アンダーレイ構造
   </div>
   <div style="font-size: 15px; line-height: 1.8;">
     <div style="background: #faeab1; border: 1.5px solid #2b221a; border-radius: 6px; padding: 10px 14px; font-weight: 700; text-align: center;">
-      サウナ本体の脚部（4隅）
+      <span class="sp-block">サウナ本体の脚部</span><span class="sp-block">（4隅）</span>
     </div>
     <div style="text-align: center; color: #a67c52; font-weight: 700; font-size: 14px; margin: 4px 0;">
-      ↓（約190kgの荷重が4点に集中）
+      <span class="sp-block">↓</span><span class="sp-block">（約190kgの荷重が4点に集中）</span>
     </div>
     <div style="background: #faeab1; border: 1.5px solid #2b221a; border-radius: 6px; padding: 10px 14px; text-align: center;">
-      <div><strong>【第1層】厚さ12〜15mm 構造用合板 / MDFボード</strong></div>
+      <div><strong><span class="sp-block">【第1層】厚さ12〜15mm 構造用合板</span> <span class="sp-block">/ MDFボード</span></strong></div>
       <div style="font-size: 13.5px; color: #6e4726; margin-top: 2px;">👉 点荷重を面全体（約1㎡）に均等分散し、床のたわみ・凹みを防止</div>
     </div>
     <div style="text-align: center; color: #a67c52; font-weight: 700; font-size: 18px; margin: 4px 0;">
       ↓
     </div>
     <div style="background: #faeab1; border: 1.5px solid #2b221a; border-radius: 6px; padding: 10px 14px; text-align: center;">
-      <div><strong>【第2層】高硬度防振・防音ゴムシート（厚さ5〜10mm）</strong></div>
+      <div><strong><span class="sp-block">【第2層】高硬度防振・防音ゴムシート</span><span class="sp-block">（厚さ5〜10mm）</span></strong></div>
       <div style="font-size: 13.5px; color: #6e4726; margin-top: 2px;">👉 動作時の微振動や階下への衝撃音・床鳴りをカット</div>
     </div>
     <div style="text-align: center; color: #a67c52; font-weight: 700; font-size: 18px; margin: 4px 0;">
       ↓
     </div>
     <div style="background: #e0eee0; border: 2px solid #538558; border-radius: 6px; padding: 10px 14px; text-align: center; font-weight: 700; color: #2b221a;">
-      マンションのフローリング（遮音二重床）
+      <span class="sp-block">マンションのフローリング</span><span class="sp-block">（遮音二重床）</span>
     </div>
   </div>
 </div>
@@ -164,3 +164,14 @@ const relatedArticles = [{'slug': 'demerits-regrets', 'title': '家庭用サウ�
 <p><strong>Q3: 賃貸マンションでもこの方法で設置できますか？</strong></p>
 <p>A: 物理的には可能ですが、賃貸物件の場合は退去時の「原状回復義務」があるため、オーナー（大家さん）の事前承諾が必須です。特に20A専用コンセント工事を「ビス留めなしの露出配線」で行えるかなど、退去時に跡を残さない工夫が必要となります。</p>
 </ArticleLayout>
+
+<style>
+  .underlay-flow .sp-block {
+    display: inline;
+  }
+  @media (max-width: 768px) {
+    .underlay-flow .sp-block {
+      display: block;
+    }
+  }
+</style>
