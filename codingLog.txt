@@ -1172,5 +1172,33 @@ git push origin review
 powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1" -IssueNo 22 -ToStatus "40.画像チェック" ...
 ```
 
+
+-----------------------------------------
+■ アップデート: [020] マンション設置記事のアイキャッチ画像作成・反映と40.画像チェック移行 (2026年9月14日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- public/images/articles/mansion-condo-guide.jpg (新規作成)
+- public/images/mansion-condo-guide.jpg (新規作成)
+- src/pages/articles/mansion-condo-guide.astro
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+
+■ 詳細内容
+- GitHub Issue #20 における運営者様からの「記事内容OK」の承認コメントを受け、記事チェックフェーズを完了。
+- 次のフェーズである「40.画像チェック」へ進めるため、記事テーマ（分譲マンションにおける木製サウナキャビン設置、床保護アンダーレイボード、都市眺望のあるリビング）に即したアイキャッチ画像を生成。
+- 柔らかな色鉛筆・水彩スケッチ風イラスト、ペーパーテクスチャに溶け込むトーン＆マナーに統一し、public/images/articles/mansion-condo-guide.jpg に配置。
+- mansion-condo-guide.astro に eyecatch プロパティを追加・反映し、npm run build でビルド正常通過を検証。
+- review ブランチへコミット＆プッシュ（Cloudflare Pagesプレビュー反映）。
+- moveTicketStatus.ps1 を実行し、GitHub Projects #2、GitHub Issue #20 本文、および タスクリスト.md を「40.画像チェック」へ完全同期移行。
+- GitHub Issue #20 にプレビューURLおよび画像確認依頼コメントを投稿。
+
+■ 実行・検証コマンド
+```
+npm run build
+git add public/images/articles/mansion-condo-guide.jpg public/images/mansion-condo-guide.jpg src/pages/articles/mansion-condo-guide.astro
+git commit -m "feat(image): [020] マンション設置記事のアイキャッチ画像を追加し40.画像チェックへ進行"
+git push origin review
+powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1" -IssueNo 20 -ToStatus "40.画像チェック"
+```
 =========================================
 記録完了
