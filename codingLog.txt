@@ -1409,5 +1409,8 @@ powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDriv
 `
 npm run build
 git push origin review
-`=========================================
+`
+【画像確認および最終確認チケットへの対応（Issue #21本番公開 & Issue #23最終チェック移行）】
+1. Issue #23 [023] 記事作成14_専用回路20A工事: 運営者様からの「画像OK」コメントを受理。moveTicketStatus.ps1を実行し、GitHub Projects #2 / GitHub Issues / タスクリスト.md のステータスを「50.最終チェック」へ移行。Issueに完了・案内コメントを投稿。
+2. Issue #21 [021] 記事作成12_脱衣所設置: 運営者様からの「最終確認OK」コメントを受理。publishApprovedArticles.ps1を実行し、reviewブランチをdevelopおよびmainへマージ・push（Cloudflare Pages本番公開）。ステータスを「公開済み」へ更新、完了コメント投稿、Issueをクローズ。タスクリスト.mdを同期更新。=========================================
 記録完了
