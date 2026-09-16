@@ -329,6 +329,16 @@ const {
       .footer-links a:hover {
         color: var(--water);
       }
+
+      /* スマホ最適化改行（responsive-text-break） */
+      .sp-br {
+        display: none;
+      }
+      @media (max-width: 640px) {
+        .sp-br {
+          display: inline;
+        }
+      }
     </style>
   </head>
   <body>
