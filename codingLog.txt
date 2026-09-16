@@ -1439,5 +1439,73 @@ git push origin review
 npm run build
 git push origin review
 `
-=========================================
+
+-----------------------------------------
+■ アップデート: [023] 本番公開完了 & [024] スマホ改行修正 & [025][026][027] アイキャッチ画像配置・40.画像チェック移行 (2026年9月16日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- src/pages/articles/floor-load-bearing-capacity.astro
+- public/images/articles/second-floor-installation.jpg
+- public/images/articles/pse-safety-standard.jpg
+- public/images/articles/ventilation-and-exhaust.jpg
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+
+■ 詳細内容
+1. 【Issue #23 20A工事 本番公開完了】
+   - 運営者様の「最終確認OK」承認を受け、publishApprovedArticles.ps1 を実行。
+   - review ブランチを develop および main へマージ＆pushし、Cloudflare Pages本番公開を完了。
+   - チケットステータスを「公開済み」に移行、完了コメント投稿、Issueをクローズ。
+2. 【Issue #24 床耐荷重 スマホ改行修正】
+   - 運営者様の「カッコの前は改行してください」フィードバックに基づき、表・アンダーレイ構造枠内のすべてのカッコ（「（」「【」等）前にスマホ改行タグ（<span class=sp-br><br /></span>）を挿入・調整。
+   - review ブランチへコミット＆pushし、Issue #24 に確認依頼コメントを投稿。
+3. 【Issue #25 2階設置 / Issue #26 PSEマーク / Issue #27 換気排気計画 40.画像チェック移行】
+   - 運営者様からの「記事内容OK」「記事内容確認OK」承認を受け、各記事のアイキャッチ画像を生成・配置。
+     - Issue #25: public/images/articles/second-floor-installation.jpg（2階の明るいサウナ部屋とバルコニー動線）
+     - Issue #26: public/images/articles/pse-safety-standard.jpg（接地極付きプラグと安心の点検検査）
+     - Issue #27: public/images/articles/ventilation-and-exhaust.jpg（給気口・排気口のクリーンな空気循環）
+   - npm run build による静的ビルド検証（全54ページ正常）に合格後、review ブランチへコミット＆push。
+   - moveTicketStatus.ps1 を実行し、GitHub Projects #2、GitHub Issues本文、タスクリスト.md を「40.画像チェック」へ完全同期移行。
+   - 各Issue (#25, #26, #27) にアイキャッチ画像確認依頼のコメントを投稿。
+
+■ 実行・検証コマンド
+
+npm run build
+git push origin review
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1 -IssueNo 23
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 -IssueNo 25 -ToStatus 40.画像チェック
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 -IssueNo 26 -ToStatus 40.画像チェック
+powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 -IssueNo 27 -ToStatus 40.画像チェック
+
+【不具合修正】Issue #25, #26, #27 記事のアイキャッチ画像表示欠落の修正
+- 対象記事:
+  1. src/pages/articles/second-floor-installation.astro (Issue #25)
+  2. src/pages/articles/pse-safety-standard.astro (Issue #26)
+  3. src/pages/articles/ventilation-and-exhaust.astro (Issue #27)
+- 原因: 画像ファイル（public/images/articles/*.jpg）は配置済みだったが、各記事の.astroファイル内でeyecatch変数定義およびArticleLayoutへのprops渡し（eyecatch={eyecatch}）が抜けていたため、Webページ上にアイキャッチ画像タグが出力されていなかった。
+- 修正内容:
+  1. 3記事のフロントマターに const eyecatch = '/images/articles/[slug].jpg' を追加し、ArticleLayoutに eyecatch={eyecatch} を渡すよう修正。
+  2. npm run build で正常に <div class=article-eyecatch><img src=...></div> が生成されることを確認。
+  3. reviewブランチへコミット＆プッシュ完了。
+  4. GitHub Issues (#25, #26, #27) に修正報告と直接画像プレビューをコメント投稿。
+-----------------------------------------
+■ アップデート: 記事作成19（消防法・火災予防条例）スマホ改行最適化およびまとめ四角ボックス化 (2026/9/17)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localCode\ReactApp\my_sauna\src\pages\articles\fire-prevention-laws.astro
+- c:\localDocment\自宅サウナアフィリエイト\記事\19_家庭用サウナ_防火_消防法.md
+
+■ 詳細内容
+- Issue #28（記事作成19_防火消防法）のユーザーフィードバック「スマホで見づらいので、カッコ前で改行など適宜対応（スマホのみ）してください」に対応。
+- 「4. 薪サウナと電気サウナの法令上の決定的な違い」の比較テーブル内の各セル（家庭用、直火、電熱エレメント、二重断熱煙突等、室内で完結、火気使用設備設置届、届出対象外、近隣煙害トラブル・CO中毒、クリーン・無煙無臭、脱衣所等、自動停止、手動等）に `<span class="sp-br"><br /></span>` を挿入。
+- セクション2の3大安全要件ボックス、セクション3のクリアランス基準ボックス、各h3見出し内のカッコ前にもスマホ改行を反映。
+- セクション6の「まとめ」箇条書きを checklist-box スキル準拠の立体角丸四角チェックボックス（□）デザインに整形。
+- reviewブランチへコミット・プッシュ完了。Issue #28へ対応完了コメントを投稿。
+
+■ 実行・検証コマンド
+```
+npm run build
+git push origin review
+```=========================================
 記録完了
