@@ -1507,5 +1507,6 @@ powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive
 ```
 npm run build
 git push origin review
-```=========================================
+```
+本番公開時におけるサイトマップXML（sitemap.xml）自動更新ルールの制定、専用生成スクリプト（generateSitemap.ps1）の実装、publishApprovedArticles.ps1への統合、およびmain公開済み54ページ全件を反映したpublic/sitemap.xmlの生成と各ブランチ（review, develop, main）への反映・本番push完了。=========================================
 記録完了
