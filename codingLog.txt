@@ -1508,5 +1508,47 @@ powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive
 npm run build
 git push origin review
 ```
-本番公開時におけるサイトマップXML（sitemap.xml）自動更新ルールの制定、専用生成スクリプト（generateSitemap.ps1）の実装、publishApprovedArticles.ps1への統合、およびmain公開済み54ページ全件を反映したpublic/sitemap.xmlの生成と各ブランチ（review, develop, main）への反映・本番push完了。=========================================
+本番公開時におけるサイトマップXML（sitemap.xml）自動更新ルールの制定、専用生成スクリプト（generateSitemap.ps1）の実装、publishApprovedArticles.ps1への統合、およびmain公開済み54ページ全件を反映したpublic/sitemap.xmlの生成と各ブランチ（review, develop, main）への反映・本番push完了。
+■ ユーザー画像確認フィードバック対応（Issue #25, #26 アイキャッチ画像再修正 ＆ Issue #27 最終チェック移行） (2026/9/17)
+- 対象チケット:
+  1. Issue #25 [025] 記事作成16_2階設置:
+     - ユーザー指摘「位置が変。どこから入れるか分からない。階段の途中ではなく、2階などにしてください」に対応。
+     - 階段途中配置を解消し、2階の明るいフローリング床に水平設置。正面ガラス扉・木製ハンドル・内部構造を描写してエントランスを明確化。右側掃き出し窓からの2階バルコニー外気浴動線を描写。サウナ内の文字（SAUNA等）もインペイント除去。
+     - public/images/articles/second-floor-installation.jpg を差し替え。
+  2. Issue #26 [026] 記事作成17_PSEマーク安全:
+     - ユーザー指摘「画像がサウナもあるのに業者？もいるのはへん。これならサウナ関係なしの業者だけにしましょう」に対応。
+     - サウナキャビンを完全除外し、サウナ関係なしのプロ電気設備点検業者（電気工事士）単体にフォーカス。分電盤のテスター測定・安全検査を行う様子を描写。クリップボード等の文字もインペイント除去。
+     - public/images/articles/pse-safety-standard.jpg を差し替え。
+  3. Issue #27 [027] 記事作成18_換気排気計画:
+     - ユーザー承認「いいですね！画像OKです。。」を受理。
+     - moveTicketStatus.ps1 を実行し、GitHub Projects #2、GitHub Issue #27 本文、タスクリスト.md を「50.最終チェック」へ移行。
+     - Issue #27 に最終目視確認依頼コメントを投稿。
+- npm run build 検証: 全54ページ正常ビルド確認（3.81秒）。
+- review ブランチへ commit & push 完了（commit: 7ab65b3）。
+- 各Issue (#25, #26, #27) へ対応完了・確認依頼コメントを投稿。タスクリスト.md を同期更新。
+-----------------------------------------
+■ アップデート: 画像制作・図解における過去の指摘事項の体系化、新ルール策定およびarticle-image-creatorスキルの新設 (2026年9月17日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\rules\article_eyecatch_image_rule.md [新規]
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\.agents\skills\article-image-creator\SKILL.md [新規]
+- c:\localDocment\自宅サウナアフィリエイト\codex\skills\article-image-creator\SKILL.md [新規]
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\.agents\AGENTS.md [更新]
+- c:\localDocment\自宅サウナアフィリエイト\AGENTS.md [更新]
+- c:\localDocment\自宅サウナアフィリエイト\codex\skills\sauna-affiliate-article-production\SKILL.md [更新]
+
+■ 詳細内容
+1. 過去の画像・図解指摘事項の徹底抽出・体系化:
+   - Issue #12（畳設置NG→洋室フローリング）
+   - Issue #15, #23（コンセントと分電盤の混同NG→スプリット構図で分離、ブレーカーレバー数多すぎNG→横並び3〜4個へ少数化、不自然な文字NG→無地グレーブランク銘板）
+   - Issue #16, #22（サウナハット・タオル追加、タオルの上にコーヒーNG、現代的電卓）
+   - Issue #19（不自然な外枠排除、ストーブ木枠ガードの床置き安定化）
+   - Issue #20, #21（紹介実機仕様準拠、ページ内間取り図・動線および完全木製ドアへの一致）
+   - Issue #25, #26（2階設置の出入口明確化、PSE点検の専門業者フォーカス）
+   - Issue #25〜#27（Astroテンプレート側eyecatch指定の紐付け漏れ防止）
+2. 共通ルール・スキルの整備:
+   - 新規ルール article_eyecatch_image_rule.md の策定。
+   - 新規スキル article-image-creator の策定（プロンプト生成テンプレート、チェックリスト、実装・プレビュー目視確認フロー）。
+   - 両プロジェクトの AGENTS.md および sauna-affiliate-article-production SKILL.md に厳守規定を追記。=========================================
 記録完了
