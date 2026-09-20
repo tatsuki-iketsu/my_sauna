@@ -1651,3 +1651,22 @@ git push origin review
 ■ 実行・検証コマンド
 - powershell G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1
 - powershell G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 -IssueNo 28 -ToStatus "50.最終チェック"
+=========================================
+[2026/9/20 13:27:07]
+### Issue #32 記事作成23_バレルサウナ比較「記事内容確認OK」対応（アイキャッチ画像生成・配置・40.画像チェック移行）
+1. Issue #32 [032] 記事作成23_バレルサウナ比較（記事チェックチケット）:
+   - 運営者様より「記事内容確認OKです」の承認コメントを受理。
+   - article-image-creator スキルおよび画像ルールに厳格に準拠し、generate_image にて当サイト統一の「暖かみのある手描き色鉛筆スケッチ＆水彩風イラスト（生成りペーパー背景）」による対比アイキャッチ画像を生成。
+     - 左側：屋外の庭の水平なコンクリート基礎の上に設置された木製バレルサウナ（樽型カーブ、煙突、自然な庭の景観）。
+     - 右側：清潔な明るい木目調フローリング洋室内に設置された木製サウナキャビン（ガラス窓付きドア、手前の木製スツールにたたまれた白いタオルとフェルト製サウナハット）。
+     - 文字・記号の完全排除、外枠フレーム排除、フローリング設置遵守。
+   - 画像を public/images/articles/barrel-sauna-vs-indoor-sauna.jpg および public/images/barrel-sauna-vs-indoor-sauna.jpg へ配置。
+   - src/pages/articles/barrel-sauna-vs-indoor-sauna.astro の Frontmatter に eyecatch を紐付け。
+   - npm run build により全54ページの静的ビルド正常完了を確認。
+   - git commit & git push origin review を実行し、review ブランチへ最新コードと画像を反映。
+   - moveTicketStatus.ps1 を実行し、GitHub Projects #2、GitHub Issue #32本文、およびタスクリスト.md を「40.画像チェック」へ完全同期移行。
+   - GitHub Issue #32 へアイキャッチ画像プレビュー、確認ポイント、確認URLを記載した案内コメントを投稿。
+=========================================
+
+
+Issue #28（防火消防法記事）50.最終チェックでのユーザー指示（コロン後改行）の対応。fire-prevention-laws.astroおよびdelivery-route-checklist.astroにおいて、スマホ閲覧時の改行位置をコロン直前に配置していたものをコロン直後へ修正。さらにresponsive_break_rule.md、responsive-text-breakスキル、各AGENTS.mdにコロン直後改行の規定を明記。reviewブランチへpushし、Issue #28へ報告コメントを投稿。
