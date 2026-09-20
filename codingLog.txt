@@ -1613,3 +1613,41 @@ git push origin review
    - moveTicketStatus.ps1 を実行し、GitHub Projects #2 / Issue #30 / タスクリスト.md を「40.画像チェック」へ移行。
    - GitHub Issue #30 へ新規アイキャッチ画像プレビュー付き報告コメントを投稿。
 =========================================
+
+
+[画像確認コメント対応 & ステータス移行]
+1. ユーザー様からの画像確認コメントを検知・処理：
+   - Issue #24 (記事15_床耐荷重): 「画像確認OKです」を受理 -> 50.最終チェックへ移行、Issueコメント投稿
+   - Issue #26 (記事17_PSEマーク安全): 「画像確認OKです」を受理 -> 50.最終チェックへ移行、Issueコメント投稿
+   - Issue #30 (記事21_テントサウナ比較): 「画像確認OKです」を受理 -> 50.最終チェックへ移行、Issueコメント投稿
+   - Issue #28 (記事19_防火消防法): 「バツマークではなく、ハテナマークにしてください」に対応
+2. 記事19_防火消防法のアイキャッチ画像修正：
+   - 旧アイキャッチを fire-prevention-laws.jpg.bak へバックアップ
+   - 手前書類上の赤色バツ（✕）マークを赤色ハテナ（？）マークに変更した色鉛筆・水彩風イラストを再生成
+   - public/images/articles/fire-prevention-laws.jpg および public/images/fire-prevention-laws.jpg を更新
+   - npm run build で全54ページの正常静的ビルドを確認
+   - reviewブランチへコミット＆push（Cloudflare Pages自動反映）
+   - Issue #28 へ再確認依頼コメントを投稿
+3. スクリプト改善：
+   - moveTicketStatus.ps1: タスクリスト.md 内の行特定ロジックを改善し、No列（3桁形式）でも正確にステータス・備考が更新されるよう対応
+
+-----------------------------------------
+■ アップデート: 承認済み記事3件の本番自動公開およびIssue #28の50.最終チェック移行 (2026年9月20日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- public/sitemap.xml
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+
+■ 詳細内容
+1. 「50.最終チェック」承認検知＆本番公開 (publishApprovedArticles.ps1):
+   - Issue #24（記事作成15_床耐荷重）: 運営者様「最終確認OKです」を検知し、develop/mainへマージ・本番push・ステータス「公開済み」同期・Issueクローズ完了
+   - Issue #26（記事作成17_PSEマーク安全）: 運営者様「最終確認OKです」を検知し、develop/mainへマージ・本番push・ステータス「公開済み」同期・Issueクローズ完了
+   - Issue #30（記事作成21_テントサウナ比較）: 運営者様「最終確認OKです」を検知し、develop/mainへマージ・本番push・ステータス「公開済み」同期・Issueクローズ完了
+   - 本番公開に伴い、sitemap.xml (全54ページ) を最新化してmain/develop/reviewへ同期。
+2. 「40.画像チェック」承認検知＆ステータス移行 (moveTicketStatus.ps1):
+   - Issue #28（記事作成19_防火消防法）: 運営者様「画像確認OKです」を受理し、「50.最終チェック」へステータス移行。GitHub Projects #2、Issue本文、タスクリスト.mdを完全同期し、最終目視確認のお願いコメントを投稿。
+
+■ 実行・検証コマンド
+- powershell G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1
+- powershell G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1 -IssueNo 28 -ToStatus "50.最終チェック"
