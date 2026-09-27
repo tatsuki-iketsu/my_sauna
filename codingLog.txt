@@ -1670,3 +1670,116 @@ git push origin review
 
 
 Issue #28（防火消防法記事）50.最終チェックでのユーザー指示（コロン後改行）の対応。fire-prevention-laws.astroおよびdelivery-route-checklist.astroにおいて、スマホ閲覧時の改行位置をコロン直前に配置していたものをコロン直後へ修正。さらにresponsive_break_rule.md、responsive-text-breakスキル、各AGENTS.mdにコロン直後改行の規定を明記。reviewブランチへpushし、Issue #28へ報告コメントを投稿。
+
+-----------------------------------------
+■ アップデート: ユーザーコメント対応5件（本番公開1件、画像承認・最終チェック移行1件、搬入経路CSS修正1件、画像生成・画像チェック移行2件） (2026年9月21日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- src/pages/articles/delivery-route-checklist.astro
+- src/pages/articles/far-infrared-vs-dry-sauna.astro
+- src/pages/articles/used-sauna-risks.astro
+- public/images/articles/far-infrared-vs-dry-sauna.jpg
+- public/images/far-infrared-vs-dry-sauna.jpg
+- public/images/articles/used-sauna-risks.jpg
+- public/images/used-sauna-risks.jpg
+- public/sitemap.xml
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+
+■ 詳細内容
+1. 【最終確認1件・本番公開】Issue #28（防火消防法）:
+   - 運営者様の「最終確認OK」を受理し、publishApprovedArticles.ps1 により review ブランチを develop および main へマージ・push（Cloudflare Pages本番公開）。
+   - sitemap.xml を全54ページで自動再生成・本番反映。チケットステータスを「公開済み」に更新し、Issue #28 をクローズ完了。
+2. 【画像1件・50.最終チェック移行】Issue #32（バレルサウナ比較）:
+   - 運営者様の「画像OK」を受理し、チケットステータスを「50.最終チェック」へ移行。Issueに最終目視確認の案内コメントを投稿。
+3. 【記事内容確認1件・修正】Issue #29（搬入経路確認）:
+   - 「梱包構成（例）」の四角囲み枠内で下部の箱③〜箱⑤の背景色が白くなっていた不備を、箱①・②と同様の黄色（#faeab1）および境界線に統一修正。エレベーター目安枠のボーダーも整理し、review ブランチへコミット・push。Issue #29 に完了コメント投稿。
+4. 【記事内容確認2件・画像生成】Issue #31（遠赤外線ドライ違い）:
+   - 「記事内容確認OK」を受理。article-image-creator スキルに基づき、遠赤外線vsドライサウナの左右スプリット対比イラスト（文字なし・枠なし・フローリング）を生成・配置。eyecatch紐付け後、ステータスを「40.画像チェック」へ移行し確認コメント投稿。
+5. 【記事内容確認3件・画像生成】Issue #33（中古注意点）:
+   - 「記事内容確認OK」を受理。article-image-creator スキルに基づき、中古サウナ・無地クラフト段ボール・スマホ・巻尺の手描き水彩イラスト（文字なし・枠なし・フローリング）を生成・配置。eyecatch紐付け後、ステータスを「40.画像チェック」へ移行し確認コメント投稿。
+
+■ 実行・検証コマンド
+- npm run build (全54ページ静的生成・パス解決確認完了)
+- publishApprovedArticles.ps1
+- moveTicketStatus.ps1
+
+-----------------------------------------
+■ アップデート: 最終チェックチケット本番自動公開＆画像確認チケット2件のアイキャッチ再生成 (2026年9月21日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- public/images/articles/far-infrared-vs-dry-sauna.jpg (遠赤外線サウナ 1箇所ヒーターストーブ配置イラスト再生成)
+- public/images/far-infrared-vs-dry-sauna.jpg
+- public/images/articles/used-sauna-risks.jpg (中古サウナ 新品ピカピカvs中古年季比較イラスト再生成)
+- public/images/used-sauna-risks.jpg
+- public/sitemap.xml (Issue #32本番公開に伴うサイトマップ最新化)
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md (Issue #32 公開済み更新)
+
+■ 詳細内容
+1. Issue #32「記事作成23_バレルサウナ比較」本番公開＆完了処理:
+   - 運営者からの「最終確認OKです」コメントを検知し、publish-approved-articles スキルを実行。
+   - reviewブランチを develop および main へマージ・pushし、Cloudflare Pagesへ本番反映。
+   - mainブランチの全54ページに基づき public/sitemap.xml を最新化・コミット。
+   - GitHub Projects #2、GitHub Issue本文、タスクリスト.md のステータスを「公開済み」に完全同期更新し、完了通知コメント投稿後にIssueをクローズ。
+2. Issue #31「記事作成22_遠赤外線ドライ違い」画像再生成:
+   - 「四方が遠赤外線で埋まっているよりも1箇所にストーブがある印象」との指摘に基づき、壁面1箇所に縦型遠赤外線ストーブを配置したスプリット対比イラストを再生成。
+   - reviewブランチへコミット・pushし、Issueへプレビュー付き返信コメントを投稿。
+3. Issue #33「記事作成24_中古注意点」画像再生成:
+   - 「電気ストーブタイプのサウナで新品（ピカピカ）と中古（少し年季が入った）を並べて比較」との指示に基づき、左右スプリット比較イラストを再生成。
+   - reviewブランチへコミット・pushし、Issueへプレビュー付き返信コメントを投稿。
+
+■ 実行・検証コマンド
+- powershell -ExecutionPolicy Bypass -File G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1 -IssueNo 32
+- npm run build (全54ページ正常ビルド確認)
+- git push origin review
+
+-----------------------------------------
+■ アップデート: 画像確認ステータスチケット2枚の対応（Issue #31ステータス前進 / Issue #33アイキャッチ再生成） (2026年9月27日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localCode\ReactApp\my_sauna\public\images\articles\used-sauna-risks.jpg
+- c:\localCode\ReactApp\my_sauna\public\images\used-sauna-risks.jpg
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+
+■ 詳細内容
+1. Issue #31（記事作成22_遠赤外線ドライ違い）:
+   - 運営者様からの「画像確認OKです」コメントを確認。
+   - moveTicketStatus.ps1 を実行し、ステータスを「40.画像チェック」から「50.最終チェック」へ移行（GitHub Projects #2、GitHub Issue本文、タスクリスト.mdを同期更新）。
+   - GitHub Issue #31へ移行完了および最終チェック依頼のコメントを投稿。
+2. Issue #33（記事作成24_中古注意点）:
+   - 運営者様からの「ガラスドアが不自然なので、ドア部分を見せないようにサウナ内部だけの画像にしてください」コメントを確認。
+   - サウナキャビン内部のみを描写する構図（ドア・ガラス扉・ドア枠を完全排除）で、新品（ピカピカ白木・新品電気ストーブ・タオル・ハット）vs 中古（年季の入った飴色木肌・経年ストーブ・砂時計・採寸用メジャー・メモ帳）の左右スプリット比較イラストを再生成。
+   - 旧画像のバックアップ作成後、新画像を配置・astro build検証・reviewブランチへcommit & push。
+   - GitHub Issue #33へ再作成完了および確認依頼のコメントを投稿。
+
+■ 実行・検証コマンド
+- moveTicketStatus.ps1 -IssueNo 31 -ToStatus 50.最終チェック
+- npm run build (54ページ正常ビルド確認)
+- git commit & git push origin review
+
+-----------------------------------------
+■ アップデート: 画像確認ステータスチケット2枚の対応（Issue #31ステータス前進 / Issue #33アイキャッチ再生成） (2026年9月27日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localCode\ReactApp\my_sauna\public\images\articles\used-sauna-risks.jpg
+- c:\localCode\ReactApp\my_sauna\public\images\used-sauna-risks.jpg
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+
+■ 詳細内容
+1. Issue #31（記事作成22_遠赤外線ドライ違い）:
+   - 運営者様からの「画像確認OKです」コメントを確認。
+   - moveTicketStatus.ps1 を実行し、ステータスを「40.画像チェック」から「50.最終チェック」へ移行（GitHub Projects #2、GitHub Issue本文、タスクリスト.mdを同期更新）。
+   - GitHub Issue #31へ移行完了および最終チェック依頼のコメントを投稿。
+2. Issue #33（記事作成24_中古注意点）:
+   - 運営者様からの「ガラスドアが不自然なので、ドア部分を見せないようにサウナ内部だけの画像にしてください」コメントを確認。
+   - サウナキャビン内部のみを描写する構図（ドア・ガラス扉・ドア枠を完全排除）で、新品（ピカピカ白木・新品電気ストーブ・タオル・ハット）vs 中古（年季の入った飴色木肌・経年ストーブ・砂時計・採寸用メジャー・メモ帳）の左右スプリット比較イラストを再生成。
+   - 旧画像のバックアップ作成後、新画像を配置・astro build検証・reviewブランチへcommit & push。
+   - GitHub Issue #33へ再作成完了および確認依頼のコメントを投稿。
+
+■ 実行・検証コマンド
+- moveTicketStatus.ps1 -IssueNo 31 -ToStatus 50.最終チェック
+- npm run build (54ページ正常ビルド確認)
+- git commit & git push origin review
