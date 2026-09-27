@@ -1783,3 +1783,136 @@ Issue #28（防火消防法記事）50.最終チェックでのユーザー指�
 - moveTicketStatus.ps1 -IssueNo 31 -ToStatus 50.最終チェック
 - npm run build (54ページ正常ビルド確認)
 - git commit & git push origin review
+
+-----------------------------------------
+■ アップデート: Issue #33 中古注意点 画像確認OK受領に伴う「50.最終チェック」移行 (2026年9月27日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+
+■ 詳細内容
+- GitHub Issue #33（記事作成24_中古注意点）にて、運営者より「画像確認OKです」のコメントを受理。
+- 共有スクリプト moveTicketStatus.ps1 を実行し、GitHub Projects (#2)、GitHub Issue #33、および タスクリスト.md のステータスを「40.画像チェック」から「50.最終チェック」へ完全同期更新。
+- Issue #33 に画像承認感謝および「50.最終チェック」プレビューURL案内、最終承認後の本番公開ステップを案内するコメントを投稿。
+
+■ 実行・検証コマンド
+```
+powershell -ExecutionPolicy Bypass -File 'G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\moveTicketStatus.ps1' -IssueNo 33 -ToStatus '50.最終チェック' -Remarks '画像確認OKを受理。本番公開前の最終人間チェック待ち'
+```
+
+-----------------------------------------
+■ アップデート: 最終確認OK受領に伴う本番公開自動処理完了 (Issue #31, #33) (2026年9月27日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+
+■ 詳細内容
+- 「50.最終チェック」の対象Issue #31（記事作成22_遠赤外線ドライ違い）および Issue #33（記事作成24_中古注意点）にて、運営者より「最終確認OKです」のコメントを受理。
+- 専用スクリプト publishApprovedArticles.ps1 を実行。
+  - review ブランチの変更を develop および main へ自動マージ・push（Cloudflare Pages本番自動デプロイ完了）。
+  - mainブランチの全公開ページ（計54ページ）を対象とした sitemap.xml の検証・最新化完了。
+  - moveTicketStatus.ps1 と連動し、GitHub Projects (#2)、GitHub Issues (#31, #33)、タスクリスト.md を「公開済み」へ完全同期更新。
+  - 各Issueへ本番公開完了コメントを投稿し、Issueを正常クローズ。
+
+■ 実行・検証コマンド
+```
+powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\publishApprovedArticles.ps1"
+```
+
+-----------------------------------------
+■ アップデート: 記事内容確認承認に伴うアイキャッチ画像生成・配置と40.画像チェック移行 (2026年9月27日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- public/images/articles/delivery-route-checklist.jpg
+- public/images/delivery-route-checklist.jpg
+- public/images/articles/diy-sauna-dangers.jpg
+- public/images/diy-sauna-dangers.jpg
+- public/images/articles/sauna-umbrella-ineffective.jpg
+- public/images/sauna-umbrella-ineffective.jpg
+- src/pages/articles/delivery-route-checklist.astro
+- src/pages/articles/diy-sauna-dangers.astro
+- src/pages/articles/sauna-umbrella-ineffective.astro
+- c:\localDocment\自宅サウナアフィリエイト\タスクリスト.md
+
+■ 詳細内容
+- Issue #29（No.029 搬入経路確認）、Issue #34（No.034 DIY自作リスク）、Issue #35（No.035 サウナ傘効果検証）の3チケットにて「記事内容確認OKです」のコメントを受領。
+- article-image-creator スキルに基づき、サイト統一トーン（暖かみのある手描き色鉛筆スケッチ＆水彩画風、生成りテクスチャ背景、枠線なし、文字なし）に準拠した高品質アイキャッチ画像をAI生成。
+- 生成画像を各記事ディレクトリに配置し、Astroテンプレート（eyecatch prop）への紐付けを実施。
+- npm run build を実行し、全54ページの静的ビルド正常終了を確認。
+- review ブランチにコミット＆プッシュ（Cloudflare Pages review環境への自動デプロイ）。
+- moveTicketStatus.ps1 を実行し、GitHub Projects #2、GitHub Issues、タスクリスト.md を「40.画像チェック」へ完全同期移行。
+- 各Issueにアイキャッチ画像配置完了およびプレビューURLの案内コメントを投稿。
+
+■ 実行・検証コマンド
+```
+npm run build
+git add public/images/ src/pages/articles/; git commit -m '...'; git push origin review
+moveTicketStatus.ps1 -IssueNo 29/34/35 -ToStatus '40.画像チェック'
+```
+
+-----------------------------------------
+■ アップデート: 定期巡回スクリプト作成およびWindowsタスクスケジューラ登録 (2026年9月27日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\patrolTickets.ps1 (新規作成)
+
+■ 詳細内容
+- 毎日4時、8時、14時、20時の定時巡回スクリプト（patrolTickets.ps1）を実装。
+- 巡回優先順序: 「50.最終チェック（承認検知でpublishApprovedArticles.ps1実行・本番公開）」→「40.画像チェック（承認検知で50.最終チェックへ移行）」→「30.記事チェック（承認検知で40.画像チェックへ移行）」
+- Windows タスクスケジューラへタスク「MySauna_PatrolTickets」を登録し、AntiGravityを閉じていてもバックグラウンドで自動実行される環境を構築。
+- ドライランテストおよびタスク登録状態（Ready、次回実行20:00）の検証完了。
+
+■ 実行・検証コマンド
+`
+powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\patrolTickets.ps1" -DryRun
+Get-ScheduledTask -TaskName "MySauna_PatrolTickets"
+`
+
+-----------------------------------------
+■ アップデート: 定期巡回スクリプト作成およびWindowsタスクスケジューラ登録 (2026年9月27日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\patrolTickets.ps1 (新規作成)
+
+■ 詳細内容
+- 毎日4時、8時、14時、20時の定時巡回スクリプト（patrolTickets.ps1）を実装。
+- 巡回優先順序: 「50.最終チェック（承認検知でpublishApprovedArticles.ps1実行・本番公開）」→「40.画像チェック（承認検知で50.最終チェックへ移行）」→「30.記事チェック（承認検知で40.画像チェックへ移行）」
+- Windows タスクスケジューラへタスク「MySauna_PatrolTickets」を登録し、AntiGravityを閉じていてもバックグラウンドで自動実行される環境を構築。
+- ドライランテストおよびタスク登録状態（Ready、次回実行20:00）の検証完了。
+
+■ 実行・検証コマンド
+`
+powershell -ExecutionPolicy Bypass -File "G:\共有ドライブ\ollakunnossaDrive\GoogleAntiGravity\scripts\patrolTickets.ps1" -DryRun
+Get-ScheduledTask -TaskName "MySauna_PatrolTickets"
+`
+
+■ アップデート: Issue #71 楽天アフィリエイトリンクの文言修正 (2026年9月27日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- C:\localDocment\自宅サウナアフィリエイト\アフィリエイトタグ\チェックリンク.txt (文言修正、バックアップ.bak作成)
+- c:\localCode\ReactApp\my_sauna\src\data\affiliates.json (textLabel修正)
+- c:\localCode\ReactApp\my_sauna\src\data\affiliates.example.json (textLabel修正)
+- c:\localCode\ReactApp\my_sauna\src\data\affiliates.secret.json (textLabel修正)
+- c:\localCode\ReactApp\my_sauna\src\components\NeppaCta.astro (フォールバック文言修正)
+- c:\localCode\ReactApp\my_sauna\src\pages\sauna\neppa-standard.astro (フォールバック文言修正)
+- c:\localCode\ReactApp\my_sauna\src\pages\index.astro (テキストリンク文言修正)
+
+■ 詳細内容
+- GitHub Issue #71（楽天リンクの修正）に基づき、全ページ共通のアフィリエイトテキストリンク表示文言を修正。
+- 修正前: ＜受注生産品＞家庭用・プライベートサウナ「熱波 スタンダート」-フィンランド式高温サウナ ヒノキ仕様の日本製サウナ 最短45日納品可能-　サウナ 家庭用 家庭用サウナ 自宅サウナ 自宅用サウナ ホームサウナ フィンランドサウナ サウナストーブ 電気 100V 1人 1人用 一人用
+- 修正後: 家庭用サウナ「熱波 スタンダート」を楽天市場で確認
+- syncAffiliateTags.ps1 を実行し、マスターファイルとJSONデータの完全一致を確認。
+- npm run build を実行し、全54ページの正常静的ビルド完了を確認。
+- review ブランチへコミット・Push完了（commit: cec2f80）。
+- GitHub Issue #71 へ対応完了報告コメントを投稿。
+
+■ 実行・検証コマンド
+- syncAffiliateTags.ps1
+- npm run build (全54ページ正常ビルド確認)
+- git commit & git push origin review
