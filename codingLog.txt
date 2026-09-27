@@ -1916,3 +1916,23 @@ Get-ScheduledTask -TaskName "MySauna_PatrolTickets"
 - syncAffiliateTags.ps1
 - npm run build (全54ページ正常ビルド確認)
 - git commit & git push origin review
+
+■ アップデート: Issue #71 本番反映（develop/mainマージ＆プッシュ・sitemap.xml更新） (2026年9月27日)
+   作成者: shinji_ikeda
+-----------------------------------------
+■ 変更・追加されたファイル
+- c:\localCode\ReactApp\my_sauna\public\sitemap.xml (サイトマップXMLの最新化・lastmod更新)
+
+■ 詳細内容
+- 運営者様によるプレビュー確認・承認を受け、Issue #71（楽天リンク文言修正）の成果物を develop および main ブランチへマージしてリモートへプッシュ。
+- generateSitemap.ps1 により public/sitemap.xml を最新化（54ページ対象）して main へコミット＆プッシュ完了。
+- develop および review ブランチにも最新 main をマージして完全同期（commit: ac654c0）。
+- GitHub Issue #71 へ本番公開完了の報告コメントを投稿し、Issue を closed に更新。
+
+■ 実行・検証コマンド
+- git checkout develop && git merge review && git push origin develop
+- git checkout main && git merge develop
+- generateSitemap.ps1 -RepoDir c:\localCode\ReactApp\my_sauna -Branch main
+- git commit -m 'chore: サイトマップXMLを最新化' && git push origin main
+- git checkout develop && git merge main && git push origin develop
+- git checkout review && git merge main && git push origin review
